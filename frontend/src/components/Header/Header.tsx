@@ -1,20 +1,30 @@
+import { Grid } from "@mui/material";
+
 import GNB from "./GNB/GNB";
 
 const LogoArea = () => {
-  return <h1>LOGO</h1>;
+  return (
+    <Grid item xs={2}>
+      <h1>LOGO</h1>
+    </Grid>
+  );
 };
 
 const UserMenu = () => {
-  return <p>메뉴</p>;
+  return (
+    <Grid item xs={2}>
+      메뉴
+    </Grid>
+  );
 };
 
 const Header = () => {
   return (
-    <>
+    <Grid container spacing={2} columns={12}>
       <LogoArea />
       <GNB />
       <UserMenu />
-    </>
+    </Grid>
   );
 };
 

@@ -1,3 +1,5 @@
+import { Grid, List } from "@mui/material";
+
 import NavItem from "./NavItem";
 
 const MENUS = [
@@ -6,15 +8,19 @@ const MENUS = [
   { id: 3, name: "온라인 체험" },
 ];
 
+const flexContainer = {
+  display: "flex",
+};
+
 const GNB = (): JSX.Element => {
   return (
-    <nav>
-      <ul>
+    <Grid container rowSpacing={2} item xs={8} justifyContent="center">
+      <List component="nav" style={flexContainer}>
         {MENUS.map(({ id, name }) => (
           <NavItem key={id} item={name} />
         ))}
-      </ul>
-    </nav>
+      </List>
+    </Grid>
   );
 };
 
