@@ -61,10 +61,7 @@
     },
     "plugins": [
       "import"
-    ],
-    "parserOptions": {
-      "project": "./tsconfig.json"
-    }
+    ]
   },
   "browserslist": {
     "production": [
