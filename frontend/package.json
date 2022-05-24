@@ -30,9 +30,7 @@
       "react-app",
       "react-app/jest",
       "airbnb",
-      "airbnb-typescript",
-      "prettier",
-      "./tsconfig.json"
+      "prettier"
     ],
     "rules": {
       "import/order": [
@@ -63,7 +61,10 @@
     },
     "plugins": [
       "import"
-    ]
+    ],
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    }
   },
   "browserslist": {
     "production": [
