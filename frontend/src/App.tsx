@@ -1,5 +1,13 @@
+import GNB from "components/Header/GNB/GNB";
+import CssBaseline from "@mui/material/CssBaseline";
+
 function App() {
-  return <div className="App">"airbnb"</div>;
+  return (
+    <div className="App">
+      <CssBaseline />
+      <GNB />
+    </div>
+  );
 }
 
 export default App;
