@@ -1,12 +1,12 @@
 import CssBaseline from "@mui/material/CssBaseline";
 
-import GNB from "components/Header/GNB/GNB";
+import Header from "components/Header/Header";
 
 const App = (): JSX.Element => {
   return (
     <div className="App">
       <CssBaseline />
-      <GNB />
+      <Header />
     </div>
   );
 };
