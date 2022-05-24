@@ -1,13 +1,13 @@
 import GNB from "components/Header/GNB/GNB";
 import CssBaseline from "@mui/material/CssBaseline";
 
-function App() {
+const App = (): JSX.Element => {
   return (
     <div className="App">
       <CssBaseline />
       <GNB />
     </div>
   );
-}
+};
 
 export default App;

@@ -30,6 +30,7 @@
       "react-app",
       "react-app/jest",
       "airbnb",
+      "airbnb-typescript",
       "prettier"
     ],
     "rules": {
@@ -61,7 +62,12 @@
     },
     "plugins": [
       "import"
-    ]
+    ],
+    "settings": {
+      "import/resolver": {
+        "typescript": {}
+      }
+    }
   },
   "browserslist": {
     "production": [
