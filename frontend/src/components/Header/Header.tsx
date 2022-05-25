@@ -1,4 +1,6 @@
 import { Button, Grid } from "@mui/material";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
 
 import GNB from "./GNB/GNB";
 
@@ -27,11 +29,15 @@ const UserMenu = () => {
 
 const Header = () => {
   return (
-    <Grid container spacing={2} columns={12}>
-      <LogoArea />
-      <GNB />
-      <UserMenu />
-    </Grid>
+    <Box component="header">
+      <Container maxWidth="xl">
+        <Grid container spacing={2} columns={12}>
+          <LogoArea />
+          <GNB />
+          <UserMenu />
+        </Grid>
+      </Container>
+    </Box>
   );
 };
 
