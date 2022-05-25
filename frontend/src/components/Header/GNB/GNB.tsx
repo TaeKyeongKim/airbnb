@@ -11,7 +11,7 @@ const MENUS = [
 const GNB = (): JSX.Element => {
   return (
     <Grid container rowSpacing={2} item xs={8} justifyContent="center">
-      <ButtonGroup component="nav" variant="text" aria-label="">
+      <ButtonGroup component="nav" aria-label="메인 메뉴">
         {MENUS.map(({ id, name }) => (
           <NavItem key={id} item={name} />
         ))}

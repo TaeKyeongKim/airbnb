@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 
 import GNB from "./GNB/GNB";
 
@@ -13,7 +13,7 @@ const LogoArea = () => {
 const UserMenu = () => {
   return (
     <Grid item xs={2}>
-      메뉴
+      <Button color="black">메뉴</Button>
     </Grid>
   );
 };
