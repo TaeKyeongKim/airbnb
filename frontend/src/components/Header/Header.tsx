@@ -27,9 +27,15 @@ const UserMenu = () => {
   );
 };
 
+const indexHeaderStyle = {
+  maxwidth: "1440px",
+  height: "640px",
+  backgroundColor: "green",
+};
+
 const Header = () => {
   return (
-    <Box component="header">
+    <Box component="header" sx={indexHeaderStyle}>
       <Container maxWidth="xl">
         <Grid container spacing={2} columns={12}>
           <LogoArea />
