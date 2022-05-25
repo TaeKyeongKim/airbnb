@@ -20,7 +20,9 @@ const indexHeaderStyle = {
 const LogoArea = () => {
   return (
     <Grid container item xs={2} justifyContent="left">
-      <h1>LOGO</h1>
+      <h1>
+        <a href="/">LOGO</a>
+      </h1>
     </Grid>
   );
 };
@@ -28,7 +30,7 @@ const LogoArea = () => {
 const Header = () => {
   return (
     <Box component="header" sx={indexHeaderStyle}>
-      <Container component="header" maxWidth="xl" sx={{ height: "100px" }}>
+      <Container maxWidth="xl" sx={{ height: "100px" }}>
         <Grid container spacing={2} columns={12}>
           <LogoArea />
           <GNB />

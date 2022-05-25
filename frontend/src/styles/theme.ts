@@ -1,5 +1,7 @@
 import { createTheme } from "@mui/material/styles";
 
+// import { createTheme } from "@mui/material";
+
 const theme = createTheme({
   typography: {
     fontFamily: ["Noto Sans KR", "sans-serif"].join(","),
@@ -11,6 +13,16 @@ const theme = createTheme({
     },
   },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: `
+        a {
+          text-decoration: none;
+          color: inherit;
+          &:visited: {
+            text-decoration: none;
+          }
+          `,
+    },
     MuiButton: {
       styleOverrides: {
         root: {
