@@ -39,7 +39,7 @@ const indexHeaderStyle = {
 const Header = () => {
   return (
     <Box component="header" sx={indexHeaderStyle}>
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" sx={{ height: "100px" }}>
         <Grid container spacing={2} columns={12}>
           <LogoArea />
           <GNB />
