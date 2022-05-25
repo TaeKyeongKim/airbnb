@@ -1,35 +1,11 @@
-import { Button, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 
 import heroImage from "assets/hero-img.png";
 
 import GNB from "./GNB/GNB";
-
-const LogoArea = () => {
-  return (
-    <Grid container item xs={2} justifyContent="left">
-      <h1>LOGO</h1>
-    </Grid>
-  );
-};
-
-const UserMenu = () => {
-  return (
-    <Grid
-      container
-      item
-      xs={2}
-      justifyContent="center"
-      direction="column"
-      alignItems="flex-end"
-    >
-      <Button color="black" disableFocusRipple disableRipple>
-        메뉴
-      </Button>
-    </Grid>
-  );
-};
+import UserMenu from "./UserMenu/UserMenu";
 
 // TODO: 검색결과 화면으로 변경시 다른 스타일이 적용되어야 함
 const indexHeaderStyle = {
@@ -39,6 +15,14 @@ const indexHeaderStyle = {
   backgroundRepeat: "no-repeat",
   backgroundPosition: "center bottom",
   backgroundSize: "cover",
+};
+
+const LogoArea = () => {
+  return (
+    <Grid container item xs={2} justifyContent="left">
+      <h1>LOGO</h1>
+    </Grid>
+  );
 };
 
 const Header = () => {
@@ -51,6 +35,7 @@ const Header = () => {
           <UserMenu />
         </Grid>
       </Container>
+      {/* TODO: SearchBar */}
     </Box>
   );
 };
