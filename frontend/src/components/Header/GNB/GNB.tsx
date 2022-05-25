@@ -1,4 +1,4 @@
-import { Grid, List } from "@mui/material";
+import { ButtonGroup, Grid } from "@mui/material";
 
 import NavItem from "./NavItem";
 
@@ -8,18 +8,14 @@ const MENUS = [
   { id: 3, name: "온라인 체험" },
 ];
 
-const flexContainer = {
-  display: "flex",
-};
-
 const GNB = (): JSX.Element => {
   return (
     <Grid container rowSpacing={2} item xs={8} justifyContent="center">
-      <List component="nav" style={flexContainer}>
+      <ButtonGroup component="nav" variant="text" aria-label="">
         {MENUS.map(({ id, name }) => (
           <NavItem key={id} item={name} />
         ))}
-      </List>
+      </ButtonGroup>
     </Grid>
   );
 };

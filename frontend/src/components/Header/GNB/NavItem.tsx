@@ -1,4 +1,4 @@
-import { ListItemButton, ListItemText } from "@mui/material";
+import { Button } from "@mui/material";
 
 interface NavItemProps {
   item: string;
@@ -6,9 +6,9 @@ interface NavItemProps {
 
 const NavItem = ({ item }: NavItemProps): JSX.Element => {
   return (
-    <ListItemButton component="a" href="#">
-      <ListItemText primary={item} />
-    </ListItemButton>
+    <Button variant="text" component="a" href="#">
+      {item}
+    </Button>
   );
 };
 
