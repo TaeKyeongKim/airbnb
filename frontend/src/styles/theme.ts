@@ -1,7 +1,5 @@
 import { createTheme } from "@mui/material/styles";
 
-// import { createTheme } from "@mui/material";
-
 const theme = createTheme({
   typography: {
     fontFamily: ["Noto Sans KR", "sans-serif"].join(","),
@@ -55,7 +53,7 @@ const theme = createTheme({
           fontSize: "1rem",
 
           "&:hover": {
-            backgroundColor: "transparent",
+            backgroundColor: "inherit",
             fontWeight: "700",
             textDecoration: "underline",
           },
@@ -91,6 +89,7 @@ declare module "@mui/material/styles" {
 declare module "@mui/material/Button" {
   interface ButtonPropsColorOverrides {
     black: true;
+    white: true;
   }
 }
 

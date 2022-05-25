@@ -1,4 +1,7 @@
-import { Button, Grid } from "@mui/material";
+import PersonIcon from "@mui/icons-material/Person";
+import { Grid } from "@mui/material";
+
+import UserButton from "./UserMenu.styled";
 
 const UserMenu = () => {
   return (
@@ -10,9 +13,14 @@ const UserMenu = () => {
       direction="column"
       alignItems="flex-end"
     >
-      <Button color="black" disableFocusRipple disableRipple>
-        메뉴
-      </Button>
+      <UserButton
+        variant="contained"
+        color="white"
+        disableFocusRipple
+        disableRipple
+      >
+        <PersonIcon />
+      </UserButton>
     </Grid>
   );
 };
