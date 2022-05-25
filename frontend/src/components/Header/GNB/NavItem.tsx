@@ -6,7 +6,14 @@ interface NavItemProps {
 
 const NavItem = ({ item }: NavItemProps): JSX.Element => {
   return (
-    <Button variant="text" component="a" href="#" color="black">
+    <Button
+      variant="text"
+      component="a"
+      href="#"
+      color="black"
+      disableFocusRipple
+      disableRipple
+    >
       {item}
     </Button>
   );
