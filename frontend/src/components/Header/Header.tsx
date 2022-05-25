@@ -36,8 +36,8 @@ const Header = () => {
           <GNB />
           <UserMenu />
         </Grid>
+        {/* TODO: SearchBar */}
       </Container>
-      {/* TODO: SearchBar */}
     </Box>
   );
 };
