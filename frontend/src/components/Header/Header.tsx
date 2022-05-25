@@ -4,7 +4,7 @@ import GNB from "./GNB/GNB";
 
 const LogoArea = () => {
   return (
-    <Grid item xs={2}>
+    <Grid container item xs={2} justifyContent="center">
       <h1>LOGO</h1>
     </Grid>
   );
@@ -12,7 +12,14 @@ const LogoArea = () => {
 
 const UserMenu = () => {
   return (
-    <Grid item xs={2}>
+    <Grid
+      container
+      item
+      xs={2}
+      justifyContent="center"
+      direction="column"
+      alignItems="flex-end"
+    >
       <Button color="black">메뉴</Button>
     </Grid>
   );
