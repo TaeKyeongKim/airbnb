@@ -8,7 +8,7 @@ import GNB from "./GNB/GNB";
 
 const LogoArea = () => {
   return (
-    <Grid container item xs={2} justifyContent="center">
+    <Grid container item xs={2} justifyContent="left">
       <h1>LOGO</h1>
     </Grid>
   );
