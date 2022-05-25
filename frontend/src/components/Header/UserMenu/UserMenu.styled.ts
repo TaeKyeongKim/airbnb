@@ -1,12 +1,46 @@
-import { Button, ButtonProps } from "@mui/material";
+import { Button, ButtonProps, Container } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-const UserButton = styled(Button)<ButtonProps>(
+const UserMenuContainer = styled(Container)(
   ({ theme: { palette } }) => `
-:hover {
   background-color: ${palette.white.main};
-}
+  margin: 0;
+  width: 76px;
+  height: 40px;
+  border-radius: calc(76px / 2);
+  border: 1px solid ${palette.grey4.main};
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  
+  @media (min-width: 600px) {
+    padding: 0;
+  }
 `
 );
 
-export default UserButton;
+const UserButton = styled(Button)<ButtonProps>(
+  ({ theme: { palette } }) => `
+  background-color: ${palette.grey3.main};
+  color: ${palette.white.main};
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+
+  :hover {
+    background-color: ${palette.grey3.main};
+  }
+`
+);
+const MenuButton = styled(Button)<ButtonProps>(
+  ({ theme: { palette } }) => `
+  background-color: ${palette.white.main};
+  color: ${palette.grey3.main};
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+
+`
+);
+
+export { MenuButton, UserButton, UserMenuContainer };

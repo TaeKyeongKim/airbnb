@@ -51,6 +51,8 @@ const theme = createTheme({
         root: {
           fontWeight: "400",
           fontSize: "1rem",
+          backgroundColor: "inherit",
+          minWidth: "0",
 
           "&:hover": {
             backgroundColor: "inherit",
