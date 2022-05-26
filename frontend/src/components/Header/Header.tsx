@@ -30,7 +30,14 @@ const Header = () => {
           sx={{ height: ({ size }) => size.fullSize }}
         >
           <LogoArea />
-          <GNB menuData={MENUS} />
+          <GNB
+            menuData={MENUS}
+            container
+            rowSpacing={2}
+            item
+            xs={8}
+            justifyContent="center"
+          />
           <UserMenu />
         </Grid>
         {/* TODO: SearchBar */}

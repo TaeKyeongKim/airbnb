@@ -1,10 +1,11 @@
-import { ButtonGroup, Grid } from "@mui/material";
+import { ButtonGroup, Grid, GridProps } from "@mui/material";
 
 import NavItem from "./NavItem";
 
-const GNB = ({ menuData }: GNBProps): JSX.Element => {
+const GNB = ({ menuData, ...args }: GNBProps): JSX.Element => {
   return (
-    <Grid container rowSpacing={2} item xs={8} justifyContent="center">
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    <Grid {...args}>
       <ButtonGroup component="nav" aria-label="메인 메뉴">
         {menuData.map(({ id, name }) => (
           <NavItem key={id} item={name} />
@@ -16,10 +17,9 @@ const GNB = ({ menuData }: GNBProps): JSX.Element => {
 
 export default GNB;
 
-interface MenuItemProps {
-  id: number;
-  name: string;
-}
-interface GNBProps {
-  menuData: MenuItemProps[];
+interface GNBProps extends GridProps {
+  menuData: {
+    id: number;
+    name: string;
+  }[];
 }
