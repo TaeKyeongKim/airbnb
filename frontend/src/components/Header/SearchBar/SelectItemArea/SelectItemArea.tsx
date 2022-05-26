@@ -1,4 +1,4 @@
-import SearchBarButtons from "./CloseButtonArea/CloseButtonArea";
+import SearchBarButton from "./ButtonArea/ButtonArea";
 import SelectItem from "./SelectItem/SelectItem";
 import SelectItemAreaWrapper from "./SelectItemArea.style";
 
@@ -9,16 +9,16 @@ const SelectItemArea = (): JSX.Element => {
       <SelectItem xs={2} pl={1}>
         반갑습니다
       </SelectItem>
-      <SearchBarButtons.CloseButtonArea />
+      <SearchBarButton icon="close" />
       <SelectItem xs={2} pl={1}>
         안녕하세욥
       </SelectItem>
-      <SearchBarButtons.CloseButtonArea />
+      <SearchBarButton icon="close" />
       <SelectItem xs={2} pl={1}>
         하하
       </SelectItem>
-      <SearchBarButtons.CloseButtonArea />
-      <SearchBarButtons.SearchButton />
+      <SearchBarButton icon="close" />
+      <SearchBarButton icon="search" />
     </SelectItemAreaWrapper>
   );
 };
