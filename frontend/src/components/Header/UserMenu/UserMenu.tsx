@@ -1,10 +1,30 @@
+import { useState } from "react";
+
 import MenuIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@mui/icons-material/Person";
-import { Grid } from "@mui/material";
+import { Grid, Menu, MenuItem, Button } from "@mui/material";
 
-import { MenuButton, UserButton, UserMenuContainer } from "./UserMenu.styled";
+import {
+  UserAvatar,
+  UserMenuContainer,
+  userMenuButtonStyle,
+  menuIconStyle,
+} from "./UserMenu.styled";
 
 const UserMenu = () => {
+  const [menuAnchor, setMenuAnchor] = useState<null | HTMLElement>(null);
+  const open = Boolean(menuAnchor);
+
+  const handleMenuClick = ({
+    currentTarget,
+  }: React.MouseEvent<HTMLButtonElement>) => {
+    setMenuAnchor(currentTarget);
+  };
+
+  const handleClose = () => {
+    setMenuAnchor(null);
+  };
+
   return (
     <Grid
       container
@@ -15,18 +35,41 @@ const UserMenu = () => {
       alignItems="flex-end"
     >
       <UserMenuContainer>
-        <MenuButton
-          startIcon={<MenuIcon />}
-          disableFocusRipple
-          disableRipple
-          aria-label="회원 메뉴 버튼"
-        />
-        <UserButton
-          startIcon={<PersonIcon />}
+        <Button
           disableFocusRipple
           disableRipple
           aria-label="마이페이지 버튼"
-        />
+          id="user-menu-button"
+          aria-controls={open ? "basic-menu" : undefined}
+          aria-haspopup="true"
+          aria-expanded={open ? "true" : undefined}
+          onClick={handleMenuClick}
+          sx={userMenuButtonStyle}
+        >
+          <MenuIcon sx={menuIconStyle} />
+          <UserAvatar>
+            <PersonIcon />
+          </UserAvatar>
+        </Button>
+        <Menu
+          id="user-menu"
+          anchorEl={menuAnchor}
+          open={open}
+          onClose={handleClose}
+          MenuListProps={{
+            "aria-labelledby": "user-menu-button",
+          }}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "right",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "right",
+          }}
+        >
+          <MenuItem onClick={handleClose}>로그인</MenuItem>
+        </Menu>
       </UserMenuContainer>
     </Grid>
   );

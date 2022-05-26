@@ -1,5 +1,24 @@
-import { Button, ButtonProps, Container, ContainerProps } from "@mui/material";
+import { Container, ContainerProps, Avatar } from "@mui/material";
 import { styled } from "@mui/material/styles";
+
+const userMenuButtonStyle = {
+  padding: 0,
+  border: 0,
+  width: `calc(100% - 4px)`,
+  height: `calc(100% - 4px)`,
+  backgroundColor: "transparent",
+
+  "&:hover": {
+    backgroundColor: "transparent",
+  },
+};
+
+const menuIconStyle = {
+  color: ({ palette }: { palette: { grey3: { main: string } } }) =>
+    palette.grey3.main,
+  marginRight: ({ size }: { size: { userMenuButton: { width: string } } }) =>
+    size.userMenuButton.width,
+};
 
 const UserMenuContainer = styled(Container)<ContainerProps>(
   ({ theme: { palette, style } }) => `
@@ -9,32 +28,19 @@ const UserMenuContainer = styled(Container)<ContainerProps>(
   height: 40px;
   border-radius: calc(76px / 2);
   border: 1px solid ${palette.grey4.main};
+  position: relative;
 `
 );
 
-const UserButton = styled(Button)<ButtonProps>(
-  ({ theme: { palette, size, style } }) => `
+const UserAvatar = styled(Avatar)(
+  ({ theme: { palette, size } }) => `
   background-color: ${palette.grey3.main};
-  color: ${palette.white.main};
   width: ${size.userMenuButton.width};
   height: ${size.userMenuButton.height};
-  ${style.circularBorder}
-
-  :hover {
-    background-color: ${palette.grey3.main};
-  }
-`
-);
-const MenuButton = styled(Button)<ButtonProps>(
-  ({ theme: { palette, size, style } }) => `
-  background-color: ${palette.white.main};
-  color: ${palette.grey3.main};
-  width: ${size.userMenuButton.width};
-  height: ${size.userMenuButton.height};
-  ${style.circularBorder}
-
-
-`
+  position: absolute;
+  right: 0;
+}
+  );`
 );
 
-export { MenuButton, UserButton, UserMenuContainer };
+export { userMenuButtonStyle, menuIconStyle, UserMenuContainer, UserAvatar };

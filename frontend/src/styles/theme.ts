@@ -106,6 +106,28 @@ const theme = createTheme({
         },
       },
     },
+    MuiMenu: {
+      styleOverrides: {
+        paper: {
+          padding: "32px",
+          minWidth: "200px",
+        },
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          minWidth: "200px",
+        },
+      },
+    },
+    MuiPopover: {
+      styleOverrides: {
+        paper: {
+          minWidth: "200px",
+        },
+      },
+    },
   },
 });
 
