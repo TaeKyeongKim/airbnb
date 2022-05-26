@@ -8,7 +8,6 @@ const SelectItem = ({
   ...MUIGridProps
 }: SelectItemProps): JSX.Element => {
   return (
-    // eslint-disable-next-line react/jsx-props-no-spreading
     <GridItem item {...MUIGridProps} {...divide}>
       {MUIGridProps.children}
     </GridItem>

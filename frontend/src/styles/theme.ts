@@ -48,6 +48,10 @@ const theme = createTheme({
       closeButton: {
         width: "20px",
         height: "20px",
+        icon: {
+          width: "1rem",
+          height: "1rem",
+        },
       },
       fullSize: {
         width: `916px`,
@@ -155,6 +159,10 @@ declare module "@mui/material/styles" {
         closeButton: {
           width: string;
           height: string;
+          icon: {
+            width: string;
+            height: string;
+          };
         };
         fullSize: {
           width: string;
@@ -186,6 +194,10 @@ declare module "@mui/material/styles" {
         closeButton?: {
           width?: string;
           height?: string;
+          icon?: {
+            width?: string;
+            height?: string;
+          };
         };
         fullSize?: {
           width?: string;
