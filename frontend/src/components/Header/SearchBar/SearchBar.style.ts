@@ -5,7 +5,6 @@ const SearchBarContainer = styled(Container, {
   shouldForwardProp: (prop) => prop !== "currentPage",
   name: "MyThemeComponent",
   slot: "Root",
-  overridesResolver: (styles) => [styles.root],
 })<SearchBarContainerProps>(
   ({ currentPage, theme: { size, palette, style } }) => `
   margin: ${style.alignCenter.margin};
