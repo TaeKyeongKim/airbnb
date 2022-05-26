@@ -1,13 +1,9 @@
-import CloseIcon from "@mui/icons-material/Close";
+import { ReactNode } from "react";
 
 import RoundButton from "./CloseButton.style";
 
-const CloseButton = () => {
-  return (
-    <RoundButton>
-      <CloseIcon />
-    </RoundButton>
-  );
+const RoundIconButton = ({ icon }: { icon: ReactNode }) => {
+  return <RoundButton>{icon}</RoundButton>;
 };
 
-export default CloseButton;
+export default RoundIconButton;

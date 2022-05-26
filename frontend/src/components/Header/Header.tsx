@@ -42,7 +42,6 @@ const Header = () => {
           <UserMenu />
         </Grid>
         <SearchBar />
-        {/* TODO: SearchBar */}
       </HeaderContainer>
     </Box>
   );
