@@ -1,5 +1,5 @@
+import SelectItem from "../SelectItem/SelectItem";
 import CloseButton from "./CloseButton/CloseButton";
-import SelectItem from "./SelectItem/SelectItem";
 
 const CloseButtonArea = (): JSX.Element => {
   return (
