@@ -49,8 +49,16 @@ const theme = createTheme({
         width: "20px",
         height: "20px",
         icon: {
-          width: "1rem",
-          height: "1rem",
+          width: "13px",
+          height: "13px",
+        },
+      },
+      searchButton: {
+        width: "40px",
+        height: "40px",
+        icon: {
+          width: "2rem",
+          height: "2rem",
         },
       },
       fullSize: {
@@ -164,6 +172,14 @@ declare module "@mui/material/styles" {
             height: string;
           };
         };
+        searchButton: {
+          width: string;
+          height: string;
+          icon: {
+            width: string;
+            height: string;
+          };
+        };
         fullSize: {
           maxWidth: string;
           height: string;
@@ -192,6 +208,14 @@ declare module "@mui/material/styles" {
       };
       searchBar?: {
         closeButton?: {
+          width?: string;
+          height?: string;
+          icon?: {
+            width?: string;
+            height?: string;
+          };
+        };
+        searchButton?: {
           width?: string;
           height?: string;
           icon?: {

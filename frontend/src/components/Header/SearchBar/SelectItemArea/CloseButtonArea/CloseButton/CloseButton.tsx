@@ -1,9 +1,13 @@
 import { ReactNode } from "react";
 
-import RoundButton from "./CloseButton.style";
+import RoundButton, { RoundButtonProps } from "./CloseButton.style";
 
-const RoundIconButton = ({ icon }: { icon: ReactNode }) => {
-  return <RoundButton>{icon}</RoundButton>;
+const RoundIconButton = ({ icon, iconName }: RoundIconButtonProps) => {
+  return <RoundButton iconName={iconName}>{icon}</RoundButton>;
 };
 
 export default RoundIconButton;
+
+interface RoundIconButtonProps extends RoundButtonProps {
+  icon: ReactNode;
+}

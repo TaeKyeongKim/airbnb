@@ -14,7 +14,7 @@ const CloseButtonArea = (): JSX.Element => {
       direction="column"
       alignItems="flex-end"
     >
-      <RoundIconButton icon={<CloseIcon />} />
+      <RoundIconButton icon={<CloseIcon />} iconName="close" />
     </SelectItem>
   );
 };
@@ -29,7 +29,7 @@ const SearchButton = (): JSX.Element => {
       direction="column"
       alignItems="flex-end"
     >
-      <RoundIconButton icon={<SearchIcon />} />
+      <RoundIconButton icon={<SearchIcon />} iconName="search" />
     </SelectItem>
   );
 };
