@@ -37,9 +37,18 @@ const theme = createTheme({
       main: "#F5F5F7",
     },
   },
+  size: {
+    fullSize: "100%",
+    navBarHeight: "100px",
+  },
   components: {
     MuiCssBaseline: {
       styleOverrides: {
+        "*": {
+          margin: 0,
+          padding: 0,
+        },
+
         a: {
           textDecoration: "none",
           color: "inherit",
@@ -59,6 +68,11 @@ const theme = createTheme({
             fontWeight: "700",
             textDecoration: "underline",
           },
+
+          // 버튼 내부 icon
+          span: {
+            margin: 0,
+          },
         },
       },
     },
@@ -66,6 +80,19 @@ const theme = createTheme({
 });
 
 declare module "@mui/material/styles" {
+  interface Theme {
+    size: {
+      fullSize: string;
+      navBarHeight: string;
+    };
+  }
+  // allow configuration using `createTheme`
+  interface ThemeOptions {
+    size?: {
+      fullSize?: string;
+      navBarHeight?: string;
+    };
+  }
   interface Palette {
     black: Palette["primary"];
     white: Palette["primary"];

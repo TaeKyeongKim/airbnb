@@ -15,12 +15,12 @@ const UserMenu = () => {
       alignItems="flex-end"
     >
       <UserMenuContainer>
-        <MenuButton disableFocusRipple disableRipple>
-          <MenuIcon />
-        </MenuButton>
-        <UserButton disableFocusRipple disableRipple>
-          <PersonIcon />
-        </UserButton>
+        <MenuButton startIcon={<MenuIcon />} disableFocusRipple disableRipple />
+        <UserButton
+          startIcon={<PersonIcon />}
+          disableFocusRipple
+          disableRipple
+        />
       </UserMenuContainer>
     </Grid>
   );
