@@ -37,6 +37,7 @@ const SelectItemArea = (): JSX.Element => {
 
             "&:hover": {
               textDecoration: "none",
+              background: "rgba(0,0,0, 0.12)",
             },
           }}
         >
