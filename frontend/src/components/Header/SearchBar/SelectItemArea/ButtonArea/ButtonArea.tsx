@@ -3,10 +3,13 @@ import { GridProps } from "@mui/material";
 import SelectItem from "../SelectItem/SelectItem";
 import RoundIconButton from "./Buttons/Buttons";
 
-const SearchBarButton = ({ icon }: SearchBarButtonAreaProps): JSX.Element => {
+const SearchBarButton = ({
+  icon,
+  divide,
+}: SearchBarButtonAreaProps): JSX.Element => {
   return (
     <SelectItem
-      divide
+      divide={divide ? divide.toString() : undefined}
       container
       xs={1}
       justifyContent="center"
@@ -22,4 +25,5 @@ export default SearchBarButton;
 
 interface SearchBarButtonAreaProps extends GridProps {
   icon: string;
+  divide?: boolean;
 }

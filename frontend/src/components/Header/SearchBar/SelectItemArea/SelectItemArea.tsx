@@ -9,11 +9,11 @@ const SelectItemArea = (): JSX.Element => {
       <SelectItem xs={2} pl={1}>
         반갑습니다
       </SelectItem>
-      <SearchBarButton icon="close" />
+      <SearchBarButton icon="close" divide />
       <SelectItem xs={2} pl={1}>
         안녕하세욥
       </SelectItem>
-      <SearchBarButton icon="close" />
+      <SearchBarButton icon="close" divide />
       <SelectItem xs={2} pl={1}>
         하하
       </SelectItem>

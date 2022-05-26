@@ -1,14 +1,14 @@
 // import { ReactNode } from "react";
 import { GridProps } from "@mui/material";
 
-import GridItem from "./SelecItem.style";
+import GridItem from "./SelectItem.style";
 
 const SelectItem = ({
   divide,
   ...MUIGridProps
 }: SelectItemProps): JSX.Element => {
   return (
-    <GridItem item {...MUIGridProps} {...divide}>
+    <GridItem item {...MUIGridProps} divide={divide?.toString()}>
       {MUIGridProps.children}
     </GridItem>
   );
@@ -17,5 +17,5 @@ const SelectItem = ({
 export default SelectItem;
 
 export interface SelectItemProps extends GridProps {
-  divide?: boolean;
+  divide?: string;
 }

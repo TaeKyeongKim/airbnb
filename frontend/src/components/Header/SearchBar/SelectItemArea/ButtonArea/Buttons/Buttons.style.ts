@@ -16,6 +16,7 @@ const RoundButton = styled(IconButton)<RoundButtonProps>(
   background-color: ${
     icon === "close" ? palette.grey4.main : palette.primary.main
   };
+  margin-right: ${icon === "close" ? size.searchBar.closeButton.width : 0};
 
   svg {
     width: ${
