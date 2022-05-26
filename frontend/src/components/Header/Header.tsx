@@ -1,6 +1,8 @@
 import { Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 
+import MENUS from "mockData/menus";
+
 import GNB from "./GNB/GNB";
 import { indexHeaderStyle, HeaderContainer } from "./Header.styled";
 import UserMenu from "./UserMenu/UserMenu";
@@ -28,7 +30,7 @@ const Header = () => {
           sx={{ height: ({ size }) => size.fullSize }}
         >
           <LogoArea />
-          <GNB />
+          <GNB menuData={MENUS} />
           <UserMenu />
         </Grid>
         {/* TODO: SearchBar */}
