@@ -103,12 +103,12 @@ const theme = createTheme({
           fontSize: "1rem",
           backgroundColor: "inherit",
           minWidth: "0",
-          color: "#828282",
+          color: "inherit",
 
           "&:hover": {
             fontWeight: "700",
             textDecoration: "underline",
-            backgroundColor: "rgba(0, 0, 0, 0.08)",
+            backgroundColor: "unset",
           },
 
           // 버튼 내부 icon
