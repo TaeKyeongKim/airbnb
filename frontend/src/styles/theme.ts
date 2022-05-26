@@ -40,6 +40,24 @@ const theme = createTheme({
   size: {
     fullSize: "100%",
     navBarHeight: "100px",
+    userMenuButton: {
+      width: `32px`,
+      height: `32px`,
+    },
+  },
+  style: {
+    circularBorder: `border-radius: 50%;`,
+    alignCenter: {
+      flex: ` 
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    `,
+      margin: "0 auto",
+    },
+  },
+  whiteSpace: {
+    inner: "80px",
   },
   components: {
     MuiCssBaseline: {
@@ -80,6 +98,11 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           margin: 0,
+          padding: 0,
+
+          "@media (min-width: 600px)": {
+            padding: 0,
+          },
         },
       },
     },
@@ -91,13 +114,40 @@ declare module "@mui/material/styles" {
     size: {
       fullSize: string;
       navBarHeight: string;
+      userMenuButton: {
+        width: string;
+        height: string;
+      };
+    };
+    style: {
+      alignCenter: {
+        flex: string;
+        margin: string;
+      };
+      circularBorder: string;
+    };
+    whiteSpace: {
+      inner: string;
     };
   }
-  // allow configuration using `createTheme`
   interface ThemeOptions {
     size?: {
       fullSize?: string;
       navBarHeight?: string;
+      userMenuButton?: {
+        width?: string;
+        height?: string;
+      };
+    };
+    style?: {
+      alignCenter?: {
+        flex?: string;
+        margin?: string;
+      };
+      circularBorder: string;
+    };
+    whiteSpace?: {
+      inner?: string;
     };
   }
   interface Palette {

@@ -1,9 +1,8 @@
 import { Grid } from "@mui/material";
 import Box from "@mui/material/Box";
-import Container from "@mui/material/Container";
 
 import GNB from "./GNB/GNB";
-import indexHeaderStyle from "./Header.styled";
+import { indexHeaderStyle, HeaderContainer } from "./Header.styled";
 import UserMenu from "./UserMenu/UserMenu";
 
 const LogoArea = () => {
@@ -21,7 +20,7 @@ const LogoArea = () => {
 const Header = () => {
   return (
     <Box component="header" sx={indexHeaderStyle}>
-      <Container maxWidth="xl" sx={{ height: ({ size }) => size.navBarHeight }}>
+      <HeaderContainer maxWidth="xl">
         <Grid
           container
           spacing={2}
@@ -33,7 +32,7 @@ const Header = () => {
           <UserMenu />
         </Grid>
         {/* TODO: SearchBar */}
-      </Container>
+      </HeaderContainer>
     </Box>
   );
 };
