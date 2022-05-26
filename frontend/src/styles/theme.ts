@@ -48,7 +48,7 @@ const theme = createTheme({
       fullSize: {
         width: `916px`,
         height: `76px`,
-        padding: `16px 16px 16px 40px`,
+        padding: `16px 16px 16px 40px !important`,
       },
     },
   },
