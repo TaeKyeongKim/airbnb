@@ -174,8 +174,8 @@ declare module "@mui/material/styles" {
       };
       searchBar?: {
         fullSize?: {
-          width: string;
-          height: string;
+          width?: string;
+          height?: string;
         };
       };
     };
@@ -184,7 +184,7 @@ declare module "@mui/material/styles" {
         flex?: string;
         margin?: string;
       };
-      circularBorder: string;
+      circularBorder?: string;
     };
     whiteSpace?: {
       inner?: string;
@@ -201,14 +201,14 @@ declare module "@mui/material/styles" {
     grey6: Palette["primary"];
   }
   interface PaletteOptions {
-    black: PaletteOptions["primary"];
-    white: PaletteOptions["primary"];
-    grey1: PaletteOptions["primary"];
-    grey2: PaletteOptions["primary"];
-    grey3: PaletteOptions["primary"];
-    grey4: PaletteOptions["primary"];
-    grey5: PaletteOptions["primary"];
-    grey6: PaletteOptions["primary"];
+    black?: PaletteOptions["primary"];
+    white?: PaletteOptions["primary"];
+    grey1?: PaletteOptions["primary"];
+    grey2?: PaletteOptions["primary"];
+    grey3?: PaletteOptions["primary"];
+    grey4?: PaletteOptions["primary"];
+    grey5?: PaletteOptions["primary"];
+    grey6?: PaletteOptions["primary"];
   }
 }
 
