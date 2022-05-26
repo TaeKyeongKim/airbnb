@@ -32,6 +32,7 @@ const SelectItemArea = (): JSX.Element => {
           sx={{
             flexDirection: "column",
             padding: 0,
+            width: "100%",
             alignItems: "flex-start",
 
             "&:hover": {
