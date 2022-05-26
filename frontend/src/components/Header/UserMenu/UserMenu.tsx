@@ -15,11 +15,17 @@ const UserMenu = () => {
       alignItems="flex-end"
     >
       <UserMenuContainer>
-        <MenuButton startIcon={<MenuIcon />} disableFocusRipple disableRipple />
+        <MenuButton
+          startIcon={<MenuIcon />}
+          disableFocusRipple
+          disableRipple
+          aria-label="회원 메뉴 버튼"
+        />
         <UserButton
           startIcon={<PersonIcon />}
           disableFocusRipple
           disableRipple
+          aria-label="마이페이지 버튼"
         />
       </UserMenuContainer>
     </Grid>

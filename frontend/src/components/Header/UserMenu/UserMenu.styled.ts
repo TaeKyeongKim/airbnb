@@ -1,10 +1,9 @@
-import { Button, ButtonProps, Container } from "@mui/material";
+import { Button, ButtonProps, Container, ContainerProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-const UserMenuContainer = styled(Container)(
+const UserMenuContainer = styled(Container)<ContainerProps>(
   ({ theme: { palette } }) => `
   background-color: ${palette.white.main};
-  margin: 0;
   width: 76px;
   height: 40px;
   border-radius: calc(76px / 2);

@@ -9,8 +9,10 @@ import UserMenu from "./UserMenu/UserMenu";
 const LogoArea = () => {
   return (
     <Grid container item xs={2} justifyContent="left">
-      <h1>
-        <a href="/">LOGO</a>
+      <h1 style={{ margin: "auto 0" }}>
+        <a href="/" title="첫 화면으로 이동">
+          LOGO
+        </a>
       </h1>
     </Grid>
   );
