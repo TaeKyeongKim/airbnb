@@ -45,6 +45,10 @@ const theme = createTheme({
       height: `32px`,
     },
     searchBar: {
+      closeButton: {
+        width: "20px",
+        height: "20px",
+      },
       fullSize: {
         width: `916px`,
         height: `76px`,
@@ -148,6 +152,10 @@ declare module "@mui/material/styles" {
         height: string;
       };
       searchBar: {
+        closeButton: {
+          width: string;
+          height: string;
+        };
         fullSize: {
           width: string;
           height: string;
@@ -175,6 +183,10 @@ declare module "@mui/material/styles" {
         height?: string;
       };
       searchBar?: {
+        closeButton?: {
+          width?: string;
+          height?: string;
+        };
         fullSize?: {
           width?: string;
           height?: string;
@@ -219,6 +231,7 @@ declare module "@mui/material/Button" {
   interface ButtonPropsColorOverrides {
     black: true;
     white: true;
+    grey4: true;
   }
 }
 

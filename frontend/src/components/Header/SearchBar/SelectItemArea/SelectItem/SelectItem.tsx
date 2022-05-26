@@ -1,21 +1,22 @@
+// import { ReactNode } from "react";
+import { GridProps } from "@mui/material";
+
 import GridItem from "./SelecItem.style";
 
 const SelectItem = ({
-  columnSize,
-  divide = false,
-  pl = 0,
-}: SelecItemProps): JSX.Element => {
+  divide,
+  ...MUIGridProps
+}: SelectItemProps): JSX.Element => {
   return (
-    <GridItem item xs={columnSize} divide={divide} pl={pl}>
-      아이템
+    // eslint-disable-next-line react/jsx-props-no-spreading
+    <GridItem item {...MUIGridProps} {...divide}>
+      {MUIGridProps.children}
     </GridItem>
   );
 };
 
 export default SelectItem;
 
-interface SelecItemProps {
-  columnSize: number | boolean;
-  pl?: number;
+export interface SelectItemProps extends GridProps {
   divide?: boolean;
 }
