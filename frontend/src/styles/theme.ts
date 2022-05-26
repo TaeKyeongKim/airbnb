@@ -48,6 +48,7 @@ const theme = createTheme({
       fullSize: {
         width: `916px`,
         height: `76px`,
+        padding: `16px 16px 16px 40px`,
       },
     },
   },
@@ -150,6 +151,7 @@ declare module "@mui/material/styles" {
         fullSize: {
           width: string;
           height: string;
+          padding: string;
         };
       };
     };
@@ -176,6 +178,7 @@ declare module "@mui/material/styles" {
         fullSize?: {
           width?: string;
           height?: string;
+          padding?: string;
         };
       };
     };

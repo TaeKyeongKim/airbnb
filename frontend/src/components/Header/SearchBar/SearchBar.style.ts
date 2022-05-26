@@ -13,6 +13,7 @@ const SearchBarContainer = styled(Container)<SearchBarContainerProps>(
   margin: ${style.alignCenter.margin};
   width: ${currentPage === "index" && searchBar.fullSize.width};
   height: ${currentPage === "index" && searchBar.fullSize.height};
+  padding: ${currentPage === "index" && searchBar.fullSize.padding}
   background-color: ${palette.white.main};
   border: 1px solid ${palette.grey4.main};
   border-radius: calc(${searchBar.fullSize.width} / 2);
