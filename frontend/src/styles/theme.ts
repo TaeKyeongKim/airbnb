@@ -44,6 +44,12 @@ const theme = createTheme({
       width: `32px`,
       height: `32px`,
     },
+    searchBar: {
+      fullSize: {
+        width: `916px`,
+        height: `76px`,
+      },
+    },
   },
   style: {
     circularBorder: `border-radius: 50%;`,
@@ -140,6 +146,12 @@ declare module "@mui/material/styles" {
         width: string;
         height: string;
       };
+      searchBar: {
+        fullSize: {
+          width: string;
+          height: string;
+        };
+      };
     };
     style: {
       alignCenter: {
@@ -159,6 +171,12 @@ declare module "@mui/material/styles" {
       userMenuButton?: {
         width?: string;
         height?: string;
+      };
+      searchBar?: {
+        fullSize?: {
+          width: string;
+          height: string;
+        };
       };
     };
     style?: {
