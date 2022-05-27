@@ -3,8 +3,8 @@ import { useState } from "react";
 import { Button, Popover, Typography } from "@mui/material";
 
 import ButtonArea from "./ButtonArea/ButtonArea";
-import SelectItem from "./SelectItem/SelectItem";
 import SelectItemAreaWrapper from "./SelectItemArea.style";
+import SelectItemTemplate from "./SelectItemTemplate/SelectItemTemplate";
 
 const SelectItemArea = (): JSX.Element => {
   // 임시로 하나의 state를 만들고 분리하기
@@ -21,7 +21,7 @@ const SelectItemArea = (): JSX.Element => {
 
   return (
     <SelectItemAreaWrapper container columns={12}>
-      <SelectItem xs={2}>
+      <SelectItemTemplate xs={2}>
         <Button
           id="check-in-date-button"
           aria-controls={open ? "check-in-date-button" : undefined}
@@ -64,18 +64,18 @@ const SelectItemArea = (): JSX.Element => {
         >
           <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
         </Popover>
-      </SelectItem>
-      <SelectItem xs={2} pl={1}>
+      </SelectItemTemplate>
+      <SelectItemTemplate xs={2} pl={1}>
         반갑습니다
-      </SelectItem>
+      </SelectItemTemplate>
       <ButtonArea icon="close" divide />
-      <SelectItem xs={2} pl={1}>
+      <SelectItemTemplate xs={2} pl={1}>
         안녕하세욥
-      </SelectItem>
+      </SelectItemTemplate>
       <ButtonArea icon="close" divide />
-      <SelectItem xs={2} pl={1}>
+      <SelectItemTemplate xs={2} pl={1}>
         하하
-      </SelectItem>
+      </SelectItemTemplate>
       <ButtonArea icon="close" />
       <ButtonArea icon="search" />
     </SelectItemAreaWrapper>

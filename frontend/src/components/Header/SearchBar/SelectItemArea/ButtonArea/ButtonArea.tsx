@@ -1,6 +1,6 @@
 import { GridProps } from "@mui/material";
 
-import SelectItem from "../SelectItem/SelectItem";
+import SelectItem from "../SelectItemTemplate/SelectItemTemplate";
 import RoundIconButton from "./Buttons/Buttons";
 
 const ButtonArea = ({ icon, divide }: ButtonAreaProps): JSX.Element => {
