@@ -1,6 +1,12 @@
-import { useState } from "react";
+// import { useState } from "react";
 
-import { Button, GridSize, Popover, Typography } from "@mui/material";
+import {
+  Button,
+  GridSize,
+  Popover,
+  PopoverProps,
+  Typography,
+} from "@mui/material";
 
 import SelectItemTemplate from "../SelectItemTemplate/SelectItemTemplate";
 import styles from "./SelectItem.style";
@@ -19,16 +25,11 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
     desc,
     modalAnchorStyle,
     children,
+    open,
+    anchorEl,
+    handleClick,
+    handleClose,
   } = props;
-
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   return (
     <SelectItemTemplate xs={xs} pl={pl}>
@@ -58,7 +59,7 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
 
 export default SelectItem;
 
-interface SelectItemDataProps {
+interface SelectItemDataProps extends PopoverProps {
   gridStyle: {
     xs: boolean | GridSize | undefined;
     pl?: number | undefined;
@@ -71,5 +72,7 @@ interface SelectItemDataProps {
     horizontal: "center" | "left" | "right" | number;
     vertical: "bottom" | "center" | "top" | number;
   };
-  children: React.ReactNode;
+  children?: React.ReactNode;
+  handleClick?: (event: React.MouseEvent<HTMLElement>) => void;
+  handleClose?: () => void;
 }

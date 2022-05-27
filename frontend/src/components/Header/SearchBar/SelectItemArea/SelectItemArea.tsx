@@ -1,11 +1,22 @@
+import { useState } from "react";
+
 import ButtonArea from "./ButtonArea/ButtonArea";
 import SelectItem from "./SelectItem/SelectItem";
 import SelectItemAreaWrapper from "./SelectItemArea.style";
 import SelectItemTemplate from "./SelectItemTemplate/SelectItemTemplate";
 
-const SelectItemArea = (): JSX.Element => {
+const CheckInOutSelectItem = (): JSX.Element => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
-    <SelectItemAreaWrapper container columns={12}>
+    <>
       <SelectItem
         gridStyle={{
           xs: 2,
@@ -18,9 +29,11 @@ const SelectItemArea = (): JSX.Element => {
           vertical: "bottom",
           horizontal: "left",
         }}
-      >
-        테스트용문구
-      </SelectItem>
+        open={open}
+        handleClick={handleClick}
+        handleClose={handleClose}
+        anchorEl={anchorEl}
+      />
       <SelectItem
         gridStyle={{
           xs: 2,
@@ -34,14 +47,61 @@ const SelectItemArea = (): JSX.Element => {
           vertical: "bottom",
           horizontal: "left",
         }}
+        open={open}
+        handleClick={handleClick}
+        handleClose={handleClose}
+        anchorEl={anchorEl}
       >
         테스트용문구 : 체크아웃 영역
       </SelectItem>
       <ButtonArea icon="close" divide />
-      <SelectItemTemplate xs={2} pl={1}>
-        요금 설정 영역
-      </SelectItemTemplate>
+    </>
+  );
+};
+
+const ReservationFeeSelectArea = (): JSX.Element => {
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  return (
+    <>
+      <SelectItem
+        gridStyle={{
+          xs: 2,
+          pl: 1,
+        }}
+        buttonId="reservation-fee-button"
+        buttonAreaLabel="숙박요금 설정"
+        title="요금"
+        desc="금액대 설정"
+        modalAnchorStyle={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+        open={open}
+        handleClick={handleClick}
+        handleClose={handleClose}
+        anchorEl={anchorEl}
+      >
+        요금 금액 설정 영역
+      </SelectItem>
       <ButtonArea icon="close" divide />
+    </>
+  );
+};
+const SelectItemArea = (): JSX.Element => {
+  return (
+    <SelectItemAreaWrapper container columns={12}>
+      <CheckInOutSelectItem />
+
+      <ReservationFeeSelectArea />
+
       <SelectItemTemplate xs={2} pl={1}>
         인원 설정 영역
       </SelectItemTemplate>
