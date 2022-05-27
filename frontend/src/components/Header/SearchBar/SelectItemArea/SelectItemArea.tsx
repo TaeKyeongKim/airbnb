@@ -1,9 +1,15 @@
 import { useState } from "react";
 
+import { Grid } from "@mui/material";
+
 import ButtonArea from "./ButtonArea/ButtonArea";
 import SelectItem from "./SelectItem/SelectItem";
 import SelectItemAreaWrapper from "./SelectItemArea.style";
 import SelectItemTemplate from "./SelectItemTemplate/SelectItemTemplate";
+
+const WhiteSpaceCloseButtonSize = (): JSX.Element => {
+  return <Grid xs={1} />;
+};
 
 const CheckInOutSelectItem = (): JSX.Element => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -54,7 +60,9 @@ const CheckInOutSelectItem = (): JSX.Element => {
       >
         테스트용문구 : 체크아웃 영역
       </SelectItem>
-      <ButtonArea icon="close" divide />
+      {(open && <ButtonArea icon="close" divide />) || (
+        <WhiteSpaceCloseButtonSize />
+      )}
     </>
   );
 };
@@ -91,7 +99,9 @@ const ReservationFeeSelectArea = (): JSX.Element => {
       >
         요금 금액 설정 영역
       </SelectItem>
-      <ButtonArea icon="close" divide />
+      {(open && <ButtonArea icon="close" divide />) || (
+        <WhiteSpaceCloseButtonSize />
+      )}
     </>
   );
 };
