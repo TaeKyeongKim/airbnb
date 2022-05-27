@@ -1,4 +1,6 @@
-import { ButtonGroup, Grid, GridProps } from "@mui/material";
+import { ButtonGroup, Grid } from "@mui/material";
+
+import { GNBProps } from "@types";
 
 import NavItem from "./NavItem";
 
@@ -15,10 +17,3 @@ const GNB = ({ menuData, ...MUIGridProps }: GNBProps): JSX.Element => {
 };
 
 export default GNB;
-
-interface GNBProps extends GridProps {
-  menuData: {
-    id: number;
-    name: string;
-  }[];
-}

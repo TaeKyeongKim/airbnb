@@ -1,5 +1,4 @@
-// import { ReactNode } from "react";
-import { GridProps } from "@mui/material";
+import { SelectItemTemplateProps } from "@types";
 
 import GridItem from "./SelectItemTemplate.style";
 
@@ -15,7 +14,3 @@ const SelectItemTemplate = ({
 };
 
 export default SelectItemTemplate;
-
-export interface SelectItemTemplateProps extends GridProps {
-  divide?: string;
-}

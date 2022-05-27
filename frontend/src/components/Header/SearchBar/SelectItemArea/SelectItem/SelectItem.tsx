@@ -1,31 +1,11 @@
 import { useState } from "react";
 
-import { Button, Popover, Typography, GridSize } from "@mui/material";
+import { Button, Popover, Typography } from "@mui/material";
+
+import { SelectItemDataProps } from "@types";
 
 import SelectItemTemplate from "../SelectItemTemplate/SelectItemTemplate";
-
-const styles = {
-  button: {
-    flexDirection: "column",
-    padding: 0,
-    width: "100%",
-    alignItems: "flex-start",
-
-    "&:hover": {
-      textDecoration: "none",
-      background: "rgba(0,0,0, 0.12)",
-    },
-  },
-  title: {
-    color: ({ palette }: { palette: { black: { main: string } } }) =>
-      palette.black.main,
-  },
-  desc: {
-    color: ({ palette }: { palette: { grey2: { main: string } } }) =>
-      palette.grey2.main,
-    fontSize: "16px",
-  },
-};
+import styles from "./SelectItem.style";
 
 const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
   // TODO: 현재 Popover가 열렸는지 확인하는 Boolean으로 버튼 보이기 / 숨기기 (close)
@@ -79,19 +59,3 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
 };
 
 export default SelectItem;
-
-interface SelectItemDataProps {
-  gridStyle: {
-    xs: boolean | GridSize | undefined;
-    pl?: number | undefined;
-  };
-  buttonId: string;
-  buttonAreaLabel: string;
-  title: string;
-  desc: string;
-  modalAnchorStyle: {
-    horizontal: "center" | "left" | "right" | number;
-    vertical: "bottom" | "center" | "top" | number;
-  };
-  children: React.ReactNode;
-}

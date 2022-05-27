@@ -1,6 +1,7 @@
+import { ButtonAreaProps } from "@types";
+
 import SelectItemTemplate from "../SelectItemTemplate/SelectItemTemplate";
 import RoundIconButton from "./Buttons/Buttons";
-import { RoundButtonProps } from "./Buttons/Buttons.style";
 
 const ButtonArea = ({ icon, divide }: ButtonAreaProps): JSX.Element => {
   return (
@@ -18,7 +19,3 @@ const ButtonArea = ({ icon, divide }: ButtonAreaProps): JSX.Element => {
 };
 
 export default ButtonArea;
-
-interface ButtonAreaProps extends RoundButtonProps {
-  divide?: boolean;
-}

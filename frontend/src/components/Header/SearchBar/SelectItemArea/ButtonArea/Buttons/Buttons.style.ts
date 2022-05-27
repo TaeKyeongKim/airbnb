@@ -1,5 +1,7 @@
-import { IconButton, IconButtonProps } from "@mui/material";
+import { IconButton } from "@mui/material";
 import { styled } from "@mui/material/styles";
+
+import { RoundButtonProps } from "@types";
 
 type ButtonName = "closeButton" | "searchButton";
 const closeButton: ButtonName = "closeButton";
@@ -34,7 +36,3 @@ const RoundButton = styled(IconButton)<RoundButtonProps>(
 );
 
 export default RoundButton;
-
-export interface RoundButtonProps extends IconButtonProps {
-  icon: "close" | "search";
-}

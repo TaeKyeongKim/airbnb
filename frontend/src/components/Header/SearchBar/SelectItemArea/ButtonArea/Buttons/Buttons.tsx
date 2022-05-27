@@ -1,7 +1,9 @@
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
 
-import RoundButton, { RoundButtonProps } from "./Buttons.style";
+import { RoundButtonProps } from "@types";
+
+import RoundButton from "./Buttons.style";
 
 const icons = {
   close: <CloseIcon />,
