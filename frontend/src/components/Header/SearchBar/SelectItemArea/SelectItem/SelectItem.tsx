@@ -1,8 +1,6 @@
 import { useState } from "react";
 
-import { Button, Popover, Typography } from "@mui/material";
-
-import { SelectItemDataProps } from "@types";
+import { Button, GridSize, Popover, Typography } from "@mui/material";
 
 import SelectItemTemplate from "../SelectItemTemplate/SelectItemTemplate";
 import styles from "./SelectItem.style";
@@ -59,3 +57,19 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
 };
 
 export default SelectItem;
+
+interface SelectItemDataProps {
+  gridStyle: {
+    xs: boolean | GridSize | undefined;
+    pl?: number | undefined;
+  };
+  buttonId: string;
+  buttonAreaLabel: string;
+  title: string;
+  desc: string;
+  modalAnchorStyle: {
+    horizontal: "center" | "left" | "right" | number;
+    vertical: "bottom" | "center" | "top" | number;
+  };
+  children: React.ReactNode;
+}

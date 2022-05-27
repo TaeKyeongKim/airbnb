@@ -39,11 +39,11 @@ const SelectItemArea = (): JSX.Element => {
       </SelectItem>
       <ButtonArea icon="close" divide />
       <SelectItemTemplate xs={2} pl={1}>
-        안녕하세욥
+        요금 설정 영역
       </SelectItemTemplate>
       <ButtonArea icon="close" divide />
       <SelectItemTemplate xs={2} pl={1}>
-        하하
+        인원 설정 영역
       </SelectItemTemplate>
       <ButtonArea icon="close" />
       <ButtonArea icon="search" />
