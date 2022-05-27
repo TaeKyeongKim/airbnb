@@ -36,5 +36,5 @@ const RoundButton = styled(IconButton)<RoundButtonProps>(
 export default RoundButton;
 
 export interface RoundButtonProps extends IconButtonProps {
-  icon: string;
+  icon: "close" | "search";
 }

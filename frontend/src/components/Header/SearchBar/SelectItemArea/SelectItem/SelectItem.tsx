@@ -29,8 +29,9 @@ const styles = {
 
 const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
   // TODO: 현재 Popover가 열렸는지 확인하는 Boolean으로 버튼 보이기 / 숨기기 (close)
+
   // TODO: 체크인, 체크아웃 영역 SelecItem 어디를 click하더라도 하나의 popOver가 열려야 함.
-  // 👉 popOver를 props로 넘기는 형태로 변경 가능할 듯
+  // 👉 popOver를 props로 넘기는 형태로 변경 가능하지 않을까...🤔
 
   const {
     gridStyle: { xs, pl = undefined },
