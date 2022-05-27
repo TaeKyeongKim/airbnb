@@ -7,24 +7,36 @@ const SelectItemArea = (): JSX.Element => {
   return (
     <SelectItemAreaWrapper container columns={12}>
       <SelectItem
-        selectItemData={{
-          gridStyle: {
-            xs: 2,
-          },
-          buttonId: "check-in-date-button",
-          buttonAreaLabel: "체크인 날짜 설정",
-          title: "안녕하세요",
-          desc: "호톨비",
-          modalAnchorStyle: {
-            vertical: "bottom",
-            horizontal: "left",
-          },
-          children: "테스트용 문구",
+        gridStyle={{
+          xs: 2,
         }}
-      />
-      <SelectItemTemplate xs={2} pl={1}>
-        반갑습니다
-      </SelectItemTemplate>
+        buttonId="check-in-date-button"
+        buttonAreaLabel="체크인 날짜 설정"
+        title="안녕하세요"
+        desc="호톨비"
+        modalAnchorStyle={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+      >
+        테스트용문구
+      </SelectItem>
+      <SelectItem
+        gridStyle={{
+          xs: 2,
+          pl: 1,
+        }}
+        buttonId="check-out-date-button"
+        buttonAreaLabel="체크아웃 날짜 설정"
+        title="체크아웃"
+        desc="체크아웃 영역"
+        modalAnchorStyle={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+      >
+        테스트용문구 : 체크아웃 영역
+      </SelectItem>
       <ButtonArea icon="close" divide />
       <SelectItemTemplate xs={2} pl={1}>
         안녕하세욥

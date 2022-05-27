@@ -27,9 +27,10 @@ const styles = {
   },
 };
 
-const SelectItem = ({ selectItemData }: SelectItemDataProps): JSX.Element => {
-  // 임시로 하나의 state를 만들고 분리하기
-  // 추가로 열렸는지 확인하는 state로 x 버튼 보이기 / 숨기기 관리
+const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
+  // TODO: 현재 Popover가 열렸는지 확인하는 Boolean으로 버튼 보이기 / 숨기기 (close)
+  // TODO: 체크인, 체크아웃 영역 SelecItem 어디를 click하더라도 하나의 popOver가 열려야 함.
+  // 👉 popOver를 props로 넘기는 형태로 변경 가능할 듯
 
   const {
     gridStyle: { xs, pl = undefined },
@@ -39,7 +40,7 @@ const SelectItem = ({ selectItemData }: SelectItemDataProps): JSX.Element => {
     desc,
     modalAnchorStyle,
     children,
-  } = selectItemData;
+  } = props;
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -79,19 +80,17 @@ const SelectItem = ({ selectItemData }: SelectItemDataProps): JSX.Element => {
 export default SelectItem;
 
 interface SelectItemDataProps {
-  selectItemData: {
-    gridStyle: {
-      xs: boolean | GridSize | undefined;
-      pl?: number | undefined;
-    };
-    buttonId: string;
-    buttonAreaLabel: string;
-    title: string;
-    desc: string;
-    modalAnchorStyle: {
-      horizontal: "center" | "left" | "right" | number;
-      vertical: "bottom" | "center" | "top" | number;
-    };
-    children: React.ReactNode | string;
+  gridStyle: {
+    xs: boolean | GridSize | undefined;
+    pl?: number | undefined;
   };
+  buttonId: string;
+  buttonAreaLabel: string;
+  title: string;
+  desc: string;
+  modalAnchorStyle: {
+    horizontal: "center" | "left" | "right" | number;
+    vertical: "bottom" | "center" | "top" | number;
+  };
+  children: React.ReactNode;
 }
