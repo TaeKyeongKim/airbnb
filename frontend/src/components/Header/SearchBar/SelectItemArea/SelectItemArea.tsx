@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Grid } from "@mui/material";
+import { Grid, Popover } from "@mui/material";
 
 import ButtonArea from "./ButtonArea/ButtonArea";
 import SelectItem from "./SelectItem/SelectItem";
@@ -31,14 +31,8 @@ const CheckInOutSelectItem = (): JSX.Element => {
         buttonAreaLabel="체크인 날짜 설정"
         title="안녕하세요"
         desc="호톨비"
-        modalAnchorStyle={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
-        open={open}
         handleClick={handleClick}
-        handleClose={handleClose}
-        anchorEl={anchorEl}
+        open={open}
       />
       <SelectItem
         gridStyle={{
@@ -49,17 +43,20 @@ const CheckInOutSelectItem = (): JSX.Element => {
         buttonAreaLabel="체크아웃 날짜 설정"
         title="체크아웃"
         desc="체크아웃 영역"
-        modalAnchorStyle={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
-        open={open}
         handleClick={handleClick}
-        handleClose={handleClose}
+        open={open}
+      />
+      <Popover
+        open={open}
         anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: -100,
+        }}
       >
-        테스트용문구 : 체크아웃 영역
-      </SelectItem>
+        테스트용
+      </Popover>
       {(open && <ButtonArea icon="close" divide />) || (
         <WhiteSpaceCloseButtonSize />
       )}
@@ -94,8 +91,9 @@ const ReservationFeeSelectArea = (): JSX.Element => {
         }}
         open={open}
         handleClick={handleClick}
-        handleClose={handleClose}
         anchorEl={anchorEl}
+        handleClose={handleClose}
+        createNewPopup
       >
         요금 금액 설정 영역
       </SelectItem>

@@ -22,11 +22,12 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
     title,
     desc,
     modalAnchorStyle,
-    children,
     open,
-    anchorEl,
     handleClick,
     handleClose,
+    anchorEl,
+    children,
+    createNewPopup,
   } = props;
 
   return (
@@ -43,14 +44,17 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
         <Typography sx={styles.title}>{title}</Typography>
         <Typography sx={styles.desc}>{desc}</Typography>
       </Button>
-      <Popover
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={modalAnchorStyle}
-      >
-        {children}
-      </Popover>
+      {(createNewPopup && (
+        <Popover
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={modalAnchorStyle}
+        >
+          {children}
+        </Popover>
+      )) ||
+        children}
     </SelectItemTemplate>
   );
 };
@@ -66,11 +70,12 @@ interface SelectItemDataProps extends PopoverProps {
   buttonAreaLabel: string;
   title: string;
   desc: string;
-  modalAnchorStyle: {
+  modalAnchorStyle?: {
     horizontal: "center" | "left" | "right" | number;
     vertical: "bottom" | "center" | "top" | number;
   };
   children?: React.ReactNode;
   handleClick?: (event: React.MouseEvent<HTMLElement>) => void;
   handleClose?: () => void;
+  createNewPopup?: boolean;
 }
