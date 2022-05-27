@@ -1,12 +1,46 @@
 import { useState } from "react";
 
-import { Button, Popover, Typography } from "@mui/material";
+import { Button, Popover, Typography, GridSize } from "@mui/material";
 
 import SelectItemTemplate from "../SelectItemTemplate/SelectItemTemplate";
 
-const SelectItem = (): JSX.Element => {
+const styles = {
+  button: {
+    flexDirection: "column",
+    padding: 0,
+    width: "100%",
+    alignItems: "flex-start",
+
+    "&:hover": {
+      textDecoration: "none",
+      background: "rgba(0,0,0, 0.12)",
+    },
+  },
+  title: {
+    color: ({ palette }: { palette: { black: { main: string } } }) =>
+      palette.black.main,
+  },
+  desc: {
+    color: ({ palette }: { palette: { grey2: { main: string } } }) =>
+      palette.grey2.main,
+    fontSize: "16px",
+  },
+};
+
+const SelectItem = ({ selectItemData }: SelectItemDataProps): JSX.Element => {
   // 임시로 하나의 state를 만들고 분리하기
   // 추가로 열렸는지 확인하는 state로 x 버튼 보이기 / 숨기기 관리
+
+  const {
+    gridStyle: { xs, pl = undefined },
+    buttonId,
+    buttonAreaLabel,
+    title,
+    desc,
+    modalAnchorStyle,
+    children,
+  } = selectItemData;
+
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -17,51 +51,47 @@ const SelectItem = (): JSX.Element => {
   };
 
   return (
-    <SelectItemTemplate xs={2}>
+    <SelectItemTemplate xs={xs} pl={pl}>
       <Button
-        id="check-in-date-button"
-        aria-controls={open ? "check-in-date-button" : undefined}
+        id={buttonId}
+        aria-controls={open ? buttonId : undefined}
         aria-haspopup="true"
-        aria-label="체크인 날짜 설정"
+        aria-label={buttonAreaLabel}
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
-        sx={{
-          flexDirection: "column",
-          padding: 0,
-          width: "100%",
-          alignItems: "flex-start",
-
-          "&:hover": {
-            textDecoration: "none",
-            background: "rgba(0,0,0, 0.12)",
-          },
-        }}
+        sx={styles.button}
       >
-        <Typography sx={{ color: ({ palette }) => palette.black.main }}>
-          안녕하세요
-        </Typography>
-        <Typography
-          sx={{
-            color: ({ palette }) => palette.grey2.main,
-            fontSize: "16px",
-          }}
-        >
-          하하호호 도비 짱 짱 짱
-        </Typography>
+        <Typography sx={styles.title}>{title}</Typography>
+        <Typography sx={styles.desc}>{desc}</Typography>
       </Button>
       <Popover
         open={open}
         anchorEl={anchorEl}
         onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
+        anchorOrigin={modalAnchorStyle}
       >
-        <Typography sx={{ p: 2 }}>The content of the Popover.</Typography>
+        {children}
       </Popover>
     </SelectItemTemplate>
   );
 };
 
 export default SelectItem;
+
+interface SelectItemDataProps {
+  selectItemData: {
+    gridStyle: {
+      xs: boolean | GridSize | undefined;
+      pl?: number | undefined;
+    };
+    buttonId: string;
+    buttonAreaLabel: string;
+    title: string;
+    desc: string;
+    modalAnchorStyle: {
+      horizontal: "center" | "left" | "right" | number;
+      vertical: "bottom" | "center" | "top" | number;
+    };
+    children: React.ReactNode | string;
+  };
+}
