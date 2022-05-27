@@ -1,11 +1,11 @@
 import { GridProps } from "@mui/material";
 
-import SelectItem from "../SelectItemTemplate/SelectItemTemplate";
+import SelectItemTemplate from "../SelectItemTemplate/SelectItemTemplate";
 import RoundIconButton from "./Buttons/Buttons";
 
 const ButtonArea = ({ icon, divide }: ButtonAreaProps): JSX.Element => {
   return (
-    <SelectItem
+    <SelectItemTemplate
       divide={divide ? divide.toString() : undefined}
       container
       xs={1}
@@ -14,7 +14,7 @@ const ButtonArea = ({ icon, divide }: ButtonAreaProps): JSX.Element => {
       alignItems="flex-end"
     >
       <RoundIconButton icon={icon} />
-    </SelectItem>
+    </SelectItemTemplate>
   );
 };
 
