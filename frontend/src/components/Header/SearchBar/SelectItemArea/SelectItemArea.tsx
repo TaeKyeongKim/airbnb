@@ -60,7 +60,15 @@ const CheckInOutSelectItem = (): JSX.Element => {
         handleClick={handleClick}
         open={open}
       />
-      <Popover open={open} anchorEl={anchorEl} onClose={handleClose}>
+      <Popover
+        open={open}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "left",
+        }}
+      >
         테스트용
       </Popover>
       {(open && <ButtonArea icon="close" divide xs={2} />) || (
