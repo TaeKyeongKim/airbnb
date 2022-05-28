@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef /* , useState  */ } from "react";
 
 import { Grid, Popover } from "@mui/material";
 
@@ -7,16 +7,24 @@ import { SelectItemProps } from "@types";
 import ButtonArea from "../ButtonArea/ButtonArea";
 import SelectItem, { WhiteSpaceCloseButtonSize } from "./SelectItem";
 
-const CheckInOut = ({ handleFocus }: SelectItemProps): JSX.Element => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLDivElement>(null);
+const CheckInOut = ({
+  handleFocus,
+  setAnchorEl,
+  anchorEl,
+}: SelectItemProps): JSX.Element => {
+  // const [anchorEl, setAnchorEl] = useState<null | HTMLDivElement>(null);
   const $wrap = useRef<HTMLDivElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = () => {
-    setAnchorEl($wrap.current);
+    if (setAnchorEl) {
+      setAnchorEl($wrap.current);
+    }
     handleFocus();
   };
   const handleClose = () => {
-    setAnchorEl(null);
+    if (setAnchorEl) {
+      setAnchorEl(null);
+    }
     handleFocus();
   };
 

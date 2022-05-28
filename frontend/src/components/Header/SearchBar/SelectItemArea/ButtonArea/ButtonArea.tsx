@@ -16,6 +16,7 @@ const ButtonArea = ({
   isFocused,
   icon,
   divide,
+  onClick,
   xs = 1,
 }: ButtonAreaProps): JSX.Element => {
   const buttonText = isFocused && "검색";
@@ -29,7 +30,7 @@ const ButtonArea = ({
       direction="column"
       alignItems="flex-end"
     >
-      <Button endIcon={icons[icon]} sx={{ zIndex: "1500" }}>
+      <Button endIcon={icons[icon]} sx={{ zIndex: "1500" }} onClick={onClick}>
         {buttonText}
       </Button>
     </SelectItemTemplate>
