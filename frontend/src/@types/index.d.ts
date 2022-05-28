@@ -6,6 +6,7 @@ export interface RoundButtonProps extends IconButtonProps {
 
 export interface ButtonAreaProps extends RoundButtonProps {
   divide?: boolean;
+  xs?: number;
 }
 export interface SelectItemTemplateProps extends GridProps {
   divide?: string;

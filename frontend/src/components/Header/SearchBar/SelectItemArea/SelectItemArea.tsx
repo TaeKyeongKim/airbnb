@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import { Grid, Popover } from "@mui/material";
 
@@ -7,27 +7,41 @@ import SelectItem from "./SelectItem/SelectItem";
 import SelectItemAreaWrapper from "./SelectItemArea.style";
 import SelectItemTemplate from "./SelectItemTemplate/SelectItemTemplate";
 
-const WhiteSpaceCloseButtonSize = (): JSX.Element => {
-  return <Grid xs={1} />;
+const WhiteSpaceCloseButtonSize = ({
+  divide,
+  xs = 1,
+}: {
+  divide?: boolean;
+  xs?: number;
+}): JSX.Element => {
+  const styles = divide
+    ? {
+        borderRight: ({ palette }: { palette: { grey5: { main: string } } }) =>
+          `1px solid ${palette.grey5.main}`,
+      }
+    : {};
+
+  return <Grid item sx={styles} xs={xs} />;
 };
 
 const CheckInOutSelectItem = (): JSX.Element => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLDivElement>(null);
+  const $wrap = useRef<HTMLDivElement>(null);
   const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+  const handleClick = () => {
+    setAnchorEl($wrap.current);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
 
   return (
-    <>
+    <Grid item container xs={5} component="div" ref={$wrap}>
       <SelectItem
         gridStyle={{
-          xs: 2,
+          xs: 5,
         }}
-        buttonId="check-in-date-button"
+        buttonId="check-in-out-date-button"
         buttonAreaLabel="체크인 날짜 설정"
         title="안녕하세요"
         desc="호톨비"
@@ -36,31 +50,23 @@ const CheckInOutSelectItem = (): JSX.Element => {
       />
       <SelectItem
         gridStyle={{
-          xs: 2,
+          xs: 5,
           pl: 1,
         }}
-        buttonId="check-out-date-button"
+        buttonId="check-in-out-date-button"
         buttonAreaLabel="체크아웃 날짜 설정"
         title="체크아웃"
         desc="체크아웃 영역"
         handleClick={handleClick}
         open={open}
       />
-      <Popover
-        open={open}
-        anchorEl={anchorEl}
-        onClose={handleClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: -100,
-        }}
-      >
+      <Popover open={open} anchorEl={anchorEl} onClose={handleClose}>
         테스트용
       </Popover>
-      {(open && <ButtonArea icon="close" divide />) || (
-        <WhiteSpaceCloseButtonSize />
+      {(open && <ButtonArea icon="close" divide xs={2} />) || (
+        <WhiteSpaceCloseButtonSize divide xs={2} />
       )}
-    </>
+    </Grid>
   );
 };
 
@@ -79,7 +85,7 @@ const ReservationFeeSelectArea = (): JSX.Element => {
       <SelectItem
         gridStyle={{
           xs: 2,
-          pl: 1,
+          pl: 2,
         }}
         buttonId="reservation-fee-button"
         buttonAreaLabel="숙박요금 설정"
@@ -98,7 +104,7 @@ const ReservationFeeSelectArea = (): JSX.Element => {
         요금 금액 설정 영역
       </SelectItem>
       {(open && <ButtonArea icon="close" divide />) || (
-        <WhiteSpaceCloseButtonSize />
+        <WhiteSpaceCloseButtonSize divide xs={1} />
       )}
     </>
   );
