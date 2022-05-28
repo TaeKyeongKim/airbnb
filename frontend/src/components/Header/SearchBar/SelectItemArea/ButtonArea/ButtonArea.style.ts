@@ -3,6 +3,8 @@ import { styled } from "@mui/material/styles";
 
 import { RoundButtonProps } from "@types";
 
+// const;
+
 const RoundButton = styled(IconButton)<RoundButtonProps>(
   ({ icon, theme: { palette, size } }) => {
     const isCloseIcon = icon === "close";
@@ -26,3 +28,6 @@ const RoundButton = styled(IconButton)<RoundButtonProps>(
 );
 
 export default RoundButton;
+
+// <RoundButton icon={icon}>{icons[icon]}</RoundButton>
+//

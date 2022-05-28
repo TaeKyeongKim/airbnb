@@ -5,7 +5,7 @@ import { Button } from "@mui/material";
 import { RoundButtonProps } from "@types";
 
 import SelectItemTemplate from "../SelectItemTemplate/SelectItemTemplate";
-import RoundButton from "./ButtonArea.style";
+// import RoundButton from "./ButtonArea.style";
 
 const icons = {
   close: <CloseIcon />,
@@ -18,6 +18,8 @@ const ButtonArea = ({
   divide,
   xs = 1,
 }: ButtonAreaProps): JSX.Element => {
+  const buttonText = isFocused && "검색";
+
   return (
     <SelectItemTemplate
       divide={divide?.toString()}
@@ -27,13 +29,9 @@ const ButtonArea = ({
       direction="column"
       alignItems="flex-end"
     >
-      {isFocused ? (
-        <Button variant="outlined" endIcon={icons[icon]}>
-          검색
-        </Button>
-      ) : (
-        <RoundButton icon={icon}>{icons[icon]}</RoundButton>
-      )}
+      <Button endIcon={icons[icon]} sx={{ zIndex: "1500" }}>
+        {buttonText}
+      </Button>
     </SelectItemTemplate>
   );
 };

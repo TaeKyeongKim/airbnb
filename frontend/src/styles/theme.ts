@@ -87,6 +87,14 @@ const theme = createTheme({
     inner: "80px",
   },
   components: {
+    MuiModal: {
+      styleOverrides: {
+        root: {
+          // position: "unset",
+          // zIndex: 1000,
+        },
+      },
+    },
     MuiCssBaseline: {
       styleOverrides: {
         "*": {
