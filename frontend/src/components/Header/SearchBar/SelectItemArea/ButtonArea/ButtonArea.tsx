@@ -3,6 +3,11 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Button, ButtonProps } from "@mui/material";
 
 import SelectItemTemplate from "../SelectItemTemplate/SelectItemTemplate";
+import {
+  buttonStyle,
+  focusedButtonSize,
+  closeButtonStyle,
+} from "./ButtonArea.style";
 
 const icons = {
   close: <CloseIcon />,
@@ -18,6 +23,15 @@ const ButtonArea = ({
   xs = 1,
 }: ButtonAreaProps): JSX.Element => {
   const buttonText = isFocused && "검색";
+  const restStyle =
+    (icon === "close" && closeButtonStyle) ||
+    (isFocused && focusedButtonSize) ||
+    {};
+
+  console.log(closeButtonStyle, focusedButtonSize, {
+    ...buttonStyle,
+    ...restStyle,
+  });
 
   return (
     <SelectItemTemplate
@@ -30,7 +44,7 @@ const ButtonArea = ({
     >
       <Button
         endIcon={icons[icon]}
-        sx={{ zIndex: "1500" }}
+        sx={{ ...buttonStyle, ...restStyle }}
         onClick={onClick}
         aria-label={ariaLabel}
       >
@@ -43,9 +57,9 @@ const ButtonArea = ({
 export default ButtonArea;
 
 interface ButtonAreaProps extends ButtonProps {
+  icon: "close" | "search";
   divide?: boolean;
   xs?: number;
   isFocused?: boolean;
-  icon: "close" | "search";
   ariaLabel?: string;
 }

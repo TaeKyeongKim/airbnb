@@ -1,7 +1,37 @@
-import { Button } from "@mui/material";
-import { styled } from "@mui/material/styles";
+// import { Button } from "@mui/material";
+// import { styled } from "@mui/material/styles";
 
-const buttonStyle = {};
+import { Theme } from "@mui/material";
+
+// color: ({ palette }: { palette: { grey2: { main: string } } }) =>
+// palette.grey2.main,
+
+const buttonStyle = {
+  zIndex: 1500,
+};
+
+const focusedButtonSize = {
+  width: ({ size }: Theme) => size.searchBar.focusedButton.width,
+  height: ({ size }: Theme) => size.searchBar.focusedButton.height,
+};
+
+const closeButtonStyle = {
+  width: ({ size }: Theme) => size.searchBar.closeButton.width,
+  height: ({ size }: Theme) => size.searchBar.closeButton.height,
+  backgroundColor: ({ palette }: Theme) => palette.grey4.main,
+  marginRight: ({ size }: Theme) => size.searchBar.closeButton.width,
+};
+
+// interface ButtonStyles {
+//   width?: string;
+//   height?: string;
+//   zIndex?: string;
+//   backgroundColor?: string;
+//   marginRight?: string;
+//   color?: string;
+// }
+
+export { buttonStyle, focusedButtonSize, closeButtonStyle };
 
 // const RoundButton = styled(Button)<RoundButtonProps>(
 //   ({ icon, theme: { palette, size } }) => {

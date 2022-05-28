@@ -168,7 +168,7 @@ const theme = createTheme({
 });
 
 declare module "@mui/material/styles" {
-  interface Theme {
+  export interface Theme {
     size: {
       fullSize: string;
       navBarHeight: string;
@@ -215,7 +215,7 @@ declare module "@mui/material/styles" {
       inner: string;
     };
   }
-  interface ThemeOptions {
+  export interface ThemeOptions {
     size?: {
       fullSize?: string;
       navBarHeight?: string;
