@@ -1,4 +1,9 @@
-import { GridProps, GridSize, ButtonProps, ThemedProps } from "@mui/material";
+import {
+  GridProps,
+  GridSize,
+  ThemedProps,
+  IconButtonProps,
+} from "@mui/material";
 
 export interface SelectItemTemplateProps extends GridProps {
   divide?: string | boolean;
@@ -13,4 +18,9 @@ export interface SelectItemProps {
     React.SetStateAction<HTMLDivElement | null | (EventTarget & HTMLElement)>
   >;
   anchorEl?: null | HTMLDivElement | (EventTarget & HTMLElement);
+}
+
+export interface SearchBarButtonProps extends IconButtonProps {
+  icon: string;
+  isFocused: boolean | undefined;
 }
