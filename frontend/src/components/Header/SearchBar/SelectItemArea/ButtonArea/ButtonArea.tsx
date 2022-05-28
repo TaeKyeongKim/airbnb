@@ -18,8 +18,6 @@ const ButtonArea = ({
   ariaLabel,
   xs = 1,
 }: ButtonAreaProps): JSX.Element => {
-  const buttonText = isFocused && "검색";
-
   return (
     <SelectItemTemplate
       divide={divide?.toString()}
@@ -39,7 +37,7 @@ const ButtonArea = ({
         aria-label={ariaLabel}
       >
         {icons[icon]}
-        {buttonText}
+        {isFocused && "검색"}
       </RoundButton>
     </SelectItemTemplate>
   );

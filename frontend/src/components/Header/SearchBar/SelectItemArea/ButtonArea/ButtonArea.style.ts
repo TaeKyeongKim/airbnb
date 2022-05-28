@@ -20,9 +20,12 @@ const RoundButton = styled(IconButton)<SearchBarButtonProps>(
     height: ${size.searchBar.focusedButton.height};
     border-radius: ${parseInt(size.searchBar.focusedButton.height, 10) / 2}px;
     color: ${palette.white.main};
+    white-space: nowrap;
+    overflow: hidden;
     `;
     return `
     ${isFocused ? focusedButtonStyle : buttonSize};
+    transition: all ease-out 0.2s 0s;
     font-family: "Noto Sans KR", "sans-serif";
     font-size: 18px;
     font-weight: 700;
