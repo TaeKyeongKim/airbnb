@@ -5,11 +5,11 @@ import { CheckInOut /* , ReservationFee, PeopleCount */ } from "./SelectItem";
 import SelectItemAreaWrapper from "./SelectItemArea.style";
 
 const SelectItemArea = (): JSX.Element => {
-  const [isFocused, SetIsFocused] = useState<boolean>(false);
+  // const [isFocused, SetIsFocused] = useState<boolean>(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLDivElement>(null);
 
   const handleFocusArea = (): void => {
-    SetIsFocused(!isFocused);
+    // SetIsFocused(!isFocused);
   };
 
   return (
@@ -23,7 +23,7 @@ const SelectItemArea = (): JSX.Element => {
       <PeopleCount handleFocus={handleFocusArea} /> */}
       <ButtonArea
         icon="search"
-        isFocused={isFocused}
+        isFocused={Boolean(anchorEl)}
         onClick={() => setAnchorEl(null)}
       />
     </SelectItemAreaWrapper>

@@ -8,7 +8,7 @@ import ButtonArea from "../ButtonArea/ButtonArea";
 import SelectItem, { WhiteSpaceCloseButtonSize } from "./SelectItem";
 
 const CheckInOut = ({
-  handleFocus,
+  // handleFocus,
   setAnchorEl,
   anchorEl,
 }: SelectItemProps): JSX.Element => {
@@ -19,13 +19,13 @@ const CheckInOut = ({
     if (setAnchorEl) {
       setAnchorEl($wrap.current);
     }
-    handleFocus();
+    // handleFocus();
   };
   const handleClose = () => {
     if (setAnchorEl) {
       setAnchorEl(null);
     }
-    handleFocus();
+    // handleFocus();
   };
 
   return (
