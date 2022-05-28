@@ -1,20 +1,20 @@
-import { useState } from "react";
-
 import { SelectItemProps } from "@types";
 
 import ButtonArea from "../ButtonArea/ButtonArea";
 import SelectItem, { WhiteSpaceCloseButtonSize } from "./SelectItem";
 
-const ReservationFee = ({ handleFocus }: SelectItemProps): JSX.Element => {
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+const ReservationFee = ({
+  setAnchorEl,
+  anchorEl,
+}: SelectItemProps): JSX.Element => {
   const open = Boolean(anchorEl);
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
-    handleFocus();
+
+  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(e.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
-    handleFocus();
   };
 
   return (
@@ -34,9 +34,9 @@ const ReservationFee = ({ handleFocus }: SelectItemProps): JSX.Element => {
         }}
         open={open}
         handleClick={handleClick}
-        anchorEl={anchorEl}
         handleClose={handleClose}
         createNewPopup
+        anchorEl={anchorEl}
       >
         요금 금액 설정 영역
       </SelectItem>

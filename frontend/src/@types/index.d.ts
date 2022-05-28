@@ -12,7 +12,8 @@ export interface SearchBarContainerProps {
 }
 
 export interface SelectItemProps {
-  handleFocus: () => void;
-  setAnchorEl?: React.Dispatch<React.SetStateAction<HTMLDivElement | null>>;
-  anchorEl?: null | HTMLDivElement;
+  setAnchorEl: React.Dispatch<
+    React.SetStateAction<HTMLDivElement | null | (EventTarget & HTMLElement)>
+  >;
+  anchorEl?: null | HTMLDivElement | (EventTarget & HTMLElement);
 }

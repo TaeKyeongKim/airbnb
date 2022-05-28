@@ -17,6 +17,7 @@ const ButtonArea = ({
   icon,
   divide,
   onClick,
+  ariaLabel,
   xs = 1,
 }: ButtonAreaProps): JSX.Element => {
   const buttonText = isFocused && "검색";
@@ -30,7 +31,12 @@ const ButtonArea = ({
       direction="column"
       alignItems="flex-end"
     >
-      <Button endIcon={icons[icon]} sx={{ zIndex: "1500" }} onClick={onClick}>
+      <Button
+        endIcon={icons[icon]}
+        sx={{ zIndex: "1500" }}
+        onClick={onClick}
+        aria-label={ariaLabel}
+      >
         {buttonText}
       </Button>
     </SelectItemTemplate>
@@ -43,4 +49,5 @@ interface ButtonAreaProps extends RoundButtonProps {
   divide?: boolean;
   xs?: number;
   isFocused?: boolean;
+  ariaLabel?: string;
 }
