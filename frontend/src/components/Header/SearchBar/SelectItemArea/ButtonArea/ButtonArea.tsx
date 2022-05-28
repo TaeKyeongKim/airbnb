@@ -1,9 +1,16 @@
-import { ButtonAreaProps } from "@types";
+import { RoundButtonProps } from "@types";
 
 import SelectItemTemplate from "../SelectItemTemplate/SelectItemTemplate";
 import RoundIconButton from "./Buttons/Buttons";
 
-const ButtonArea = ({ icon, divide, xs = 1 }: ButtonAreaProps): JSX.Element => {
+const ButtonArea = ({
+  isFocused,
+  icon,
+  divide,
+  xs = 1,
+}: ButtonAreaProps): JSX.Element => {
+  console.log(isFocused);
+
   return (
     <SelectItemTemplate
       divide={divide ? divide.toString() : undefined}
@@ -19,3 +26,9 @@ const ButtonArea = ({ icon, divide, xs = 1 }: ButtonAreaProps): JSX.Element => {
 };
 
 export default ButtonArea;
+
+interface ButtonAreaProps extends RoundButtonProps {
+  divide?: boolean;
+  xs?: number;
+  isFocused?: boolean;
+}

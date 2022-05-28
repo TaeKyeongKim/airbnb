@@ -1,16 +1,20 @@
 import { useState } from "react";
 
+import { SelectItemProps } from "@types";
+
 import ButtonArea from "../ButtonArea/ButtonArea";
 import SelectItem, { WhiteSpaceCloseButtonSize } from "./SelectItem";
 
-const ReservationFee = (): JSX.Element => {
+const ReservationFee = ({ handleFocus }: SelectItemProps): JSX.Element => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
+    handleFocus();
   };
   const handleClose = () => {
     setAnchorEl(null);
+    handleFocus();
   };
 
   return (
