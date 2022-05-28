@@ -1,6 +1,7 @@
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
-import { ButtonProps } from "@mui/material";
+
+import { ButtonAreaProps } from "@types";
 
 import { SelectItemTemplate } from "../SelectItemTemplate/SelectItemTemplate";
 import RoundButton from "./ButtonArea.style";
@@ -29,7 +30,7 @@ const ButtonArea = ({
     >
       <RoundButton
         icon={icon}
-        isFocused={isFocused}
+        isfocused={isFocused?.toString()}
         sx={{
           zIndex: 1500,
         }}
@@ -44,11 +45,3 @@ const ButtonArea = ({
 };
 
 export default ButtonArea;
-
-interface ButtonAreaProps extends ButtonProps {
-  icon: "close" | "search";
-  divide?: boolean;
-  xs?: number;
-  isFocused?: boolean;
-  ariaLabel?: string;
-}

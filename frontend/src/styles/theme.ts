@@ -37,7 +37,7 @@ const theme = createTheme({
       main: "#F5F5F7",
     },
   },
-  size: {
+  elementSize: {
     fullSize: "100%",
     navBarHeight: "100px",
     userMenuButton: {
@@ -162,7 +162,7 @@ const theme = createTheme({
 
 declare module "@mui/material/styles" {
   export interface Theme {
-    size: {
+    elementSize: {
       fullSize: string;
       navBarHeight: string;
       userMenuButton: {
@@ -210,7 +210,7 @@ declare module "@mui/material/styles" {
     };
   }
   export interface ThemeOptions {
-    size?: {
+    elementSize?: {
       fullSize?: string;
       navBarHeight?: string;
       userMenuButton?: {

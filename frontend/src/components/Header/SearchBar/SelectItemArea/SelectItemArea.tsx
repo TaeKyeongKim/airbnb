@@ -5,8 +5,6 @@ import { CheckInOut, ReservationFee, PeopleCount } from "./SelectItem";
 import SelectItemAreaWrapper from "./SelectItemArea.style";
 
 // TODO:
-// 0. IconButton prop `isFocused`
-// 1. 모달 패딩 적용안됨;;
 // userMenu에 ...... 검색버튼 겹침;;
 // 스크린리더가 읽을 수 있도록 - tab으로 탐색가능하도록
 
