@@ -17,8 +17,8 @@ export interface SelectItemProps {
 
 export interface SearchBarButtonProps extends IconButtonProps {
   icon: "close" | "search";
-  isFocused?: boolean | "true" | "false" | undefined | string;
-  isfocused?: boolean | "true" | "false" | undefined | string;
+  isFocused?: boolean | undefined | string;
+  isfocused?: boolean | undefined | string;
 }
 
 interface ButtonAreaProps extends SearchBarButtonProps {
