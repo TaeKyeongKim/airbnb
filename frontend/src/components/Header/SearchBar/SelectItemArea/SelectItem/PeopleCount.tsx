@@ -3,11 +3,13 @@ import { SelectItemProps } from "@types";
 import ButtonArea from "../ButtonArea/ButtonArea";
 import SelectItem, { WhiteSpaceCloseButtonSize } from "./SelectItem";
 
+const buttonId = "people-count-button";
+
 const PeopleCount = ({
   setAnchorEl,
   anchorEl,
 }: SelectItemProps): JSX.Element => {
-  const open = Boolean(anchorEl);
+  const isOpen = Boolean(anchorEl?.id === buttonId);
 
   const handleClick = (e: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(e.currentTarget);
@@ -24,15 +26,15 @@ const PeopleCount = ({
           xs: 2,
           pl: 2,
         }}
-        buttonId="reservation-fee-button"
-        buttonAreaLabel="숙박요금 설정"
+        buttonId={buttonId}
+        buttonAreaLabel="숙박 인원 설정"
         title="인원"
         desc="게스트 추가"
         modalAnchorStyle={{
           vertical: "bottom",
           horizontal: "left",
         }}
-        open={open}
+        open={isOpen}
         handleClick={handleClick}
         anchorEl={anchorEl}
         handleClose={handleClose}
@@ -40,7 +42,7 @@ const PeopleCount = ({
       >
         인원조정영역
       </SelectItem>
-      {(open && <ButtonArea icon="close" />) || (
+      {(isOpen && <ButtonArea icon="close" />) || (
         <WhiteSpaceCloseButtonSize xs={1} />
       )}
     </>

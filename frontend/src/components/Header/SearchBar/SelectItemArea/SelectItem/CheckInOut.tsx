@@ -7,12 +7,14 @@ import { SelectItemProps } from "@types";
 import ButtonArea from "../ButtonArea/ButtonArea";
 import SelectItem, { WhiteSpaceCloseButtonSize } from "./SelectItem";
 
+const wrapperId = "check-in-out-wrap";
+
 const CheckInOut = ({
   setAnchorEl,
   anchorEl,
 }: SelectItemProps): JSX.Element => {
   const $wrap = useRef<HTMLDivElement>(null);
-  const open = Boolean(anchorEl);
+  const isOpen = Boolean(anchorEl?.id === wrapperId);
 
   const handleClick = () => {
     setAnchorEl($wrap.current);
@@ -22,32 +24,32 @@ const CheckInOut = ({
   };
 
   return (
-    <Grid item container xs={5} component="div" ref={$wrap}>
+    <Grid item container xs={5} component="div" id={wrapperId} ref={$wrap}>
       <SelectItem
         gridStyle={{
           xs: 5,
         }}
-        buttonId="check-in-out-date-button"
+        buttonId="check-in-date-button"
         buttonAreaLabel="체크인 날짜 설정"
         title="안녕하세요"
         desc="호톨비"
         handleClick={handleClick}
-        open={open}
+        open={isOpen}
       />
       <SelectItem
         gridStyle={{
           xs: 5,
           pl: 1,
         }}
-        buttonId="check-in-out-date-button"
+        buttonId="check-out-date-button"
         buttonAreaLabel="체크아웃 날짜 설정"
         title="체크아웃"
         desc="체크아웃 영역"
         handleClick={handleClick}
-        open={open}
+        open={isOpen}
       />
       <Popover
-        open={open}
+        open={isOpen}
         anchorEl={anchorEl}
         onClose={handleClose}
         anchorOrigin={{
@@ -57,7 +59,7 @@ const CheckInOut = ({
       >
         테스트용
       </Popover>
-      {(open && <ButtonArea icon="close" divide xs={2} />) || (
+      {(isOpen && <ButtonArea icon="close" divide xs={2} />) || (
         <WhiteSpaceCloseButtonSize divide xs={2} />
       )}
     </Grid>
