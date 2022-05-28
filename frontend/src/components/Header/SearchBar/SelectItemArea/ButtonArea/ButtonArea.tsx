@@ -1,7 +1,15 @@
+import CloseIcon from "@mui/icons-material/Close";
+import SearchIcon from "@mui/icons-material/Search";
+
 import { RoundButtonProps } from "@types";
 
 import SelectItemTemplate from "../SelectItemTemplate/SelectItemTemplate";
-import RoundIconButton from "./Buttons/Buttons";
+import RoundButton from "./ButtonArea.style";
+
+const icons = {
+  close: <CloseIcon />,
+  search: <SearchIcon />,
+};
 
 const ButtonArea = ({
   isFocused,
@@ -20,7 +28,7 @@ const ButtonArea = ({
       direction="column"
       alignItems="flex-end"
     >
-      <RoundIconButton icon={icon} />
+      <RoundButton icon={icon}>{icons[icon]}</RoundButton>
     </SelectItemTemplate>
   );
 };
