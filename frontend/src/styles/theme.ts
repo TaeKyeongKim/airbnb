@@ -61,6 +61,10 @@ const theme = createTheme({
           height: "2rem",
         },
       },
+      focusedButton: {
+        width: "90px",
+        height: "40px",
+      },
       fullSize: {
         maxWidth: `916px`,
         height: `76px`,
@@ -181,6 +185,10 @@ declare module "@mui/material/styles" {
             height: string;
           };
         };
+        focusedButton: {
+          width: string;
+          height: string;
+        };
         fullSize: {
           maxWidth: string;
           height: string;
@@ -223,6 +231,10 @@ declare module "@mui/material/styles" {
             width?: string;
             height?: string;
           };
+        };
+        focusedButton?: {
+          width?: string;
+          height?: string;
         };
         fullSize?: {
           maxWidth?: string;

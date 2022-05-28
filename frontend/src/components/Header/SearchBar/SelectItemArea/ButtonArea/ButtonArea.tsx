@@ -1,5 +1,6 @@
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
+import { Button } from "@mui/material";
 
 import { RoundButtonProps } from "@types";
 
@@ -17,18 +18,22 @@ const ButtonArea = ({
   divide,
   xs = 1,
 }: ButtonAreaProps): JSX.Element => {
-  console.log(isFocused);
-
   return (
     <SelectItemTemplate
-      divide={divide ? divide.toString() : undefined}
+      divide={divide?.toString()}
       container
       xs={xs}
       justifyContent="center"
       direction="column"
       alignItems="flex-end"
     >
-      <RoundButton icon={icon}>{icons[icon]}</RoundButton>
+      {isFocused ? (
+        <Button variant="outlined" endIcon={icons[icon]}>
+          검색
+        </Button>
+      ) : (
+        <RoundButton icon={icon}>{icons[icon]}</RoundButton>
+      )}
     </SelectItemTemplate>
   );
 };
