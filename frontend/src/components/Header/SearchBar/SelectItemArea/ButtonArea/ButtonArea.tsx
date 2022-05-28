@@ -1,11 +1,8 @@
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
-import { Button } from "@mui/material";
-
-import { RoundButtonProps } from "@types";
+import { Button, ButtonProps } from "@mui/material";
 
 import SelectItemTemplate from "../SelectItemTemplate/SelectItemTemplate";
-// import RoundButton from "./ButtonArea.style";
 
 const icons = {
   close: <CloseIcon />,
@@ -45,9 +42,10 @@ const ButtonArea = ({
 
 export default ButtonArea;
 
-interface ButtonAreaProps extends RoundButtonProps {
+interface ButtonAreaProps extends ButtonProps {
   divide?: boolean;
   xs?: number;
   isFocused?: boolean;
+  icon: "close" | "search";
   ariaLabel?: string;
 }

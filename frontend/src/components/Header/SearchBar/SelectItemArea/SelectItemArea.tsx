@@ -5,10 +5,8 @@ import { CheckInOut, ReservationFee, PeopleCount } from "./SelectItem";
 import SelectItemAreaWrapper from "./SelectItemArea.style";
 
 // TODO:
-// 0. 각 SelectItem마다 open이 잘못 적용되어있음(각 아이템마다 다르게 나와야함.)
 // 1.버튼에 스타일 적용
-// 2.SelectItemArea내의 모든 state들 삭제
-// 3. 스크린리더가 읽을 수 있도록
+// 3. 스크린리더가 읽을 수 있도록 // 나중에
 
 const SelectItemArea = (): JSX.Element => {
   const [anchorEl, setAnchorEl] = useState<AnchorEl>(null);
