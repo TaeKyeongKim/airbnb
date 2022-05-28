@@ -2,14 +2,16 @@ import {
   Button,
   Grid,
   GridSize,
-  Popover,
   PopoverProps,
   Typography,
 } from "@mui/material";
 
 import { SelectItemTemplateProps } from "@types";
 
-import SelectItemTemplate from "../SelectItemTemplate/SelectItemTemplate";
+import {
+  ModalTemplate,
+  SelectItemTemplate,
+} from "../SelectItemTemplate/SelectItemTemplate";
 import itemStyles from "./SelectItem.style";
 
 const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
@@ -43,14 +45,14 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
         <Typography sx={itemStyles.desc}>{desc}</Typography>
       </Button>
       {(createNewPopup && (
-        <Popover
+        <ModalTemplate
           open={open}
           anchorEl={anchorEl}
           onClose={handleClose}
           anchorOrigin={modalAnchorStyle}
         >
           {children}
-        </Popover>
+        </ModalTemplate>
       )) ||
         children}
     </SelectItemTemplate>

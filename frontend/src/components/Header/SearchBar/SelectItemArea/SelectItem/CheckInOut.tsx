@@ -1,10 +1,11 @@
-import { useRef /* , useState  */ } from "react";
+import { useRef } from "react";
 
-import { Grid, Popover } from "@mui/material";
+import { Grid } from "@mui/material";
 
 import { SelectItemProps } from "@types";
 
 import ButtonArea from "../ButtonArea/ButtonArea";
+import { ModalTemplate } from "../SelectItemTemplate/SelectItemTemplate";
 import SelectItem, { WhiteSpaceCloseButtonSize } from "./SelectItem";
 
 const wrapperId = "check-in-out-wrap";
@@ -48,7 +49,7 @@ const CheckInOut = ({
         handleClick={handleClick}
         open={isOpen}
       />
-      <Popover
+      <ModalTemplate
         open={isOpen}
         anchorEl={anchorEl}
         onClose={handleClose}
@@ -58,7 +59,7 @@ const CheckInOut = ({
         }}
       >
         테스트용
-      </Popover>
+      </ModalTemplate>
       {(isOpen && <ButtonArea icon="close" divide xs={2} />) || (
         <WhiteSpaceCloseButtonSize divide xs={2} />
       )}

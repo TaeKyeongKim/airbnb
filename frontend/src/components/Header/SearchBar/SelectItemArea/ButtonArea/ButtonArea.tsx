@@ -2,7 +2,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
 import { ButtonProps } from "@mui/material";
 
-import SelectItemTemplate from "../SelectItemTemplate/SelectItemTemplate";
+import { SelectItemTemplate } from "../SelectItemTemplate/SelectItemTemplate";
 import RoundButton from "./ButtonArea.style";
 
 const icons = {

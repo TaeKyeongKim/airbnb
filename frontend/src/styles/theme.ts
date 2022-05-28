@@ -44,11 +44,6 @@ const theme = createTheme({
       width: `32px`,
       height: `32px`,
     },
-    modal: {
-      padding: {
-        default: "64px",
-      },
-    },
     searchBar: {
       closeButton: {
         width: "20px",
@@ -90,16 +85,9 @@ const theme = createTheme({
   },
   whiteSpace: {
     inner: "80px",
+    searchBarPadding: "64px",
   },
   components: {
-    MuiModal: {
-      styleOverrides: {
-        root: {
-          // position: "unset",
-          // zIndex: 1000,
-        },
-      },
-    },
     MuiCssBaseline: {
       styleOverrides: {
         "*": {
@@ -181,11 +169,6 @@ declare module "@mui/material/styles" {
         width: string;
         height: string;
       };
-      modal: {
-        padding: {
-          default: "64px";
-        };
-      };
       searchBar: {
         closeButton: {
           width: string;
@@ -223,6 +206,7 @@ declare module "@mui/material/styles" {
     };
     whiteSpace: {
       inner: string;
+      searchBarPadding: string;
     };
   }
   export interface ThemeOptions {
@@ -232,11 +216,6 @@ declare module "@mui/material/styles" {
       userMenuButton?: {
         width?: string;
         height?: string;
-      };
-      modal?: {
-        padding: {
-          default: "64px";
-        };
       };
       searchBar?: {
         closeButton?: {
@@ -275,6 +254,7 @@ declare module "@mui/material/styles" {
     };
     whiteSpace?: {
       inner?: string;
+      searchBarPadding?: string;
     };
   }
   interface Palette {
