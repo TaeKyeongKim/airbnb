@@ -1,20 +1,18 @@
 import {
   Button,
+  Grid,
   GridSize,
   Popover,
   PopoverProps,
   Typography,
 } from "@mui/material";
 
+import { SelectItemTemplateProps } from "@types";
+
 import SelectItemTemplate from "../SelectItemTemplate/SelectItemTemplate";
-import styles from "./SelectItem.style";
+import itemStyles from "./SelectItem.style";
 
 const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
-  // TODO: 현재 Popover가 열렸는지 확인하는 Boolean으로 버튼 보이기 / 숨기기 (close)
-
-  // TODO: 체크인, 체크아웃 영역 SelecItem 어디를 click하더라도 하나의 popOver가 열려야 함.
-  // 👉 popOver를 props로 넘기는 형태로 변경 가능하지 않을까...🤔
-
   const {
     gridStyle: { xs, pl = undefined },
     buttonId,
@@ -39,10 +37,10 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
         aria-label={buttonAreaLabel}
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
-        sx={styles.button}
+        sx={itemStyles.button}
       >
-        <Typography sx={styles.title}>{title}</Typography>
-        <Typography sx={styles.desc}>{desc}</Typography>
+        <Typography sx={itemStyles.title}>{title}</Typography>
+        <Typography sx={itemStyles.desc}>{desc}</Typography>
       </Button>
       {(createNewPopup && (
         <Popover
@@ -57,6 +55,20 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
         children}
     </SelectItemTemplate>
   );
+};
+
+export const WhiteSpaceCloseButtonSize = ({
+  divide,
+  xs = 1,
+}: SelectItemTemplateProps): JSX.Element => {
+  const styles =
+    (divide && {
+      borderRight: ({ palette }: { palette: { grey5: { main: string } } }) =>
+        `1px solid ${palette.grey5.main}`,
+    }) ||
+    {};
+
+  return <Grid item sx={styles} xs={xs} />;
 };
 
 export default SelectItem;

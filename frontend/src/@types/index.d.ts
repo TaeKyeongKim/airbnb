@@ -9,7 +9,7 @@ export interface ButtonAreaProps extends RoundButtonProps {
   xs?: number;
 }
 export interface SelectItemTemplateProps extends GridProps {
-  divide?: string;
+  divide?: string | boolean;
 }
 
 export interface SearchBarContainerProps {
