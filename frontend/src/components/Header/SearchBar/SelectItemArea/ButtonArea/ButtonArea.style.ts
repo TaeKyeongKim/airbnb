@@ -27,7 +27,6 @@ const RoundButton = styled(IconButton)<SearchBarButtonProps>((props) => {
     border-radius: ${
       parseInt(elementSize.searchBar.focusedButton.height, 10) / 2
     }px;
-    color: ${palette.white.main};
     white-space: nowrap;
     overflow: hidden;
     `;
@@ -37,6 +36,7 @@ const RoundButton = styled(IconButton)<SearchBarButtonProps>((props) => {
     font-family: "Noto Sans KR", "sans-serif";
     font-size: 18px;
     font-weight: 700;
+    color: ${palette.white.main};
     background-color: ${palette[bgColor].main};
     margin-right: ${isCloseIcon && elementSize.searchBar.closeButton.width};
 
