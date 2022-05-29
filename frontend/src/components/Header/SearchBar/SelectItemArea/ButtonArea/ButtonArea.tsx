@@ -21,7 +21,7 @@ const ButtonArea = ({
 }: ButtonAreaProps): JSX.Element => {
   return (
     <SelectItemTemplate
-      divide={divide?.toString()}
+      divide={divide}
       container
       xs={xs}
       justifyContent="center"

@@ -1,7 +1,7 @@
 import { GridProps, GridSize, IconButtonProps } from "@mui/material";
 
 export interface SelectItemTemplateProps extends GridProps {
-  divide?: string | boolean;
+  divide?: boolean;
 }
 
 export interface SearchBarContainerProps {
