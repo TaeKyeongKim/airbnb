@@ -30,7 +30,7 @@ const ButtonArea = ({
     >
       <RoundButton
         icon={icon}
-        isfocused={isFocused?.toString()}
+        isFocused={isFocused}
         sx={{
           zIndex: 1500,
         }}
