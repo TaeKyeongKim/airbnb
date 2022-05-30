@@ -1,7 +1,7 @@
 import { IconButton } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-import { SearchBarButtonProps } from "@types";
+import { SearchBarButtonProps } from "./ButtonArea";
 
 const RoundButton = styled(IconButton, {
   shouldForwardProp: (prop) => prop !== "icon" && prop !== "isFocused",

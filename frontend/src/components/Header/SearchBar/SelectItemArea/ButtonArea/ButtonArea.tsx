@@ -1,7 +1,6 @@
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
-
-import { ButtonAreaProps } from "@types";
+import { IconButtonProps } from "@mui/material";
 
 import { SelectItemTemplate } from "../SelectItemTemplate/SelectItemTemplate";
 import RoundButton from "./ButtonArea.style";
@@ -45,3 +44,14 @@ const ButtonArea = ({
 };
 
 export default ButtonArea;
+
+export interface SearchBarButtonProps extends IconButtonProps {
+  icon: "close" | "search";
+  isFocused?: boolean | undefined;
+}
+
+interface ButtonAreaProps extends SearchBarButtonProps {
+  divide?: boolean;
+  xs?: number;
+  ariaLabel?: string;
+}

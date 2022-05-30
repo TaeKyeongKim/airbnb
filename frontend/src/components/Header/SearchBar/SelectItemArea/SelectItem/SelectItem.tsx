@@ -6,11 +6,10 @@ import {
   Typography,
 } from "@mui/material";
 
-import { SelectItemTemplateProps } from "@types";
-
 import {
   ModalTemplate,
   SelectItemTemplate,
+  SelectItemTemplateProps,
 } from "../SelectItemTemplate/SelectItemTemplate";
 import itemStyles from "./SelectItem.style";
 
@@ -92,4 +91,11 @@ interface SelectItemDataProps extends PopoverProps {
   handleClick?: (event: React.MouseEvent<HTMLElement>) => void;
   handleClose?: () => void;
   createNewPopup?: boolean;
+}
+
+export interface SelectItemProps {
+  setAnchorEl: React.Dispatch<
+    React.SetStateAction<HTMLDivElement | null | (EventTarget & HTMLElement)>
+  >;
+  anchorEl?: null | HTMLDivElement | (EventTarget & HTMLElement);
 }

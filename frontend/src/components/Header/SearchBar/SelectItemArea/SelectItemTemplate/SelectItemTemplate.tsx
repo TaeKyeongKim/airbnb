@@ -1,6 +1,4 @@
-import { Box, Popover, PopoverProps } from "@mui/material";
-
-import { SelectItemTemplateProps } from "@types";
+import { Box, GridProps, Popover, PopoverProps } from "@mui/material";
 
 import { GridItem, modalStyle } from "./SelectItemTemplate.style";
 
@@ -32,3 +30,7 @@ const ModalTemplate = ({ ...props }: PopoverProps): JSX.Element => {
 };
 
 export { SelectItemTemplate, ModalTemplate };
+
+export interface SelectItemTemplateProps extends GridProps {
+  divide?: boolean;
+}
