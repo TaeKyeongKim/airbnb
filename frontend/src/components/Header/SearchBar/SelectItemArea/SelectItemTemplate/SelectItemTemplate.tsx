@@ -17,15 +17,21 @@ const SelectItemTemplate = ({
   );
 };
 
-const ModalTemplate = ({ ...props }: PopoverProps): JSX.Element => {
+const ModalTemplate = ({
+  open,
+  anchorEl,
+  onClose,
+  anchorOrigin = { vertical: "bottom", horizontal: "left" },
+  children,
+}: PopoverProps): JSX.Element => {
   return (
     <Popover
-      open={props.open}
-      anchorEl={props.anchorEl}
-      onClose={props.onClose}
-      anchorOrigin={props.anchorOrigin}
+      open={open}
+      anchorEl={anchorEl}
+      onClose={onClose}
+      anchorOrigin={anchorOrigin}
     >
-      <Box sx={modalStyle}>{props.children}</Box>
+      <Box sx={modalStyle}>{children}</Box>
     </Popover>
   );
 };
