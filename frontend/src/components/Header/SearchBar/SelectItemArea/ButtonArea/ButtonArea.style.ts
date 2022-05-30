@@ -36,7 +36,6 @@ const RoundButton = styled(IconButton, {
   return `
     ${isFocused ? focusedButtonStyle : buttonSize};
     transition: all ease-out 0.2s 0s;
-    font-family: "Noto Sans KR", "sans-serif";
     font-size: 18px;
     font-weight: 700;
     color: ${palette.white.main};
