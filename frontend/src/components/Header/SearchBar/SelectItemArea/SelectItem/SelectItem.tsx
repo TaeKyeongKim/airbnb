@@ -22,7 +22,7 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
     buttonAreaLabel,
     title,
     desc,
-    modalAnchorStyle,
+    modalAnchorStyle = { vertical: "bottom", horizontal: "left" },
     open,
     handleClick,
     handleClose,

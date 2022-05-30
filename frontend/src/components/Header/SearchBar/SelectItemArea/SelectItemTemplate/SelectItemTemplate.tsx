@@ -23,10 +23,7 @@ const ModalTemplate = ({ ...props }: PopoverProps): JSX.Element => {
       open={props.open}
       anchorEl={props.anchorEl}
       onClose={props.onClose}
-      anchorOrigin={{
-        vertical: "bottom",
-        horizontal: "left",
-      }}
+      anchorOrigin={props.anchorOrigin}
     >
       <Box sx={modalStyle}>{props.children}</Box>
     </Popover>

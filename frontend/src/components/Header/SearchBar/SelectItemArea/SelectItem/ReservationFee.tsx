@@ -21,10 +21,6 @@ const ReservationFee = ({
         buttonAreaLabel="숙박요금 설정"
         title="요금"
         desc="금액대 설정"
-        modalAnchorStyle={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
         open={isOpen}
         handleClick={onClick}
         handleClose={onClose}

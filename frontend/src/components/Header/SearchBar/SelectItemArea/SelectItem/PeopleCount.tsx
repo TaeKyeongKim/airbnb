@@ -21,10 +21,6 @@ const PeopleCount = ({
         buttonAreaLabel="숙박 인원 설정"
         title="인원"
         desc="게스트 추가"
-        modalAnchorStyle={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
         open={isOpen}
         handleClick={onClick}
         anchorEl={anchorEl}

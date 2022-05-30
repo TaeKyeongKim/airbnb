@@ -45,15 +45,7 @@ const CheckInOut = ({
         handleClick={handleClick}
         open={isOpen}
       />
-      <ModalTemplate
-        open={isOpen}
-        anchorEl={anchorEl}
-        onClose={onClose}
-        anchorOrigin={{
-          vertical: "bottom",
-          horizontal: "left",
-        }}
-      >
+      <ModalTemplate open={isOpen} anchorEl={anchorEl} onClose={onClose}>
         테스트용
       </ModalTemplate>
       {(isOpen && <ButtonArea icon="close" divide xs={2} />) || (
