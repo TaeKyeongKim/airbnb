@@ -1,7 +1,8 @@
-import { SelectItemProps } from "@types";
-
 import ButtonArea from "../ButtonArea/ButtonArea";
-import SelectItem, { WhiteSpaceCloseButtonSize } from "./SelectItem";
+import SelectItem, {
+  SelectItemProps,
+  WhiteSpaceCloseButtonSize,
+} from "./SelectItem";
 
 const buttonId = "people-count-button";
 

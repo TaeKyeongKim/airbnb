@@ -1,7 +1,8 @@
-import { SelectItemProps } from "@types";
-
 import ButtonArea from "../ButtonArea/ButtonArea";
-import SelectItem, { WhiteSpaceCloseButtonSize } from "./SelectItem";
+import SelectItem, {
+  WhiteSpaceCloseButtonSize,
+  SelectItemProps,
+} from "./SelectItem";
 
 const buttonId = "reservation-fee-button";
 

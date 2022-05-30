@@ -9,8 +9,8 @@ import {
 import {
   ModalTemplate,
   SelectItemTemplate,
-  SelectItemTemplateProps,
 } from "../SelectItemTemplate/SelectItemTemplate";
+import { SelectItemTemplateProps } from "../SelectItemTemplate/SelectItemTemplate.style";
 import itemStyles from "./SelectItem.style";
 
 const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {

@@ -1,13 +1,11 @@
-import { IconButton } from "@mui/material";
+import { IconButton, IconButtonProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
-
-import { SearchBarButtonProps } from "./ButtonArea";
 
 const RoundButton = styled(IconButton, {
   shouldForwardProp: (prop) => prop !== "icon" && prop !== "isFocused",
   name: "MyThemeComponent",
   slot: "Root",
-})<SearchBarButtonProps>((props) => {
+})<RoundButtonProps>((props) => {
   const {
     icon,
     isFocused,
@@ -54,3 +52,8 @@ const RoundButton = styled(IconButton, {
 });
 
 export default RoundButton;
+
+export interface RoundButtonProps extends IconButtonProps {
+  icon: "close" | "search";
+  isFocused?: boolean | undefined;
+}

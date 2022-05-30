@@ -2,11 +2,12 @@ import { useRef } from "react";
 
 import { Grid } from "@mui/material";
 
-import { SelectItemProps } from "@types";
-
 import ButtonArea from "../ButtonArea/ButtonArea";
 import { ModalTemplate } from "../SelectItemTemplate/SelectItemTemplate";
-import SelectItem, { WhiteSpaceCloseButtonSize } from "./SelectItem";
+import SelectItem, {
+  SelectItemProps,
+  WhiteSpaceCloseButtonSize,
+} from "./SelectItem";
 
 const wrapperId = "check-in-out-wrap";
 
