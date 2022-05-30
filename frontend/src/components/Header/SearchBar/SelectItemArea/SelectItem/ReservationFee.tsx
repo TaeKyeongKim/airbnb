@@ -9,16 +9,10 @@ const buttonId = "reservation-fee-button";
 const ReservationFee = ({
   setAnchorEl,
   anchorEl,
+  handleClick,
+  handleClose,
 }: SelectItemProps): JSX.Element => {
-  const isOpen = Boolean(anchorEl?.id === buttonId);
-
-  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(e.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const isOpen = anchorEl?.id === buttonId;
 
   return (
     <>

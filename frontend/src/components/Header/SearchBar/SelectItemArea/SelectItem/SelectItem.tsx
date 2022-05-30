@@ -1,3 +1,5 @@
+import { SetStateAction } from "react";
+
 import {
   Button,
   Grid,
@@ -12,6 +14,7 @@ import {
 } from "../SelectItemTemplate/SelectItemTemplate";
 import { SelectItemTemplateProps } from "../SelectItemTemplate/SelectItemTemplate.style";
 import itemStyles from "./SelectItem.style";
+import { AnchorEl } from "../SelectItemArea";
 
 const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
   const {
@@ -94,8 +97,8 @@ interface SelectItemDataProps extends PopoverProps {
 }
 
 export interface SelectItemProps {
-  setAnchorEl: React.Dispatch<
-    React.SetStateAction<HTMLDivElement | null | (EventTarget & HTMLElement)>
-  >;
+  setAnchorEl?: React.Dispatch<SetStateAction<AnchorEl>>;
   anchorEl?: null | HTMLDivElement | (EventTarget & HTMLElement);
+  handleClick?: (e: React.MouseEvent<HTMLElement>) => void;
+  handleClose: () => void;
 }

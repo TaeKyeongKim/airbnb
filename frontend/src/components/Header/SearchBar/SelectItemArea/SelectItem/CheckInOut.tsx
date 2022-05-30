@@ -12,17 +12,15 @@ import SelectItem, {
 const wrapperId = "check-in-out-wrap";
 
 const CheckInOut = ({
-  setAnchorEl,
   anchorEl,
+  setAnchorEl,
+  handleClose,
 }: SelectItemProps): JSX.Element => {
   const $wrap = useRef<HTMLDivElement>(null);
-  const isOpen = Boolean(anchorEl?.id === wrapperId);
+  const isOpen = anchorEl?.id === wrapperId;
 
   const handleClick = () => {
-    setAnchorEl($wrap.current);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
+    setAnchorEl?.($wrap.current);
   };
 
   return (

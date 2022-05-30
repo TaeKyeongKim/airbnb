@@ -7,18 +7,11 @@ import SelectItem, {
 const buttonId = "people-count-button";
 
 const PeopleCount = ({
-  setAnchorEl,
+  handleClick,
+  handleClose,
   anchorEl,
 }: SelectItemProps): JSX.Element => {
-  const isOpen = Boolean(anchorEl?.id === buttonId);
-
-  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(e.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const isOpen = anchorEl?.id === buttonId;
 
   return (
     <>
