@@ -60,18 +60,11 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
   );
 };
 
-export const WhiteSpaceCloseButtonSize = ({
+export const WhiteSpace = ({
   divide,
   xs = 1,
 }: SelectItemTemplateProps): JSX.Element => {
-  const styles =
-    (divide && {
-      borderRight: ({ palette }: { palette: { grey5: { main: string } } }) =>
-        `1px solid ${palette.grey5.main}`,
-    }) ||
-    {};
-
-  return <Grid item sx={styles} xs={xs} />;
+  return <Grid item sx={(divide && itemStyles.border) || {}} xs={xs} />;
 };
 
 export default SelectItem;

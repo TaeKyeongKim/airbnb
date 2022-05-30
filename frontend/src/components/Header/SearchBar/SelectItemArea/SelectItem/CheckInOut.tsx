@@ -4,10 +4,7 @@ import { Grid } from "@mui/material";
 
 import ButtonArea from "../ButtonArea/ButtonArea";
 import { ModalTemplate } from "../SelectItemTemplate/SelectItemTemplate";
-import SelectItem, {
-  SelectItemProps,
-  WhiteSpaceCloseButtonSize,
-} from "./SelectItem";
+import SelectItem, { SelectItemProps, WhiteSpace } from "./SelectItem";
 
 const wrapperId = "check-in-out-wrap";
 
@@ -60,7 +57,7 @@ const CheckInOut = ({
         테스트용
       </ModalTemplate>
       {(isOpen && <ButtonArea icon="close" divide xs={2} />) || (
-        <WhiteSpaceCloseButtonSize divide xs={2} />
+        <WhiteSpace divide xs={2} />
       )}
     </Grid>
   );

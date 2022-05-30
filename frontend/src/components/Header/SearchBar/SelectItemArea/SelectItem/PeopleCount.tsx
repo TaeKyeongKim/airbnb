@@ -1,8 +1,5 @@
 import ButtonArea from "../ButtonArea/ButtonArea";
-import SelectItem, {
-  SelectItemProps,
-  WhiteSpaceCloseButtonSize,
-} from "./SelectItem";
+import SelectItem, { SelectItemProps, WhiteSpace } from "./SelectItem";
 
 const buttonId = "people-count-button";
 
@@ -36,9 +33,7 @@ const PeopleCount = ({
       >
         인원조정영역
       </SelectItem>
-      {(isOpen && <ButtonArea icon="close" />) || (
-        <WhiteSpaceCloseButtonSize xs={1} />
-      )}
+      {(isOpen && <ButtonArea icon="close" />) || <WhiteSpace xs={1} />}
     </>
   );
 };

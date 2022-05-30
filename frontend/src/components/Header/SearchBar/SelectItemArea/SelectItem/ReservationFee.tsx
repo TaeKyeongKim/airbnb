@@ -1,8 +1,5 @@
 import ButtonArea from "../ButtonArea/ButtonArea";
-import SelectItem, {
-  WhiteSpaceCloseButtonSize,
-  SelectItemProps,
-} from "./SelectItem";
+import SelectItem, { WhiteSpace, SelectItemProps } from "./SelectItem";
 
 const buttonId = "reservation-fee-button";
 
@@ -37,7 +34,7 @@ const ReservationFee = ({
         요금 금액 설정 영역
       </SelectItem>
       {(isOpen && <ButtonArea icon="close" divide />) || (
-        <WhiteSpaceCloseButtonSize divide xs={1} />
+        <WhiteSpace divide xs={1} />
       )}
     </>
   );
