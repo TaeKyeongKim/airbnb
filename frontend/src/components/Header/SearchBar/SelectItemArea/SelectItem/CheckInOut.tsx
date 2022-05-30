@@ -14,7 +14,7 @@ const wrapperId = "check-in-out-wrap";
 const CheckInOut = ({
   anchorEl,
   setAnchorEl,
-  handleClose,
+  onClose,
 }: SelectItemProps): JSX.Element => {
   const $wrap = useRef<HTMLDivElement>(null);
   const isOpen = anchorEl?.id === wrapperId;
@@ -51,7 +51,7 @@ const CheckInOut = ({
       <ModalTemplate
         open={isOpen}
         anchorEl={anchorEl}
-        onClose={handleClose}
+        onClose={onClose}
         anchorOrigin={{
           vertical: "bottom",
           horizontal: "left",

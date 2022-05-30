@@ -14,7 +14,6 @@ import {
 } from "../SelectItemTemplate/SelectItemTemplate";
 import { SelectItemTemplateProps } from "../SelectItemTemplate/SelectItemTemplate.style";
 import itemStyles from "./SelectItem.style";
-import { AnchorEl } from "../SelectItemArea";
 
 const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
   const {
@@ -77,7 +76,7 @@ export const WhiteSpaceCloseButtonSize = ({
 
 export default SelectItem;
 
-interface SelectItemDataProps extends PopoverProps {
+export interface SelectItemDataProps extends PopoverProps {
   gridStyle: {
     xs: boolean | GridSize | undefined;
     pl?: number | undefined;
@@ -99,6 +98,8 @@ interface SelectItemDataProps extends PopoverProps {
 export interface SelectItemProps {
   setAnchorEl?: React.Dispatch<SetStateAction<AnchorEl>>;
   anchorEl?: null | HTMLDivElement | (EventTarget & HTMLElement);
-  handleClick?: (e: React.MouseEvent<HTMLElement>) => void;
-  handleClose: () => void;
+  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+  onClose: () => void;
 }
+
+export type AnchorEl = null | HTMLDivElement | (EventTarget & HTMLElement);

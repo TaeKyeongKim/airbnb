@@ -2,6 +2,7 @@ import { useState } from "react";
 
 import ButtonArea from "./ButtonArea/ButtonArea";
 import { CheckInOut, ReservationFee, PeopleCount } from "./SelectItem";
+import { AnchorEl } from "./SelectItem/SelectItem";
 import SelectItemAreaWrapper from "./SelectItemArea.style";
 
 // TODO:
@@ -23,22 +24,22 @@ const SelectItemArea = (): JSX.Element => {
       <CheckInOut
         setAnchorEl={setAnchorEl}
         anchorEl={anchorEl}
-        handleClose={handleClose}
+        onClose={handleClose}
       />
       <ReservationFee
         anchorEl={anchorEl}
-        handleClose={handleClose}
-        handleClick={handleClick}
+        onClose={handleClose}
+        onClick={handleClick}
       />
       <PeopleCount
         anchorEl={anchorEl}
-        handleClose={handleClose}
-        handleClick={handleClick}
+        onClose={handleClose}
+        onClick={handleClick}
       />
       <ButtonArea
         icon="search"
         isFocused={Boolean(anchorEl)}
-        onClick={() => setAnchorEl(null)}
+        onClick={handleClose}
         ariaLabel="설정한 정보로 검색하기"
       />
     </SelectItemAreaWrapper>
@@ -46,5 +47,3 @@ const SelectItemArea = (): JSX.Element => {
 };
 
 export default SelectItemArea;
-
-export type AnchorEl = null | HTMLDivElement | (EventTarget & HTMLElement);

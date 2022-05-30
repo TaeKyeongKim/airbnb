@@ -7,10 +7,9 @@ import SelectItem, {
 const buttonId = "reservation-fee-button";
 
 const ReservationFee = ({
-  setAnchorEl,
   anchorEl,
-  handleClick,
-  handleClose,
+  onClick,
+  onClose,
 }: SelectItemProps): JSX.Element => {
   const isOpen = anchorEl?.id === buttonId;
 
@@ -30,8 +29,8 @@ const ReservationFee = ({
           horizontal: "left",
         }}
         open={isOpen}
-        handleClick={handleClick}
-        handleClose={handleClose}
+        handleClick={onClick}
+        handleClose={onClose}
         createNewPopup
         anchorEl={anchorEl}
       >

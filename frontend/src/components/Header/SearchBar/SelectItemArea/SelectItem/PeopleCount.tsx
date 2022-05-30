@@ -7,8 +7,8 @@ import SelectItem, {
 const buttonId = "people-count-button";
 
 const PeopleCount = ({
-  handleClick,
-  handleClose,
+  onClick,
+  onClose,
   anchorEl,
 }: SelectItemProps): JSX.Element => {
   const isOpen = anchorEl?.id === buttonId;
@@ -29,9 +29,9 @@ const PeopleCount = ({
           horizontal: "left",
         }}
         open={isOpen}
-        handleClick={handleClick}
+        handleClick={onClick}
         anchorEl={anchorEl}
-        handleClose={handleClose}
+        handleClose={onClose}
         createNewPopup
       >
         인원조정영역
