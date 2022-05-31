@@ -1,4 +1,4 @@
-import { Box, Popover, PopoverProps } from "@mui/material";
+import { Box, Popover, PopoverProps, Theme } from "@mui/material";
 
 import {
   GridItem,
@@ -21,7 +21,10 @@ const ModalTemplate = ({
   open,
   anchorEl,
   onClose,
-  anchorOrigin = { vertical: "bottom", horizontal: "left" },
+  anchorOrigin = {
+    vertical: 60, // TODO: 수정
+    horizontal: "left",
+  },
   children,
 }: PopoverProps): JSX.Element => {
   return (
