@@ -1,4 +1,4 @@
-import { Box, Popover, PopoverProps, Theme } from "@mui/material";
+import { Box, Popover, PopoverProps } from "@mui/material";
 
 import {
   GridItem,
@@ -18,12 +18,6 @@ const SelectItemTemplate = ({
   );
 };
 
-// vertical: 60,
-
-// ({ elementSize }: Theme) => ({
-//   vertical: : `${elementSize.searchBar.height}`,
-//   horizontal: "left"
-// })
 const ModalTemplate = ({
   open,
   anchorEl,
