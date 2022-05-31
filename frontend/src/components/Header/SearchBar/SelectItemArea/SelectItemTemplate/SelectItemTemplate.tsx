@@ -4,6 +4,7 @@ import {
   GridItem,
   modalStyle,
   SelectItemTemplateProps,
+  modalAnchorDefaultStyle,
 } from "./SelectItemTemplate.style";
 
 const SelectItemTemplate = ({
@@ -17,14 +18,17 @@ const SelectItemTemplate = ({
   );
 };
 
+// vertical: 60,
+
+// ({ elementSize }: Theme) => ({
+//   vertical: : `${elementSize.searchBar.height}`,
+//   horizontal: "left"
+// })
 const ModalTemplate = ({
   open,
   anchorEl,
   onClose,
-  anchorOrigin = {
-    vertical: 60, // TODO: 수정
-    horizontal: "left",
-  },
+  anchorOrigin = modalAnchorDefaultStyle,
   children,
 }: PopoverProps): JSX.Element => {
   return (
