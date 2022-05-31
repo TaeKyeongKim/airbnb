@@ -9,23 +9,25 @@ export const RouterContext = createContext<RouterContextType>({
   setPage: () => {},
 });
 
-const pushHistory = (pathName: string): void => {
-  history.pushState({}, pathName, `${location.origin}${pathName}`);
+const pushHistory = ({ path, state }: PushHistoryProps): void => {
+  // history.pushState(state, title, url)
+  history.pushState(state, path, `${location.origin}${path}`);
 };
 
 const Link = ({
   to,
-  state = "", // parameter
+  params = {},
   children,
   onClick,
 }: LinkProps): JSX.Element => {
   const { setPage } = useContext(RouterContext);
 
-  const href = to + state;
+  const href = `/${to}`;
+
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
     onClick?.();
-    pushHistory(`/${to}${state}`);
+    pushHistory({ path: href, state: params });
     setPage(pages[to]);
   };
 
@@ -37,17 +39,24 @@ const Link = ({
 };
 
 const FIRST_INDEX = 0;
+const FIRST_SLASH_COUNT = 1;
+const SLASH = "/";
 
-const getCurrentPath = () =>
-  location.pathname.slice(1).split("/")[FIRST_INDEX] || "index";
+const getCurrentPath = () => {
+  return (
+    location.pathname.slice(FIRST_SLASH_COUNT).split(SLASH)[FIRST_INDEX] ||
+    "index"
+  );
+};
 
 const Router = ({ children }: RouterProps): React.ReactElement => {
   const currentPath = getCurrentPath();
 
   const [page, setPage] = useState(pages[currentPath] || pages.notFound);
 
-  onpopstate = () => {
+  onpopstate = (/* e: PopStateEvent */) => {
     const poppedPath = getCurrentPath();
+    // TODO: e.state 이용하여 뒤로가기 시 검색결과
 
     if (!pages[poppedPath]) {
       setPage(pages.notFound);
@@ -69,8 +78,17 @@ const Router = ({ children }: RouterProps): React.ReactElement => {
 interface LinkProps {
   to: LinkPath | string;
   children: React.ReactNode;
-  state?: string;
+  params?: { [key: string]: string } | {}; // TODO: key 값 추후에 지정하기
   onClick?: () => void;
+}
+
+interface PushHistoryProps {
+  path: string;
+  state?:
+    | {
+        [key: string]: string;
+      }
+    | {};
 }
 
 interface RouterContextType {
