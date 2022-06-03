@@ -1,3 +1,4 @@
+import PriceSelectArea from "../../ModalInnerItems/PriceSelectArea";
 import ButtonArea from "../ButtonArea/ButtonArea";
 import SelectItem, { WhiteSpace, SelectItemProps } from "./SelectItem";
 
@@ -27,7 +28,7 @@ const ReservationFee = ({
         createNewPopup
         anchorEl={anchorEl}
       >
-        요금 금액 설정 영역
+        <PriceSelectArea />
       </SelectItem>
       {(isOpen && <ButtonArea icon="close" divide />) || (
         <WhiteSpace divide xs={1} />
