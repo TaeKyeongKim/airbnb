@@ -50,6 +50,17 @@ const PriceChart = () => {
     let currentX = -coordXIncrementRange;
     let prevCoords = { ...start };
 
+    const drawBezierCurve = (targetCoords: { x: number; y: number }) => {
+      ctx.bezierCurveTo(
+        prevCoords.x + coordXIncrementRange / 2,
+        prevCoords.y,
+        prevCoords.x + coordXIncrementRange / 2,
+        targetCoords.y,
+        targetCoords.x,
+        targetCoords.y
+      );
+    };
+
     accomodationsCountList.forEach((el, idx) => {
       currentX += coordXIncrementRange;
 
@@ -65,26 +76,12 @@ const PriceChart = () => {
         return;
       }
 
-      ctx.bezierCurveTo(
-        prevCoords.x + coordXIncrementRange / 2,
-        prevCoords.y,
-        prevCoords.x + coordXIncrementRange / 2,
-        coords.y,
-        coords.x,
-        coords.y
-      );
+      drawBezierCurve(coords);
 
       prevCoords = { ...coords };
     });
 
-    ctx.bezierCurveTo(
-      prevCoords.x + coordXIncrementRange / 2,
-      prevCoords.y,
-      prevCoords.x + coordXIncrementRange / 2,
-      end.y,
-      end.x,
-      end.y
-    );
+    drawBezierCurve(end);
 
     ctx.closePath();
   };
