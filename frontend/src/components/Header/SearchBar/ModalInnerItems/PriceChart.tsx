@@ -27,9 +27,13 @@ const end = {
   x: canvasSize.width,
   y: canvasSize.height,
 };
-const { grey5: externalRangeColor, black: selectedRangeColor } = theme.palette;
+const {
+  grey5: { main: externalRangeColor },
+  black: { main: selectedRangeColor },
+} = theme.palette;
 
 const FIRST_INDEX = 0;
+const ONE_PERCENT = 0.01;
 
 const PriceChart = () => {
   const $canvasRef = useRef<HTMLCanvasElement>(null);
@@ -66,7 +70,7 @@ const PriceChart = () => {
 
       const coords = {
         x: currentX,
-        y: 100 - Math.floor((el / maxCount) * canvasSize.height),
+        y: canvasSize.height - Math.floor((el / maxCount) * canvasSize.height),
       };
 
       if (idx === FIRST_INDEX) {
@@ -96,25 +100,23 @@ const PriceChart = () => {
       end.y
     );
 
-    linearGardaradientStyle.addColorStop(0, externalRangeColor.main);
     linearGardaradientStyle.addColorStop(
-      rangeStart * 0.01,
-      externalRangeColor.main
+      rangeStart * ONE_PERCENT,
+      externalRangeColor
     );
     linearGardaradientStyle.addColorStop(
-      rangeStart * 0.01,
-      selectedRangeColor.main
+      rangeStart * ONE_PERCENT,
+      selectedRangeColor
     );
 
     linearGardaradientStyle.addColorStop(
-      rangeEnd * 0.01,
-      selectedRangeColor.main
+      rangeEnd * ONE_PERCENT,
+      selectedRangeColor
     );
     linearGardaradientStyle.addColorStop(
-      rangeEnd * 0.01,
-      externalRangeColor.main
+      rangeEnd * ONE_PERCENT,
+      externalRangeColor
     );
-    linearGardaradientStyle.addColorStop(1, externalRangeColor.main);
     ctx.fillStyle = linearGardaradientStyle;
     ctx.fill();
   };
