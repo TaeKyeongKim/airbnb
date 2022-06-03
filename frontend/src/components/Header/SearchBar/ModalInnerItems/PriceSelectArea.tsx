@@ -1,4 +1,4 @@
-import { useContext, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 
 import { Box } from "@mui/material";
 
@@ -33,12 +33,100 @@ const end = {
   y: canvasSize.height,
 };
 
+const FIRST_INDEX = 0;
+
 const PriceSelectArea = () => {
   const $canvasRef = useRef<HTMLCanvasElement>(null);
+  const [priceRange /* setPriceRange */] = useState({
+    left: 0,
+    right: 100,
+  });
+
   const { accomodationPrice /* setAccomodationPrice */ } =
     useContext(PriceSelectContext);
-
   const { minPrice, maxPrice } = accomodationPrice;
+
+  const drawChart = (/* ctx: CanvasRenderingContext2D */) => {
+    const ctx = $canvasRef.current?.getContext("2d")!;
+    ctx.beginPath();
+    ctx.moveTo(start.x, start.y);
+    let currentX = -coordXIncrementRange;
+    let prevCoords = { ...start };
+
+    accomodationsCountList.forEach((el, idx) => {
+      currentX += coordXIncrementRange;
+
+      const coords = {
+        x: currentX,
+        y: 100 - Math.floor((el / maxCount) * canvasSize.height),
+      };
+
+      if (idx === FIRST_INDEX) {
+        ctx.lineTo(coords.x, coords.y);
+        prevCoords = { ...coords };
+
+        return;
+      }
+
+      ctx.bezierCurveTo(
+        prevCoords.x + coordXIncrementRange / 2,
+        prevCoords.y,
+        prevCoords.x + coordXIncrementRange / 2,
+        coords.y,
+        coords.x,
+        coords.y
+      );
+
+      prevCoords = { ...coords };
+    });
+
+    ctx.bezierCurveTo(
+      prevCoords.x + coordXIncrementRange / 2,
+      prevCoords.y,
+      prevCoords.x + coordXIncrementRange / 2,
+      end.y,
+      end.x,
+      end.y
+    );
+
+    ctx.closePath();
+  };
+
+  // TODO: 고치기..
+  const fillColor = "#E5E5E5";
+
+  const fillChart = (
+    // ctx: CanvasRenderingContext2D,
+    thumbLeftPercent: number,
+    thumbRightPercent: number
+  ) => {
+    const ctx = $canvasRef.current?.getContext("2d")!;
+    const linearGardaradientStyle = ctx.createLinearGradient(
+      start.x,
+      start.y,
+      end.x,
+      end.y
+    );
+
+    linearGardaradientStyle.addColorStop(0, fillColor);
+    linearGardaradientStyle.addColorStop(thumbLeftPercent * 0.01, fillColor);
+    linearGardaradientStyle.addColorStop(thumbLeftPercent * 0.01, "#000");
+
+    linearGardaradientStyle.addColorStop(thumbRightPercent * 0.01, "#000");
+    linearGardaradientStyle.addColorStop(thumbRightPercent * 0.01, fillColor);
+    linearGardaradientStyle.addColorStop(1, fillColor);
+    ctx.fillStyle = linearGardaradientStyle;
+    ctx.fill();
+  };
+
+  const { left, right } = priceRange;
+
+  useEffect(() => {
+    // if (ctx) {
+    drawChart();
+    fillChart(left, right);
+    // }
+  }, []);
 
   return (
     <Box component="section">
