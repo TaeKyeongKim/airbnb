@@ -1,13 +1,15 @@
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 import { pages, LinkPath } from "./pages";
 
 const { history, location } = window;
 
-export const RouterContext = createContext<RouterContextType>({
-  page: pages.index,
-  setPage: () => {},
-});
+export const RouterContext = createContext<React.ReactNode>(pages.index);
+
+const SetPageContext = createContext<SetPageContextType>(() => {});
+type SetPageContextType = React.Dispatch<
+  React.SetStateAction<React.ReactNode>
+> | null;
 
 const pushHistory = ({ path, state }: PushHistoryProps): void => {
   // history.pushState(state, title, url)
@@ -20,7 +22,7 @@ const Link = ({
   children,
   onClick,
 }: LinkProps): JSX.Element => {
-  const { setPage } = useContext(RouterContext);
+  const setPage = useContext(SetPageContext);
 
   const href = `/${to}`;
 
@@ -28,7 +30,7 @@ const Link = ({
     e.preventDefault();
     onClick?.();
     pushHistory({ path: href, state: params });
-    setPage(pages[to]);
+    setPage?.(pages[to]);
   };
 
   return (
@@ -66,10 +68,10 @@ const Router = ({ children }: RouterProps): React.ReactElement => {
   };
 
   return (
-    <RouterContext.Provider
-      value={useMemo(() => ({ page, setPage }), [page, setPage])}
-    >
-      {children}
+    <RouterContext.Provider value={page}>
+      <SetPageContext.Provider value={setPage}>
+        {children}
+      </SetPageContext.Provider>
     </RouterContext.Provider>
   );
 };
@@ -90,10 +92,10 @@ interface PushHistoryProps {
     | {};
 }
 
-interface RouterContextType {
-  page: React.ReactNode;
-  setPage: React.Dispatch<React.SetStateAction<React.ReactNode>>;
-}
+// interface RouterContextType {
+//   page: React.ReactNode;
+//   setPage: React.Dispatch<React.SetStateAction<React.ReactNode>>;
+// }
 
 interface RouterProps {
   children: React.ReactNode;
