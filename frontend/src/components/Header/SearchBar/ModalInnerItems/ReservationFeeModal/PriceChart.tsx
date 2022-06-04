@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef } from "react";
 
+import { PriceRangeContext } from "contexts/contexts";
 import theme from "styles/theme";
 
 // TODO: 실제 API 데이터로 수정, 테마 분리
@@ -39,12 +40,14 @@ const PriceChart = () => {
   const $canvasRef = useRef<HTMLCanvasElement>(null);
 
   // TODO: setPriceRange 사용하여 rangeSlider로 범위 조절
-  const [priceRange /* setPriceRange */] = useState({
-    rangeStartPercent: 0,
-    rangeEndPercent: 100,
-  });
+  // const [priceRange /* setPriceRange */] = useState({
+  //   rangeStartPercent: 0,
+  //   rangeEndPercent: 100,
+  // });
 
-  const { rangeStartPercent, rangeEndPercent } = priceRange;
+  const {
+    priceRange: { percentage },
+  } = useContext(PriceRangeContext)!;
 
   const drawChart = () => {
     const ctx = $canvasRef.current?.getContext("2d")!;
@@ -123,8 +126,8 @@ const PriceChart = () => {
 
   useEffect(() => {
     drawChart();
-    fillChart(rangeStartPercent, rangeEndPercent);
-  }, [rangeStartPercent, rangeEndPercent]);
+    fillChart(percentage.min, percentage.max);
+  }, [percentage]);
 
   return (
     <canvas
