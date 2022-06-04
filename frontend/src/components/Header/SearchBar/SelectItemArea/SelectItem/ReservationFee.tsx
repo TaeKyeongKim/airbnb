@@ -1,3 +1,6 @@
+import { useContext, useState } from "react";
+
+import { QueryContexts } from "contexts/QueryContexts";
 import numToWon from "utils/utils";
 
 import PriceSelectArea from "../../ModalInnerItems/ReservationFeeModal/PriceSelectArea";
@@ -5,6 +8,7 @@ import ButtonArea from "../ButtonArea/ButtonArea";
 import SelectItem, { WhiteSpace, SelectItemProps } from "./SelectItem";
 
 const buttonId = "reservation-fee-button";
+// TODO: API사용시 API로부터 받아온 min, maxPrice로 변경
 const initialPrice = {
   minPrice: 10000,
   maxPrice: 10000000,
@@ -15,16 +19,15 @@ const ReservationFee = ({
   onClick,
   onClose,
 }: SelectItemProps): JSX.Element => {
-  const isOpen = anchorEl?.id === buttonId;
-  // TODO: API사용시 API로부터 받아온 min, maxPrice로 변경
-  const minPrice = 10000;
-  const maxPrice = 10000000;
+  const queryData = useContext(QueryContexts);
+  const [{ minPrice, maxPrice } /* setPriceRange */] = useState(initialPrice);
 
   const description =
-    minPrice !== initialPrice.minPrice && maxPrice !== initialPrice.maxPrice
-      ? `${numToWon(minPrice)}~${numToWon(maxPrice)}`
-      : "금액대 설정";
+    !queryData.minPrice && !queryData.maxPrice
+      ? "금액대 설정"
+      : `${numToWon(minPrice)}~${numToWon(maxPrice)}`;
 
+  const isOpen = anchorEl?.id === buttonId;
   return (
     <>
       <SelectItem
