@@ -22,8 +22,13 @@ const ReservationFee = ({
   const queryData = useContext(QueryContexts);
   const [{ minPrice, maxPrice } /* setPriceRange */] = useState(initialPrice);
 
+  const isQueryDataIncludesPriceRange =
+    queryData.minPrice || queryData.maxPrice;
+
   const description =
-    !queryData.minPrice && !queryData.maxPrice
+    !isQueryDataIncludesPriceRange &&
+    minPrice === initialPrice.minPrice &&
+    maxPrice === initialPrice.maxPrice
       ? "금액대 설정"
       : `${numToWon(minPrice)}~${numToWon(maxPrice)}`;
 
