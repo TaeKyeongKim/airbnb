@@ -73,7 +73,7 @@ const ReservationFee = ({
         createNewPopup
         anchorEl={anchorEl}
       >
-        <PriceSelectArea initialPrice={initialPrice} />
+        <PriceSelectArea /* initialPrice={initialPrice}  */ />
       </SelectItem>
       {(isOpen && <ButtonArea icon="close" divide />) || (
         <WhiteSpace divide xs={1} />

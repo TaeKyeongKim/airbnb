@@ -1,7 +1,8 @@
-// import { useMemo } from "react";
+import { useContext } from "react";
 
 import { Box } from "@mui/material";
 
+import { PriceRangeContext } from "contexts/contexts";
 import numToWon from "utils/utils";
 
 import PriceChart from "./PriceChart";
@@ -10,24 +11,21 @@ import RangeSlider from "./RangeSlider";
 // TODO: 임시데이터 변경
 const average1DayPrice = 165556;
 
-const PriceSelectArea = ({ initialPrice }: PriceSelectAreaProp) => {
-  const { minPrice, maxPrice } = initialPrice;
+const PriceSelectArea = (/* {
+  initialPrice: { minPrice, maxPrice },
+}: PriceSelectAreaProp */) => {
+  const {
+    priceRange: { price },
+  } = useContext(PriceRangeContext)!;
 
   return (
     <Box component="section">
       <h2>가격 범위</h2>
       <p>
-        ₩{numToWon(minPrice)} - ₩{numToWon(maxPrice)}
+        ₩{numToWon(price.min)} - ₩{numToWon(price.max)}
       </p>
       <p>평균 1박 요금은 ₩{numToWon(average1DayPrice)}입니다.</p>
       <Box>
-        {/* useMemo(
-            () => ({
-              priceRange,
-              setPriceRange,
-            }),
-            [priceRange, setPriceRange]
-          ) */}
         <PriceChart />
         <RangeSlider />
       </Box>
@@ -37,9 +35,9 @@ const PriceSelectArea = ({ initialPrice }: PriceSelectAreaProp) => {
 
 export default PriceSelectArea;
 
-interface PriceSelectAreaProp {
-  initialPrice: {
-    minPrice: number;
-    maxPrice: number;
-  };
-}
+// interface PriceSelectAreaProp {
+//   initialPrice: {
+//     minPrice: number;
+//     maxPrice: number;
+//   };
+// }
