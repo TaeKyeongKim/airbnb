@@ -1,6 +1,7 @@
-import { useContext, useState } from "react";
+import { useState, useContext } from "react";
 
 import { QueryContexts } from "contexts/QueryContexts";
+import { PriceRangeContext } from "contexts/contexts";
 import numToWon from "utils/utils";
 
 import PriceSelectArea from "../../ModalInnerItems/ReservationFeeModal/PriceSelectArea";
@@ -8,6 +9,12 @@ import ButtonArea from "../ButtonArea/ButtonArea";
 import SelectItem, { WhiteSpace, SelectItemProps } from "./SelectItem";
 
 const buttonId = "reservation-fee-button";
+
+const INITIAL_PRICE_PERCENTAGE = {
+  min: 0,
+  max: 100,
+};
+
 // TODO: API사용시 API로부터 받아온 min, maxPrice로 변경
 const initialPrice = {
   minPrice: 10000,
@@ -20,21 +27,37 @@ const ReservationFee = ({
   onClose,
 }: SelectItemProps): JSX.Element => {
   const queryData = useContext(QueryContexts);
-  const [{ minPrice, maxPrice } /* setPriceRange */] = useState(initialPrice);
+
+  const [price, setPrice] = useState({
+    min: initialPrice.minPrice,
+    max: initialPrice.maxPrice,
+  });
+  const [percentage, setPercentage] = useState({
+    min: INITIAL_PRICE_PERCENTAGE.min,
+    max: INITIAL_PRICE_PERCENTAGE.max,
+  });
 
   const isQueryDataIncludesPriceRange =
     queryData.minPrice || queryData.maxPrice;
 
   const description =
     !isQueryDataIncludesPriceRange &&
-    minPrice === initialPrice.minPrice &&
-    maxPrice === initialPrice.maxPrice
+    percentage.min === INITIAL_PRICE_PERCENTAGE.min &&
+    percentage.max === INITIAL_PRICE_PERCENTAGE.max
       ? "금액대 설정"
-      : `${numToWon(minPrice)}~${numToWon(maxPrice)}`;
+      : `${numToWon(initialPrice.minPrice)}~${numToWon(initialPrice.maxPrice)}`;
 
   const isOpen = anchorEl?.id === buttonId;
   return (
-    <>
+    <PriceRangeContext.Provider
+      value={{
+        priceRange: { price, percentage },
+        setPriceRange: {
+          setPrice,
+          setPercentage,
+        },
+      }}
+    >
       <SelectItem
         gridStyle={{
           xs: 2,
@@ -55,7 +78,7 @@ const ReservationFee = ({
       {(isOpen && <ButtonArea icon="close" divide />) || (
         <WhiteSpace divide xs={1} />
       )}
-    </>
+    </PriceRangeContext.Provider>
   );
 };
 
