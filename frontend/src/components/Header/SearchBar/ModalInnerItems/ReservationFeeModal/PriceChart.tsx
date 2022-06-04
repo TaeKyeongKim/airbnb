@@ -124,7 +124,7 @@ const PriceChart = () => {
   useEffect(() => {
     drawChart();
     fillChart(rangeStartPercent, rangeEndPercent);
-  }, []);
+  }, [rangeStartPercent, rangeEndPercent]);
 
   return (
     <canvas

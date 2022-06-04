@@ -1,19 +1,14 @@
-import { useContext } from "react";
-
 import { Box } from "@mui/material";
 
 import numToWon from "utils/utils";
 
-import { PriceSelectContext } from "../Context/SearchBarContexts";
 import PriceChart from "./PriceChart";
 
 // TODO: 임시데이터 변경
 const average1DayPrice = 165556;
 
-const PriceSelectArea = () => {
-  const {
-    accomodationPrice: { minPrice, maxPrice },
-  } = useContext(PriceSelectContext);
+const PriceSelectArea = ({ initialPrice }: PriceSelectAreaProp) => {
+  const { minPrice, maxPrice } = initialPrice;
 
   return (
     <Box component="section">
@@ -30,3 +25,10 @@ const PriceSelectArea = () => {
 };
 
 export default PriceSelectArea;
+
+interface PriceSelectAreaProp {
+  initialPrice: {
+    minPrice: number;
+    maxPrice: number;
+  };
+}

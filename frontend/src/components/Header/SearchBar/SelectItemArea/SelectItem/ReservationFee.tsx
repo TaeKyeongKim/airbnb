@@ -1,16 +1,14 @@
-import { useContext } from "react";
-
 import numToWon from "utils/utils";
 
-import {
-  PriceSelectContext,
-  initialPrice,
-} from "../../Context/SearchBarContexts";
-import PriceSelectArea from "../../ModalInnerItems/PriceSelectArea";
+import PriceSelectArea from "../../ModalInnerItems/ReservationFeeModal/PriceSelectArea";
 import ButtonArea from "../ButtonArea/ButtonArea";
 import SelectItem, { WhiteSpace, SelectItemProps } from "./SelectItem";
 
 const buttonId = "reservation-fee-button";
+const initialPrice = {
+  minPrice: 10000,
+  maxPrice: 10000000,
+};
 
 const ReservationFee = ({
   anchorEl,
@@ -18,10 +16,9 @@ const ReservationFee = ({
   onClose,
 }: SelectItemProps): JSX.Element => {
   const isOpen = anchorEl?.id === buttonId;
-
-  const {
-    accomodationPrice: { minPrice, maxPrice },
-  } = useContext(PriceSelectContext);
+  // TODO: API사용시 API로부터 받아온 min, maxPrice로 변경
+  const minPrice = 10000;
+  const maxPrice = 10000000;
 
   const description =
     minPrice !== initialPrice.minPrice && maxPrice !== initialPrice.maxPrice
@@ -45,7 +42,7 @@ const ReservationFee = ({
         createNewPopup
         anchorEl={anchorEl}
       >
-        <PriceSelectArea />
+        <PriceSelectArea initialPrice={initialPrice} />
       </SelectItem>
       {(isOpen && <ButtonArea icon="close" divide />) || (
         <WhiteSpace divide xs={1} />
