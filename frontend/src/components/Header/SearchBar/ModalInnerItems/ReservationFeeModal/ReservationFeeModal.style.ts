@@ -5,6 +5,25 @@ import theme from "styles/theme";
 
 const canvasSize = theme.elementSize.searchBar.priceChart;
 
+const Wrapper = styled.section`
+  font-weight: 400;
+
+  h2 {
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  .price-range {
+    font-size: 18px;
+  }
+
+  .price-average {
+    font-size: 14px;
+    color: #828282;
+  }
+`;
+
 const PriceChartCanvas = styled.canvas`
   width: ${canvasSize.width};
   height: ${canvasSize.height};
@@ -45,4 +64,4 @@ const RangeSliderWrapper = styled.div`
   }
 `;
 
-export { RangeSliderWrapper, PriceChartCanvas };
+export { Wrapper, RangeSliderWrapper, PriceChartCanvas };
