@@ -22,7 +22,7 @@ const PriceSelectArea = (/* {
     <Box component="section">
       <h2>가격 범위</h2>
       <p>
-        ₩{numToWon(price.min)} - ₩{numToWon(price.max)}
+        ₩{numToWon(price.min)} - ₩{numToWon(price.max)}+
       </p>
       <p>평균 1박 요금은 ₩{numToWon(average1DayPrice)}입니다.</p>
       <Box>
