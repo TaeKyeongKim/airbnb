@@ -8,11 +8,6 @@ const INITIAL_PRICE_PERCENTAGE = {
 };
 
 const RangeSlider = () => {
-  // const {
-  //   priceRange: { percentage },
-  //   setPriceRange: { setPrice, setPercentage },
-  // } = useContext(PriceRangeContext)!;
-
   const {
     initialPrice,
     priceRange: { price, percentage },
@@ -25,8 +20,6 @@ const RangeSlider = () => {
       (initialPrice.max - initialPrice.min) * (percent * 0.01)
     );
   };
-
-  // const [pricePercentage, setPricePercentage] = ;
 
   const $leftInputRange = useRef<HTMLInputElement>(null);
   const $rightInputRange = useRef<HTMLInputElement>(null);
@@ -69,8 +62,6 @@ const RangeSlider = () => {
       max: currentRightPercent,
     });
   };
-
-  // useEffect(() => {}, [pricePercentage]);
 
   return (
     <div>

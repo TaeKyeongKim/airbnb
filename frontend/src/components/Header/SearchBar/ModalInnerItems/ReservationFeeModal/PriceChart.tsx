@@ -39,12 +39,6 @@ const ONE_PERCENT = 0.01;
 const PriceChart = () => {
   const $canvasRef = useRef<HTMLCanvasElement>(null);
 
-  // TODO: setPriceRange 사용하여 rangeSlider로 범위 조절
-  // const [priceRange /* setPriceRange */] = useState({
-  //   rangeStartPercent: 0,
-  //   rangeEndPercent: 100,
-  // });
-
   const {
     priceRange: { percentage },
   } = useContext(PriceRangeContext)!;

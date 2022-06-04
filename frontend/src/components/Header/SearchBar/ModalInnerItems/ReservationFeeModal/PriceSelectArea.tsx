@@ -11,9 +11,7 @@ import RangeSlider from "./RangeSlider";
 // TODO: 임시데이터 변경
 const average1DayPrice = 165556;
 
-const PriceSelectArea = (/* {
-  initialPrice: { minPrice, maxPrice },
-}: PriceSelectAreaProp */) => {
+const PriceSelectArea = () => {
   const {
     priceRange: { price },
   } = useContext(PriceRangeContext)!;
@@ -34,10 +32,3 @@ const PriceSelectArea = (/* {
 };
 
 export default PriceSelectArea;
-
-// interface PriceSelectAreaProp {
-//   initialPrice: {
-//     minPrice: number;
-//     maxPrice: number;
-//   };
-// }
