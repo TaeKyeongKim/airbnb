@@ -55,7 +55,7 @@ const ReservationFee = ({
             setPercentage,
           },
         }),
-        [price, percentage, setPrice, setPercentage]
+        [price, percentage, setPrice, setPercentage, initialPrice]
       )}
     >
       <SelectItem
