@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useMemo } from "react";
 
 import { QueryContexts } from "contexts/QueryContexts";
 import { PriceRangeContext } from "contexts/contexts";
@@ -50,13 +50,16 @@ const ReservationFee = ({
   const isOpen = anchorEl?.id === buttonId;
   return (
     <PriceRangeContext.Provider
-      value={{
-        priceRange: { price, percentage },
-        setPriceRange: {
-          setPrice,
-          setPercentage,
-        },
-      }}
+      value={useMemo(
+        () => ({
+          priceRange: { price, percentage },
+          setPriceRange: {
+            setPrice,
+            setPercentage,
+          },
+        }),
+        [price, percentage, setPrice, setPercentage]
+      )}
     >
       <SelectItem
         gridStyle={{

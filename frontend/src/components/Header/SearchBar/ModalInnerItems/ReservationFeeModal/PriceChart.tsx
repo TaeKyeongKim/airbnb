@@ -95,6 +95,7 @@ const PriceChart = () => {
 
   const fillChart = (rangeStart: number, rangeEnd: number) => {
     const ctx = $canvasRef.current?.getContext("2d")!;
+    ctx.clearRect(0, 0, canvasSize.width, canvasSize.height);
 
     const linearGardaradientStyle = ctx.createLinearGradient(
       start.x,

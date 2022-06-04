@@ -1,4 +1,4 @@
-import { useContext, useState, useRef, useEffect } from "react";
+import { useContext, useRef } from "react";
 
 import { PriceRangeContext } from "contexts/contexts";
 
@@ -8,10 +8,19 @@ const INITIAL_PRICE_PERCENTAGE = {
 };
 
 const RangeSlider = () => {
+  // const {
+  //   priceRange: { percentage },
+  //   setPriceRange: { setPrice, setPercentage },
+  // } = useContext(PriceRangeContext)!;
+
   const {
-    priceRange: { percentage },
+    priceRange: { price, percentage },
     setPriceRange: { setPrice, setPercentage },
   } = useContext(PriceRangeContext)!;
+
+  const computePriceByPercentage = (percent: number): number => {
+    return price.min + (price.max - price.min) * (percent * 0.01);
+  };
 
   // const [pricePercentage, setPricePercentage] = ;
 
@@ -31,7 +40,7 @@ const RangeSlider = () => {
       $leftThumb.current.style.left = `${currentLeftPercent}%`;
     }
 
-    setPrice();
+    setPrice({ ...price, min: computePriceByPercentage(currentLeftPercent) });
 
     setPercentage({
       ...percentage,
@@ -48,7 +57,7 @@ const RangeSlider = () => {
         id="input-left"
         min={INITIAL_PRICE_PERCENTAGE.min}
         max={INITIAL_PRICE_PERCENTAGE.max}
-        value={pricePercentage.rangeStartPercent}
+        value={percentage.min}
         onChange={handleLeftRangeChange}
         ref={$leftInputRange}
       />
@@ -57,7 +66,7 @@ const RangeSlider = () => {
         id="input-right"
         min={INITIAL_PRICE_PERCENTAGE.min}
         max={INITIAL_PRICE_PERCENTAGE.max}
-        value={pricePercentage.rangeEndPercent}
+        value={percentage.max}
         ref={$rightInputRange}
       />
 
