@@ -15,23 +15,16 @@ const INITIAL_PRICE_PERCENTAGE = {
   max: 100,
 };
 
-// TODO: API사용시 API로부터 받아온 min, maxPrice로 변경
-const initialPrice = {
-  minPrice: 10000,
-  maxPrice: 10000000,
-};
-
 const ReservationFee = ({
   anchorEl,
   onClick,
   onClose,
-}: SelectItemProps): JSX.Element => {
+  stateData,
+  initialPrice,
+}: ReservationFeeProps): JSX.Element => {
+  const { state: price, setState: setPrice } = stateData!;
   const queryData = useContext(QueryContexts);
 
-  const [price, setPrice] = useState({
-    min: initialPrice.minPrice,
-    max: initialPrice.maxPrice,
-  });
   const [percentage, setPercentage] = useState({
     min: INITIAL_PRICE_PERCENTAGE.min,
     max: INITIAL_PRICE_PERCENTAGE.max,
@@ -53,8 +46,8 @@ const ReservationFee = ({
       value={useMemo(
         () => ({
           initialPrice: {
-            min: initialPrice.minPrice,
-            max: initialPrice.maxPrice,
+            min: initialPrice?.minPrice!,
+            max: initialPrice?.maxPrice!,
           },
           priceRange: { price, percentage },
           setPriceRange: {
@@ -90,3 +83,10 @@ const ReservationFee = ({
 };
 
 export default ReservationFee;
+
+interface ReservationFeeProps extends SelectItemProps {
+  initialPrice?: {
+    minPrice: number;
+    maxPrice: number;
+  };
+}

@@ -45,7 +45,6 @@ const RangeSlider = () => {
     }
 
     setPrice({ ...price, min: computePriceByPercentage(currentLeftPercent) });
-    console.log(computePriceByPercentage(currentLeftPercent));
 
     setPercentage({
       ...percentage,
@@ -64,7 +63,6 @@ const RangeSlider = () => {
     }
 
     setPrice({ ...price, max: computePriceByPercentage(currentRightPercent) });
-    console.log(computePriceByPercentage(currentRightPercent));
 
     setPercentage({
       ...percentage,
