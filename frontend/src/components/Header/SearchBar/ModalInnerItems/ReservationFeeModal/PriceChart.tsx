@@ -3,6 +3,8 @@ import { useContext, useEffect, useRef } from "react";
 import { PriceRangeContext } from "contexts/contexts";
 import theme from "styles/theme";
 
+import { PriceChartCanvas } from "./ReservationFeeModal.style";
+
 // TODO: 실제 API 데이터로 수정, 테마 분리
 
 const EXCLUDE_RANGE_COUNT = 1;
@@ -125,13 +127,13 @@ const PriceChart = () => {
   }, [percentage]);
 
   return (
-    <canvas
+    <PriceChartCanvas
       ref={$canvasRef}
       width={canvasSize.width}
       height={canvasSize.height}
     >
       선택한 날짜 기준 숙소들의 가격 범위를 나타내는 차트입니다.
-    </canvas>
+    </PriceChartCanvas>
   );
 };
 

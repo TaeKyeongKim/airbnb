@@ -2,6 +2,8 @@ import { useContext, useRef } from "react";
 
 import { PriceRangeContext } from "contexts/contexts";
 
+import { RangeSliderWrapper } from "./ReservationFeeModal.style";
+
 const INITIAL_PRICE_PERCENTAGE = {
   min: 0,
   max: 100,
@@ -64,7 +66,7 @@ const RangeSlider = () => {
   };
 
   return (
-    <div>
+    <RangeSliderWrapper>
       <input
         type="range"
         id="input-left"
@@ -83,12 +85,7 @@ const RangeSlider = () => {
         onChange={handleRightRangeChange}
         ref={$rightInputRange}
       />
-
-      <div className="slider">
-        <div className="thumb left" ref={$leftThumb} />
-        <div className="thumb right" ref={$rightThumb} />
-      </div>
-    </div>
+    </RangeSliderWrapper>
   );
 };
 

@@ -38,7 +38,7 @@ const ReservationFee = ({
     percentage.min === INITIAL_PRICE_PERCENTAGE.min &&
     percentage.max === INITIAL_PRICE_PERCENTAGE.max
       ? "금액대 설정"
-      : `${numToWon(price.min)}~${numToWon(price.max)}+`;
+      : `${numToWon(price.min)}~${numToWon(price.max)}`;
 
   const isOpen = anchorEl?.id === buttonId;
   return (
@@ -73,7 +73,7 @@ const ReservationFee = ({
         createNewPopup
         anchorEl={anchorEl}
       >
-        <PriceSelectArea /* initialPrice={initialPrice}  */ />
+        <PriceSelectArea />
       </SelectItem>
       {(isOpen && <ButtonArea icon="close" divide />) || (
         <WhiteSpace divide xs={1} />
