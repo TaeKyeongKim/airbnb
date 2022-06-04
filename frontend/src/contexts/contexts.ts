@@ -15,6 +15,7 @@ export interface PriceRangeType {
 }
 
 interface PriceRangeContextType {
+  initialPrice: RangeType;
   priceRange: PriceRangeType;
   setPriceRange: {
     setPrice: React.Dispatch<React.SetStateAction<RangeType>>;

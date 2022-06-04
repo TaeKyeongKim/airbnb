@@ -14,12 +14,16 @@ const RangeSlider = () => {
   // } = useContext(PriceRangeContext)!;
 
   const {
+    initialPrice,
     priceRange: { price, percentage },
     setPriceRange: { setPrice, setPercentage },
   } = useContext(PriceRangeContext)!;
 
   const computePriceByPercentage = (percent: number): number => {
-    return price.min + (price.max - price.min) * (percent * 0.01);
+    return (
+      initialPrice.min +
+      (initialPrice.max - initialPrice.min) * (percent * 0.01)
+    );
   };
 
   // const [pricePercentage, setPricePercentage] = ;
@@ -41,10 +45,30 @@ const RangeSlider = () => {
     }
 
     setPrice({ ...price, min: computePriceByPercentage(currentLeftPercent) });
+    console.log(computePriceByPercentage(currentLeftPercent));
 
     setPercentage({
       ...percentage,
       min: currentLeftPercent,
+    });
+  };
+
+  const handleRightRangeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const currentRightPercent = Math.max(
+      Math.floor(Number(e.target.value)),
+      Math.floor(Number($leftInputRange.current?.value)) + 5
+    );
+
+    if ($rightThumb.current) {
+      $rightThumb.current.style.right = `${100 - currentRightPercent}%`;
+    }
+
+    setPrice({ ...price, max: computePriceByPercentage(currentRightPercent) });
+    console.log(computePriceByPercentage(currentRightPercent));
+
+    setPercentage({
+      ...percentage,
+      max: currentRightPercent,
     });
   };
 
@@ -67,6 +91,7 @@ const RangeSlider = () => {
         min={INITIAL_PRICE_PERCENTAGE.min}
         max={INITIAL_PRICE_PERCENTAGE.max}
         value={percentage.max}
+        onChange={handleRightRangeChange}
         ref={$rightInputRange}
       />
 

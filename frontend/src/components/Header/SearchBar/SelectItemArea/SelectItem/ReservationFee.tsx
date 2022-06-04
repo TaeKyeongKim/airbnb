@@ -52,6 +52,10 @@ const ReservationFee = ({
     <PriceRangeContext.Provider
       value={useMemo(
         () => ({
+          initialPrice: {
+            min: initialPrice.minPrice,
+            max: initialPrice.maxPrice,
+          },
           priceRange: { price, percentage },
           setPriceRange: {
             setPrice,
