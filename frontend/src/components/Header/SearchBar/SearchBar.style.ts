@@ -8,11 +8,9 @@ const SearchBarContainer = styled(Container, {
 })<SearchBarContainerProps>(
   ({ currentPage, theme: { elementSize, palette, style } }) => `
   margin: ${style.alignCenter.margin};
-  max-width: ${
-    currentPage === "index" && elementSize.searchBar.fullSize.maxWidth
-  };
-  height: ${currentPage === "index" && elementSize.searchBar.fullSize.height};
-  padding: ${currentPage === "index" && elementSize.searchBar.fullSize.padding};
+  max-width: ${currentPage === "/" && elementSize.searchBar.fullSize.maxWidth};
+  height: ${currentPage === "/" && elementSize.searchBar.fullSize.height};
+  padding: ${currentPage === "/" && elementSize.searchBar.fullSize.padding};
   background-color: ${palette.white.main};
   border: 1px solid ${palette.grey4.main};
   border-radius: calc(${elementSize.searchBar.fullSize.maxWidth} / 2);
