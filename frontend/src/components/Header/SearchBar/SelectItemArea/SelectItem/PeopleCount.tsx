@@ -1,3 +1,7 @@
+import { useContext } from "react";
+
+import { LocationContext } from "router/Contexts";
+
 import ButtonArea from "../ButtonArea/ButtonArea";
 import SelectItem, { SelectItemProps, WhiteSpace } from "./SelectItem";
 
@@ -8,6 +12,8 @@ const PeopleCount = ({
   onClose,
   anchorEl,
 }: SelectItemProps): JSX.Element => {
+  const { pathname } = useContext(LocationContext)!;
+
   const isOpen = anchorEl?.id === buttonId;
 
   return (
@@ -20,7 +26,7 @@ const PeopleCount = ({
         buttonId={buttonId}
         buttonAreaLabel="숙박 인원 설정"
         title="인원"
-        desc="게스트 추가"
+        desc={pathname === "/" ? "게스트 추가" : "인원 입력"}
         open={isOpen}
         handleClick={onClick}
         anchorEl={anchorEl}

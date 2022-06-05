@@ -1,6 +1,8 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 
 import { Grid } from "@mui/material";
+
+import { LocationContext } from "router/Contexts";
 
 import ButtonArea from "../ButtonArea/ButtonArea";
 import { ModalTemplate } from "../SelectItemTemplate/SelectItemTemplate";
@@ -13,6 +15,8 @@ const CheckInOut = ({
   setAnchorEl,
   onClose,
 }: SelectItemProps): JSX.Element => {
+  const { pathname } = useContext(LocationContext)!;
+
   const $wrap = useRef<HTMLDivElement>(null);
   const isOpen = anchorEl?.id === wrapperId;
 
@@ -28,8 +32,8 @@ const CheckInOut = ({
         }}
         buttonId="check-in-date-button"
         buttonAreaLabel="체크인 날짜 설정"
-        title="안녕하세요"
-        desc="호톨비"
+        title="체크인"
+        desc={pathname === "/" ? "날짜입력" : "일정 입력"}
         handleClick={handleClick}
         open={isOpen}
       />
