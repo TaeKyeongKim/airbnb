@@ -71,6 +71,11 @@ const theme = createTheme({
         height: `76px`,
         padding: `16px 16px 16px 40px !important`,
       },
+      miniSize: {
+        width: "298px",
+        height: "48px",
+        padding: "8px 8px 8px 24px !important",
+      },
       priceChart: {
         width: 365,
         height: 100,
@@ -205,6 +210,11 @@ declare module "@mui/material/styles" {
           height: string;
           padding: string;
         };
+        miniSize: {
+          width: string;
+          height: string;
+          padding: string;
+        };
         priceChart: {
           width: number;
           height: number;
@@ -255,6 +265,11 @@ declare module "@mui/material/styles" {
         };
         fullSize?: {
           maxWidth?: string;
+          height?: string;
+          padding?: string;
+        };
+        miniSize?: {
+          width?: string;
           height?: string;
           padding?: string;
         };
