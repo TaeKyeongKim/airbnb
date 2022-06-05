@@ -8,6 +8,8 @@ import { indexHeaderStyle, HeaderContainer } from "./Header.style";
 import SearchBar from "./SearchBar/SearchBar";
 import UserMenu from "./UserMenu/UserMenu";
 
+const { pathname } = window.location;
+
 const LogoArea = () => {
   return (
     <Grid container item xs={2} justifyContent="left">
@@ -20,28 +22,45 @@ const LogoArea = () => {
   );
 };
 
+const GNBArea = () => {
+  return (
+    <GNB
+      menuData={MENUS}
+      container
+      rowSpacing={2}
+      item
+      xs={8}
+      justifyContent="center"
+    />
+  );
+};
+
+const ChildNodes = ({ currentPath }: { currentPath: string }) => {
+  return (
+    <>
+      <Grid
+        container
+        spacing={2}
+        columns={12}
+        sx={{ height: ({ elementSize }) => elementSize.fullSize }}
+      >
+        <LogoArea />
+        {currentPath === "/" && <GNBArea />}
+        {currentPath === "/searchResult" && (
+          <SearchBar pathname={currentPath} />
+        )}
+        <UserMenu />
+      </Grid>
+      {currentPath === "/" && <SearchBar pathname={currentPath} />}
+    </>
+  );
+};
+
 const Header = () => {
   return (
     <Box component="header" sx={indexHeaderStyle}>
       <HeaderContainer maxWidth="xl">
-        <Grid
-          container
-          spacing={2}
-          columns={12}
-          sx={{ height: ({ elementSize }) => elementSize.fullSize }}
-        >
-          <LogoArea />
-          <GNB
-            menuData={MENUS}
-            container
-            rowSpacing={2}
-            item
-            xs={8}
-            justifyContent="center"
-          />
-          <UserMenu />
-        </Grid>
-        <SearchBar />
+        <ChildNodes currentPath={pathname} />
       </HeaderContainer>
     </Box>
   );
