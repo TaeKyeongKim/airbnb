@@ -3,29 +3,29 @@ import { useMemo, useState } from "react";
 import { RouterContext, LocationContext } from "./Contexts";
 import { pages } from "./pages";
 
-const { location } = window;
-const queryData: { [key: string]: string } = {};
-location.search
-  .slice(1)
-  .split("&")
-  .map((item) => item.split("="))
-  .forEach(([key, val]) => {
-    if (key.length) {
-      queryData[key] = val;
-    }
-  });
-
 const FIRST_INDEX = 0;
 const FIRST_SLASH_COUNT = 1;
 
-const getCurrentPath = () => {
-  return (
-    location.pathname.slice(FIRST_SLASH_COUNT).split("/")[FIRST_INDEX] ||
-    "index"
-  );
-};
-
 const Router = ({ children }: RouterProps): React.ReactElement => {
+  const { location } = window;
+  const queryData: { [key: string]: string } = useMemo(() => ({}), []);
+  location.search
+    .slice(1)
+    .split("&")
+    .map((item) => item.split("="))
+    .forEach(([key, val]) => {
+      if (key.length) {
+        queryData[key] = val;
+      }
+    });
+
+  const getCurrentPath = () => {
+    return (
+      location.pathname.slice(FIRST_SLASH_COUNT).split("/")[FIRST_INDEX] ||
+      "index"
+    );
+  };
+
   const currentPath = getCurrentPath();
 
   const [page, setPage] = useState(pages[currentPath] ? "index" : "notFound");
@@ -49,10 +49,10 @@ const Router = ({ children }: RouterProps): React.ReactElement => {
       <LocationContext.Provider
         value={useMemo(
           () => ({
-            queryData,
+            queryData /* useMemo(() => queryData, [queryData]), */,
             pathname: location.pathname,
           }),
-          [location.pathname, location.search]
+          [location.pathname, queryData]
         )}
       >
         {children}

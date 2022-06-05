@@ -110,7 +110,7 @@ export interface SelectItemProps {
 
 export type AnchorEl = null | HTMLDivElement | (EventTarget & HTMLElement);
 
-interface RangeType {
+export interface RangeType {
   min: number;
   max: number;
 }
