@@ -8,6 +8,7 @@ const SearchBarContainer = styled(Container, {
 })<SearchBarContainerProps>(
   ({ currentPage, theme: { elementSize, palette, style } }) => {
     let containerSize;
+    let fontStyle = "";
 
     if (currentPage === "/") {
       containerSize = `
@@ -23,9 +24,15 @@ const SearchBarContainer = styled(Container, {
         height: ${elementSize.searchBar.miniSize.height};
         padding: ${elementSize.searchBar.miniSize.padding};
       `;
+      fontStyle = `
+        font-weight: ${style.searchButton.fontWeight};
+        font-size: ${style.searchButton.fontSize};
+        color: ${palette.grey3.main};
+      `;
     }
     return `
       ${containerSize};
+      ${fontStyle};
       margin: ${style.alignCenter.margin};
       background-color: ${palette.white.main};
       border: 1px solid ${palette.grey4.main};

@@ -1,4 +1,4 @@
-import { SetStateAction } from "react";
+import { SetStateAction, useContext } from "react";
 
 import {
   Button,
@@ -7,6 +7,8 @@ import {
   PopoverProps,
   Typography,
 } from "@mui/material";
+
+import { LocationContext } from "router/Contexts";
 
 import {
   ModalTemplate,
@@ -31,6 +33,8 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
     createNewPopup,
   } = props;
 
+  const { queryData, pathname } = useContext(LocationContext)!;
+
   return (
     <SelectItemTemplate xs={xs} pl={pl}>
       <Button
@@ -42,8 +46,13 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
         onClick={handleClick}
         sx={itemStyles.button}
       >
-        <Typography sx={itemStyles.title}>{title}</Typography>
-        <Typography sx={itemStyles.desc}>{desc}</Typography>
+        {pathname === "/" && (
+          <Typography sx={itemStyles.title}>{title}</Typography>
+        )}
+        {/* 쿼리데이터가 없는 경우 표시 */}
+        {!Object.entries(queryData).length && (
+          <Typography sx={itemStyles.desc}>{desc}</Typography>
+        )}
       </Button>
       {(createNewPopup && (
         <ModalTemplate
@@ -76,7 +85,7 @@ export interface SelectItemDataProps extends PopoverProps {
   };
   buttonId: string;
   buttonAreaLabel: string;
-  title: string;
+  title?: string;
   desc: string;
   modalAnchorStyle?: {
     horizontal: "center" | "left" | "right" | number;

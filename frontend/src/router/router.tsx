@@ -10,7 +10,9 @@ location.search
   .split("&")
   .map((item) => item.split("="))
   .forEach(([key, val]) => {
-    queryData[key] = val;
+    if (key.length) {
+      queryData[key] = val;
+    }
   });
 
 const FIRST_INDEX = 0;

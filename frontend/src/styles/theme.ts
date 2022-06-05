@@ -92,6 +92,10 @@ const theme = createTheme({
     `,
       margin: "0 auto",
     },
+    searchButton: {
+      fontWeight: 400,
+      fontSize: "12px",
+    },
   },
   whiteSpace: {
     inner: "80px",
@@ -226,6 +230,10 @@ declare module "@mui/material/styles" {
         flex: string;
         margin: string;
       };
+      searchButton: {
+        fontWeight: number;
+        fontSize: string;
+      };
       circularBorder: string;
     };
     whiteSpace: {
@@ -283,6 +291,10 @@ declare module "@mui/material/styles" {
       alignCenter?: {
         flex?: string;
         margin?: string;
+      };
+      searchButton?: {
+        fontWeight?: number;
+        fontSize?: string;
       };
       circularBorder?: string;
     };
