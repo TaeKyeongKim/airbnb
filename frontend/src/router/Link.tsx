@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import RouterContext from "./Contexts";
+import { RouterContext } from "./Contexts";
 
 const { history, location } = window;
 

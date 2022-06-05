@@ -3,7 +3,7 @@ import { useContext } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 
-import RouterContext from "router/Contexts";
+import { RouterContext } from "router/Contexts";
 import { pages } from "router/pages";
 import theme from "styles/theme";
 

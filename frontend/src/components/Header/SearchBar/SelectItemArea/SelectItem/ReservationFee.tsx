@@ -1,7 +1,7 @@
 import { useState, useContext, useMemo } from "react";
 
-import { QueryContexts } from "contexts/QueryContexts";
 import { PriceRangeContext } from "contexts/contexts";
+import { LocationContext } from "router/Contexts";
 import numToWon from "utils/utils";
 
 import PriceSelectArea from "../../ModalInnerItems/ReservationFeeModal/PriceSelectArea";
@@ -23,7 +23,7 @@ const ReservationFee = ({
   initialPrice,
 }: ReservationFeeProps): JSX.Element => {
   const { state: price, setState: setPrice } = stateData!;
-  const queryData = useContext(QueryContexts);
+  const { queryData } = useContext(LocationContext)!;
 
   const [percentage, setPercentage] = useState({
     min: INITIAL_PRICE_PERCENTAGE.min,

@@ -1,7 +1,10 @@
+import { useContext } from "react";
+
 import { Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 
 import MENUS from "mockData/menus";
+import { LocationContext } from "router/Contexts";
 import Link from "router/Link";
 
 import GNB from "./GNB/GNB";
@@ -54,7 +57,7 @@ const ChildNodes = ({ currentPath }: { currentPath: string }) => {
 };
 
 const Header = () => {
-  const { pathname } = window.location;
+  const { pathname } = useContext(LocationContext)!;
   return (
     <Box component="header" sx={indexHeaderStyle}>
       <HeaderContainer maxWidth="xl">

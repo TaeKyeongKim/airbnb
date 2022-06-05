@@ -1,9 +1,17 @@
 import { useMemo, useState } from "react";
 
-import RouterContext from "./Contexts";
+import { RouterContext, LocationContext } from "./Contexts";
 import { pages } from "./pages";
 
 const { location } = window;
+const queryData: { [key: string]: string } = {};
+location.search
+  .slice(1)
+  .split("&")
+  .map((item) => item.split("="))
+  .forEach(([key, val]) => {
+    queryData[key] = val;
+  });
 
 const FIRST_INDEX = 0;
 const FIRST_SLASH_COUNT = 1;
@@ -36,7 +44,17 @@ const Router = ({ children }: RouterProps): React.ReactElement => {
     <RouterContext.Provider
       value={useMemo(() => ({ page, setPage }), [page, setPage])}
     >
-      {children}
+      <LocationContext.Provider
+        value={useMemo(
+          () => ({
+            queryData,
+            pathname: location.pathname,
+          }),
+          [location.pathname, location.search]
+        )}
+      >
+        {children}
+      </LocationContext.Provider>
     </RouterContext.Provider>
   );
 };
