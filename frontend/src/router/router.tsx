@@ -28,7 +28,10 @@ const Router = ({ children }: RouterProps): React.ReactElement => {
 
   const currentPath = getCurrentPath();
 
-  const [page, setPage] = useState(pages[currentPath] ? "index" : "notFound");
+  // 이부분이 잘못됨, 무조건 존재하면 index로 연결
+  const [page, setPage] = useState(
+    pages[currentPath] ? currentPath : "notFound"
+  );
 
   onpopstate = (/* e: PopStateEvent */) => {
     const poppedPath = getCurrentPath();
@@ -49,7 +52,7 @@ const Router = ({ children }: RouterProps): React.ReactElement => {
       <LocationContext.Provider
         value={useMemo(
           () => ({
-            queryData /* useMemo(() => queryData, [queryData]), */,
+            queryData,
             pathname: location.pathname,
           }),
           [location.pathname, queryData]
