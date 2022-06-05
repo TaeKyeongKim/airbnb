@@ -17,7 +17,7 @@ const Link = ({
 }: LinkProps): JSX.Element => {
   const { setPage } = useContext(RouterContext);
 
-  const href = `/${to}`;
+  const href = to !== "index" ? `/${to}` : `/`;
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();

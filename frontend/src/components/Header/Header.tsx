@@ -2,21 +2,18 @@ import { Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 
 import MENUS from "mockData/menus";
+import Link from "router/Link";
 
 import GNB from "./GNB/GNB";
 import { indexHeaderStyle, HeaderContainer } from "./Header.style";
 import SearchBar from "./SearchBar/SearchBar";
 import UserMenu from "./UserMenu/UserMenu";
 
-const { pathname } = window.location;
-
 const LogoArea = () => {
   return (
     <Grid container item xs={2} justifyContent="left">
       <h1 style={{ margin: "auto 0" }}>
-        <a href="/" title="첫 화면으로 이동">
-          LOGO
-        </a>
+        <Link to="index">LOGO</Link>
       </h1>
     </Grid>
   );
@@ -57,6 +54,7 @@ const ChildNodes = ({ currentPath }: { currentPath: string }) => {
 };
 
 const Header = () => {
+  const { pathname } = window.location;
   return (
     <Box component="header" sx={indexHeaderStyle}>
       <HeaderContainer maxWidth="xl">
