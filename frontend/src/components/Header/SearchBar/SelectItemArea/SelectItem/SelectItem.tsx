@@ -51,7 +51,11 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
         )}
         {/* 쿼리데이터가 없는 경우 표시 */}
         {!Object.entries(queryData).length && (
-          <Typography sx={itemStyles.desc}>{desc}</Typography>
+          <Typography
+            sx={pathname === "/" ? itemStyles.desc : itemStyles.miniSizeDesc}
+          >
+            {desc}
+          </Typography>
         )}
       </Button>
       {(createNewPopup && (

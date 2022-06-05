@@ -92,7 +92,7 @@ const theme = createTheme({
     `,
       margin: "0 auto",
     },
-    searchButton: {
+    miniSearchButton: {
       fontWeight: 400,
       fontSize: "12px",
     },
@@ -230,7 +230,7 @@ declare module "@mui/material/styles" {
         flex: string;
         margin: string;
       };
-      searchButton: {
+      miniSearchButton: {
         fontWeight: number;
         fontSize: string;
       };
@@ -292,7 +292,7 @@ declare module "@mui/material/styles" {
         flex?: string;
         margin?: string;
       };
-      searchButton?: {
+      miniSearchButton?: {
         fontWeight?: number;
         fontSize?: string;
       };

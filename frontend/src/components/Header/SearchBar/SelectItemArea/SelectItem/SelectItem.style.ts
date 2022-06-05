@@ -19,6 +19,11 @@ const SelectItemStyle = {
     color: ({ palette }: Theme) => palette.grey2.main,
     fontSize: "16px",
   },
+  miniSizeDesc: {
+    color: ({ palette }: Theme) => palette.grey3.main,
+    fontSize: ({ style }: Theme) => style.miniSearchButton.fontSize,
+    fontWeight: ({ style }: Theme) => style.miniSearchButton.fontWeight,
+  },
   border: {
     borderRight: ({ palette }: { palette: { grey5: { main: string } } }) =>
       `1px solid ${palette.grey5.main}`,
