@@ -9,7 +9,6 @@ import theme from "styles/theme";
 
 const App = (): JSX.Element => {
   const { page } = useContext(RouterContext);
-  console.log(page);
 
   return (
     <div className="App">
