@@ -8,7 +8,11 @@ import { LocationContext } from "router/Contexts";
 import Link from "router/Link";
 
 import GNB from "./GNB/GNB";
-import { indexHeaderStyle, HeaderContainer } from "./Header.style";
+import {
+  indexHeaderStyle,
+  HeaderContainer,
+  miniHeaderStyle,
+} from "./Header.style";
 import SearchBar from "./SearchBar/SearchBar";
 import UserMenu from "./UserMenu/UserMenu";
 
@@ -58,7 +62,10 @@ const Header = () => {
   const { pathname } = useContext(LocationContext)!;
 
   return (
-    <Box component="header" sx={indexHeaderStyle}>
+    <Box
+      component="header"
+      sx={pathname === "/" ? indexHeaderStyle : miniHeaderStyle}
+    >
       <HeaderContainer maxWidth="xl">
         <ChildNodes currentPath={pathname} />
       </HeaderContainer>
