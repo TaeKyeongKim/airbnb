@@ -46,18 +46,17 @@ const ChildNodes = ({ currentPath }: { currentPath: string }) => {
       >
         <LogoArea />
         {currentPath === "/" && <GNBArea />}
-        {currentPath === "/searchResult" && (
-          <SearchBar pathname={currentPath} />
-        )}
+        {currentPath === "/searchResult" && <SearchBar />}
         <UserMenu />
       </Grid>
-      {currentPath === "/" && <SearchBar pathname={currentPath} />}
+      {currentPath === "/" && <SearchBar />}
     </>
   );
 };
 
 const Header = () => {
   const { pathname } = useContext(LocationContext)!;
+
   return (
     <Box component="header" sx={indexHeaderStyle}>
       <HeaderContainer maxWidth="xl">

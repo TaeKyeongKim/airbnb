@@ -1,7 +1,11 @@
+import { useContext } from "react";
+
+import { LocationContext } from "router/Contexts";
+
 import SearchBarContainer from "./SearchBar.style";
 import SelectItemArea from "./SelectItemArea/SelectItemArea";
 
-const SearchBar = ({ pathname }: { pathname: string }): JSX.Element => {
+const SearchBar = (): JSX.Element => {
   // TODO:
   // 첫 화면, 검색결과 화면 모두 같은 SearchBar를 공유함
   // 검색하기 위해서 SelectItem들을 선택할때는 해당 SelectItemArea의 state로 저장되지만
@@ -9,8 +13,10 @@ const SearchBar = ({ pathname }: { pathname: string }): JSX.Element => {
   // 이렇게 하지 않으면 검색결과화면에서 뒤로가기 버튼으로 첫 화면으로 이동하였을때에도 SearchBar에 현재 선택한 사항이 유지됨
   // (실제 에어비앤비는 같은 방법으로 초기화면으로 돌아간 경우 SearchBar가 초기화되어 표시된다. 👉 이렇게 표시하기 위해)
 
+  const { pathname } = useContext(LocationContext)!;
+
   return (
-    <SearchBarContainer currentPage={pathname}>
+    <SearchBarContainer pathname={pathname}>
       <SelectItemArea />
     </SearchBarContainer>
   );

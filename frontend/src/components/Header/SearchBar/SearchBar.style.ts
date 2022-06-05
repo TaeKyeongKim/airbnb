@@ -2,15 +2,14 @@ import { Container } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 const SearchBarContainer = styled(Container, {
-  shouldForwardProp: (prop) => prop !== "currentPage",
+  shouldForwardProp: (prop) => prop !== "pathname",
   name: "MyThemeComponent",
   slot: "Root",
 })<SearchBarContainerProps>(
-  ({ currentPage, theme: { elementSize, palette, style } }) => {
+  ({ pathname, theme: { elementSize, palette, style } }) => {
     let containerSize;
-    let fontStyle = "";
 
-    if (currentPage === "/") {
+    if (pathname === "/") {
       containerSize = `
       max-width: ${elementSize.searchBar.fullSize.maxWidth};
       height: ${elementSize.searchBar.fullSize.height};
@@ -18,21 +17,16 @@ const SearchBarContainer = styled(Container, {
       `;
     }
 
-    if (currentPage === "/searchResult") {
+    if (pathname === "/searchResult") {
       containerSize = `
         width: ${elementSize.searchBar.miniSize.width};
         height: ${elementSize.searchBar.miniSize.height};
         padding: ${elementSize.searchBar.miniSize.padding};
       `;
-      fontStyle = `
-        font-weight: ${style.searchButton.fontWeight};
-        font-size: ${style.searchButton.fontSize};
-        color: ${palette.grey3.main};
-      `;
     }
+
     return `
       ${containerSize};
-      ${fontStyle};
       margin: ${style.alignCenter.margin};
       background-color: ${palette.white.main};
       border: 1px solid ${palette.grey4.main};
@@ -48,5 +42,5 @@ const SearchBarContainer = styled(Container, {
 export default SearchBarContainer;
 
 export interface SearchBarContainerProps {
-  currentPage?: string;
+  pathname?: string;
 }
