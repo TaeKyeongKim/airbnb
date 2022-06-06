@@ -41,6 +41,17 @@ const RoundButton = styled(IconButton, {
     overflow: hidden;
     `;
 
+  const iconSize =
+    pathname === "/"
+      ? `
+  width: ${elementSize.searchBar[buttonKeyName].icon.width};
+  height: ${elementSize.searchBar[buttonKeyName].icon.height};
+  `
+      : `
+  
+  width: ${elementSize.searchBar.icon.miniSize};
+  height: ${elementSize.searchBar.icon.miniSize};`;
+
   return `
     ${isFocused ? focusedButtonStyle : buttonSize};
     transition: all ease-out 0.2s 0s;
@@ -51,8 +62,7 @@ const RoundButton = styled(IconButton, {
     margin-right: ${isCloseIcon && elementSize.searchBar.closeButton.width};
 
     .MuiSvgIcon-root {
-      width: ${elementSize.searchBar[buttonKeyName].icon.width};
-      height: ${elementSize.searchBar[buttonKeyName].icon.height};
+      ${iconSize}
       color: ${palette[svgColor].main};
     };
   `;
