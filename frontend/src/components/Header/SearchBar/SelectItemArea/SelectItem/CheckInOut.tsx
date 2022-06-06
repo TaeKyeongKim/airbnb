@@ -2,7 +2,7 @@ import { useContext, useRef } from "react";
 
 import { Grid } from "@mui/material";
 
-import { LocationContext } from "router/Contexts";
+import { SearchBarStateContext } from "contexts/contexts";
 
 import ButtonArea from "../ButtonArea/ButtonArea";
 import { ModalTemplate } from "../SelectItemTemplate/SelectItemTemplate";
@@ -15,8 +15,9 @@ const CheckInOut = ({
   setAnchorEl,
   onClose,
 }: SelectItemProps): JSX.Element => {
-  const { pathname } = useContext(LocationContext)!;
-  const isCurrentPageIndex = pathname === "/";
+  const { isSearchBarFullSize, setIsSearchBarFullSize } = useContext(
+    SearchBarStateContext
+  )!;
 
   const $wrap = useRef<HTMLDivElement>(null);
   const isOpen = anchorEl?.id === wrapperId;
@@ -29,12 +30,12 @@ const CheckInOut = ({
     <Grid
       item
       container
-      xs={isCurrentPageIndex ? 5 : 3}
+      xs={isSearchBarFullSize ? 5 : 3}
       component="div"
       id={wrapperId}
       ref={$wrap}
     >
-      {(isCurrentPageIndex && (
+      {(isSearchBarFullSize && (
         <>
           <SelectItem
             gridStyle={{
@@ -74,7 +75,7 @@ const CheckInOut = ({
           desc="일정입력"
           open={isOpen}
           anchorEl={anchorEl}
-          handleClose={onClose}
+          handleClick={() => setIsSearchBarFullSize(true)}
           createNewPopup
         >
           체크인아웃
