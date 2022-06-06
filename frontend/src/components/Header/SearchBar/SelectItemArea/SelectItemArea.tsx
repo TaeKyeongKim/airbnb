@@ -27,6 +27,8 @@ const SelectItemArea = (): JSX.Element => {
     SearchBarStateContext
   )!;
 
+  console.log(isSearchBarFullSize);
+
   const [anchorEl, setAnchorEl] = useState<AnchorEl>(null);
   const [price, setPrice] = useState({
     min: initialPrice.minPrice,

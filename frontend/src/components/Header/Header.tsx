@@ -50,6 +50,7 @@ const headerMiddleItem = {
 
 const ChildNodes = () => {
   const { isSearchBarFullSize } = useContext(SearchBarStateContext)!;
+  console.log(isSearchBarFullSize, "차일드노드");
   return (
     <>
       <Grid

@@ -8,6 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 
+import { SearchBarStateContext } from "contexts/contexts";
 import { LocationContext } from "router/Contexts";
 
 import {
@@ -33,8 +34,9 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
     createNewPopup,
   } = props;
 
-  const { queryData, pathname } = useContext(LocationContext)!;
-  // sx={{ height: ({ elementSize }) => elementSize.fullSize }}
+  const { queryData } = useContext(LocationContext)!;
+  const { isSearchBarFullSize } = useContext(SearchBarStateContext)!;
+
   return (
     <SelectItemTemplate xs={xs} pl={pl}>
       <Button
@@ -46,13 +48,13 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
         onClick={handleClick}
         sx={itemStyles.button}
       >
-        {pathname === "/" && (
+        {isSearchBarFullSize && (
           <Typography sx={itemStyles.title}>{title}</Typography>
         )}
         {/* 쿼리데이터가 없는 경우 표시 */}
         {!Object.entries(queryData).length && (
           <Typography
-            sx={pathname === "/" ? itemStyles.desc : itemStyles.miniSizeDesc}
+            sx={isSearchBarFullSize ? itemStyles.desc : itemStyles.miniSizeDesc}
           >
             {desc}
           </Typography>
