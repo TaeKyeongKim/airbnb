@@ -4,7 +4,8 @@ const SelectItemStyle = {
   button: {
     flexDirection: "column",
     padding: 0,
-    width: "100%",
+    width: ({ elementSize }: Theme) => elementSize.fullSize,
+    height: ({ elementSize }: Theme) => elementSize.fullSize,
     alignItems: "flex-start",
 
     "&:hover": {

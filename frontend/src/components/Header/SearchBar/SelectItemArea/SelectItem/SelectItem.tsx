@@ -34,7 +34,7 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
   } = props;
 
   const { queryData, pathname } = useContext(LocationContext)!;
-
+  // sx={{ height: ({ elementSize }) => elementSize.fullSize }}
   return (
     <SelectItemTemplate xs={xs} pl={pl}>
       <Button
