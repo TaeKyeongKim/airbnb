@@ -1,6 +1,6 @@
 import { useState, useContext, useMemo } from "react";
 
-import { PriceRangeContext } from "contexts/contexts";
+import { PriceRangeContext, SearchBarStateContext } from "contexts/contexts";
 import { LocationContext } from "router/Contexts";
 import numToWon from "utils/utils";
 
@@ -23,8 +23,10 @@ const ReservationFee = ({
   initialPrice,
 }: ReservationFeeProps): JSX.Element => {
   const { state: price, setState: setPrice } = stateData!;
-  const { queryData, pathname } = useContext(LocationContext)!;
-  const isCurrentPageIndex = pathname === "/";
+  const { queryData } = useContext(LocationContext)!;
+  const { isSearchBarFullSize, setIsSearchBarFullSize } = useContext(
+    SearchBarStateContext
+  )!;
 
   const [percentage, setPercentage] = useState({
     min: INITIAL_PRICE_PERCENTAGE.min,
@@ -61,7 +63,7 @@ const ReservationFee = ({
     >
       <SelectItem
         gridStyle={
-          isCurrentPageIndex
+          isSearchBarFullSize
             ? {
                 xs: 2,
                 pl: 2,
@@ -73,7 +75,9 @@ const ReservationFee = ({
         title="요금"
         desc={description}
         open={isOpen}
-        handleClick={isCurrentPageIndex ? onClick : undefined}
+        handleClick={
+          isSearchBarFullSize ? onClick : () => setIsSearchBarFullSize(true)
+        }
         handleClose={onClose}
         createNewPopup
         anchorEl={anchorEl}
