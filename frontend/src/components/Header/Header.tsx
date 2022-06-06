@@ -1,8 +1,9 @@
-import { useContext } from "react";
+import { useContext, useMemo, useState } from "react";
 
 import { Grid } from "@mui/material";
 import Box from "@mui/material/Box";
 
+import { SearchBarStateContext } from "contexts/contexts";
 import MENUS from "mockData/menus";
 import { LocationContext } from "router/Contexts";
 import Link from "router/Link";
@@ -70,16 +71,24 @@ const ChildNodes = ({ currentPath }: { currentPath: string }) => {
 
 const Header = () => {
   const { pathname } = useContext(LocationContext)!;
+  const [isSearchBarFullSize, setIsSearchBarFullSize] = useState(true);
 
   return (
-    <Box
-      component="header"
-      sx={pathname === "/" ? indexHeaderStyle : miniHeaderStyle}
+    <SearchBarStateContext.Provider
+      value={useMemo(
+        () => ({ isSearchBarFullSize, setIsSearchBarFullSize }),
+        [isSearchBarFullSize, setIsSearchBarFullSize]
+      )}
     >
-      <HeaderContainer maxWidth="xl">
-        <ChildNodes currentPath={pathname} />
-      </HeaderContainer>
-    </Box>
+      <Box
+        component="header"
+        sx={isSearchBarFullSize ? indexHeaderStyle : miniHeaderStyle}
+      >
+        <HeaderContainer maxWidth="xl">
+          <ChildNodes currentPath={pathname} />
+        </HeaderContainer>
+      </Box>
+    </SearchBarStateContext.Provider>
   );
 };
 

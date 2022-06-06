@@ -34,9 +34,9 @@ const PeopleCount = ({
         buttonId={buttonId}
         buttonAreaLabel="숙박 인원 설정"
         title="인원"
-        desc={pathname === "/" ? "게스트 추가" : "인원 입력"}
+        desc={isCurrentPageIndex ? "게스트 추가" : "인원 입력"}
         open={isOpen}
-        handleClick={onClick}
+        handleClick={isCurrentPageIndex ? onClick : undefined}
         anchorEl={anchorEl}
         handleClose={onClose}
         createNewPopup

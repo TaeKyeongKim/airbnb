@@ -73,7 +73,7 @@ const ReservationFee = ({
         title="요금"
         desc={description}
         open={isOpen}
-        handleClick={onClick}
+        handleClick={isCurrentPageIndex ? onClick : undefined}
         handleClose={onClose}
         createNewPopup
         anchorEl={anchorEl}

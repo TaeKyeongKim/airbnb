@@ -40,6 +40,11 @@ const SelectItemArea = (): JSX.Element => {
     setAnchorEl(null);
   };
 
+  const handleMiniSearchBarClick = () => {
+    // 헤더 구성을 변경
+    console.log("미니바클릭");
+  };
+
   return (
     <SelectItemAreaWrapper container columns={12}>
       <CheckInOut
@@ -60,7 +65,10 @@ const SelectItemArea = (): JSX.Element => {
         onClick={handleClick}
       />
       <Grid item xs={1} sx={searchButtonWrapperStyle}>
-        <Link to="searchResult" onClick={handleClose}>
+        <Link
+          to="searchResult"
+          onClick={isCurrentPageIndex ? handleClose : handleMiniSearchBarClick}
+        >
           <ButtonArea
             icon="search"
             isFocused={isCurrentPageIndex && Boolean(anchorEl)}

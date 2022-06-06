@@ -72,7 +72,6 @@ const CheckInOut = ({
           buttonAreaLabel="체크인, 체크아웃 날짜 설정"
           title="체크인"
           desc="일정입력"
-          handleClick={handleClick}
           open={isOpen}
           anchorEl={anchorEl}
           handleClose={onClose}
