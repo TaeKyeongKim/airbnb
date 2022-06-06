@@ -27,8 +27,6 @@ const SelectItemArea = (): JSX.Element => {
     SearchBarStateContext
   )!;
 
-  console.log(isSearchBarFullSize);
-
   const [anchorEl, setAnchorEl] = useState<AnchorEl>(null);
   const [price, setPrice] = useState({
     min: initialPrice.minPrice,
@@ -44,13 +42,15 @@ const SelectItemArea = (): JSX.Element => {
   };
 
   const handleFullSizeSearchBarClick = () => {
+    console.log("클릭");
     setAnchorNullEl();
+    // setIsSearchBarFullSize(false);
     setIsSearchBarFullSize(false);
   };
 
   const handleMiniSearchBarClick = () => {
-    // 헤더 구성을 변경
-    console.log("미니바클릭");
+    console.log("릭클");
+    setIsSearchBarFullSize(true);
   };
 
   return (

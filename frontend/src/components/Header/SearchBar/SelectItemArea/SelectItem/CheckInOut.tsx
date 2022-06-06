@@ -15,9 +15,7 @@ const CheckInOut = ({
   setAnchorEl,
   onClose,
 }: SelectItemProps): JSX.Element => {
-  const { isSearchBarFullSize, setIsSearchBarFullSize } = useContext(
-    SearchBarStateContext
-  )!;
+  const { isSearchBarFullSize } = useContext(SearchBarStateContext)!;
 
   const $wrap = useRef<HTMLDivElement>(null);
   const isOpen = anchorEl?.id === wrapperId;
@@ -75,7 +73,9 @@ const CheckInOut = ({
           desc="일정입력"
           open={isOpen}
           anchorEl={anchorEl}
-          handleClick={() => setIsSearchBarFullSize(true)}
+          handleClick={() => {
+            /* setIsSearchBarFullSize(false) */
+          }}
           createNewPopup
         >
           체크인아웃

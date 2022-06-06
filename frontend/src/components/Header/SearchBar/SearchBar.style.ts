@@ -37,4 +37,5 @@ export default SearchBarContainer;
 
 export interface SearchBarContainerProps {
   isSearchBarFullSize?: boolean;
+  // isSearchBarFullSize?: React.MutableRefObject<boolean>;
 }

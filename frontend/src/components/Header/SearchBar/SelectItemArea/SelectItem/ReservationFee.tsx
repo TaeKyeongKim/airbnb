@@ -24,9 +24,7 @@ const ReservationFee = ({
 }: ReservationFeeProps): JSX.Element => {
   const { state: price, setState: setPrice } = stateData!;
   const { queryData } = useContext(LocationContext)!;
-  const { isSearchBarFullSize, setIsSearchBarFullSize } = useContext(
-    SearchBarStateContext
-  )!;
+  const { isSearchBarFullSize } = useContext(SearchBarStateContext)!;
 
   const [percentage, setPercentage] = useState({
     min: INITIAL_PRICE_PERCENTAGE.min,
@@ -76,7 +74,12 @@ const ReservationFee = ({
         desc={description}
         open={isOpen}
         handleClick={
-          isSearchBarFullSize ? onClick : () => setIsSearchBarFullSize(true)
+          // reservationFee모달도 open상태로 되면 좋음.
+          isSearchBarFullSize
+            ? onClick
+            : () => {
+                // isSearchBarFullSize.current = false;
+              }
         }
         handleClose={onClose}
         createNewPopup
