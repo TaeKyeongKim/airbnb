@@ -5,7 +5,6 @@ import Box from "@mui/material/Box";
 
 import { SearchBarStateContext } from "contexts/contexts";
 import MENUS from "mockData/menus";
-import { LocationContext } from "router/Contexts";
 import Link from "router/Link";
 
 import GNB from "./GNB/GNB";
@@ -40,7 +39,17 @@ const GNBArea = () => {
   );
 };
 
-const ChildNodes = ({ currentPath }: { currentPath: string }) => {
+const headerMiddleItem = {
+  fullSize: <GNBArea />,
+  miniSize: (
+    <Grid item container xs={8} justifyContent="center" alignItems="center">
+      <SearchBar />
+    </Grid>
+  ),
+};
+
+const ChildNodes = () => {
+  const { isSearchBarFullSize } = useContext(SearchBarStateContext)!;
   return (
     <>
       <Grid
@@ -50,27 +59,17 @@ const ChildNodes = ({ currentPath }: { currentPath: string }) => {
         sx={{ height: ({ elementSize }) => elementSize.fullSize }}
       >
         <LogoArea />
-        {currentPath === "/" && <GNBArea />}
-        {currentPath === "/searchResult" && (
-          <Grid
-            item
-            container
-            xs={8}
-            justifyContent="center"
-            alignItems="center"
-          >
-            <SearchBar />
-          </Grid>
-        )}
+        {isSearchBarFullSize
+          ? headerMiddleItem.fullSize
+          : headerMiddleItem.miniSize}
         <UserMenu />
       </Grid>
-      {currentPath === "/" && <SearchBar />}
+      {isSearchBarFullSize && <SearchBar />}
     </>
   );
 };
 
 const Header = () => {
-  const { pathname } = useContext(LocationContext)!;
   const [isSearchBarFullSize, setIsSearchBarFullSize] = useState(true);
 
   return (
@@ -85,7 +84,7 @@ const Header = () => {
         sx={isSearchBarFullSize ? indexHeaderStyle : miniHeaderStyle}
       >
         <HeaderContainer maxWidth="xl">
-          <ChildNodes currentPath={pathname} />
+          <ChildNodes />
         </HeaderContainer>
       </Box>
     </SearchBarStateContext.Provider>
