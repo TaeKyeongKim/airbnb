@@ -40,6 +40,14 @@ const theme = createTheme({
   elementSize: {
     fullSize: "100%",
     navBarHeight: "100px",
+    header: {
+      index: {
+        height: "640px",
+      },
+      others: {
+        height: "94px",
+      },
+    },
     userMenuButton: {
       width: `32px`,
       height: `32px`,
@@ -183,6 +191,14 @@ declare module "@mui/material/styles" {
     elementSize: {
       fullSize: string;
       navBarHeight: string;
+      header: {
+        index: {
+          height: string;
+        };
+        others: {
+          height: string;
+        };
+      };
       userMenuButton: {
         width: string;
         height: string;
@@ -248,6 +264,14 @@ declare module "@mui/material/styles" {
       userMenuButton?: {
         width?: string;
         height?: string;
+      };
+      header?: {
+        index?: {
+          height?: string;
+        };
+        others?: {
+          height?: string;
+        };
       };
       searchBar?: {
         height?: number;

@@ -18,7 +18,7 @@ const indexHeaderStyle = {
 
 const miniHeaderStyle = {
   ...defaultHeaderStyle,
-  height: "94px",
+  maxHeight: "94px",
   backgroundColor: ({ palette }: Theme) => palette.white.main,
 };
 
