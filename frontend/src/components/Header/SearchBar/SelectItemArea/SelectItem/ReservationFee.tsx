@@ -23,7 +23,8 @@ const ReservationFee = ({
   initialPrice,
 }: ReservationFeeProps): JSX.Element => {
   const { state: price, setState: setPrice } = stateData!;
-  const { queryData } = useContext(LocationContext)!;
+  const { queryData, pathname } = useContext(LocationContext)!;
+  const isCurrentPageIndex = pathname === "/";
 
   const [percentage, setPercentage] = useState({
     min: INITIAL_PRICE_PERCENTAGE.min,
@@ -37,7 +38,7 @@ const ReservationFee = ({
     !isQueryDataIncludesPriceRange &&
     percentage.min === INITIAL_PRICE_PERCENTAGE.min &&
     percentage.max === INITIAL_PRICE_PERCENTAGE.max
-      ? "금액대 설정"
+      ? "금액 설정"
       : `${numToWon(price.min)}~${numToWon(price.max)}`;
 
   const isOpen = anchorEl?.id === buttonId;
@@ -59,10 +60,14 @@ const ReservationFee = ({
       )}
     >
       <SelectItem
-        gridStyle={{
-          xs: 2,
-          pl: 2,
-        }}
+        gridStyle={
+          isCurrentPageIndex
+            ? {
+                xs: 2,
+                pl: 2,
+              }
+            : { xs: 3, pl: 1 }
+        }
         buttonId={buttonId}
         buttonAreaLabel="숙박요금 설정"
         title="요금"

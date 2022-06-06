@@ -48,7 +48,7 @@ const theme = createTheme({
         height: "94px",
       },
     },
-    userMenuButton: {
+    smallRoundButton: {
       width: `32px`,
       height: `32px`,
     },
@@ -199,7 +199,7 @@ declare module "@mui/material/styles" {
           height: string;
         };
       };
-      userMenuButton: {
+      smallRoundButton: {
         width: string;
         height: string;
       };
@@ -261,7 +261,7 @@ declare module "@mui/material/styles" {
     elementSize?: {
       fullSize?: string;
       navBarHeight?: string;
-      userMenuButton?: {
+      smallRoundButton?: {
         width?: string;
         height?: string;
       };

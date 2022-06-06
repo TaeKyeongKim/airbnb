@@ -25,7 +25,7 @@ const miniHeaderStyle = {
 
 const HeaderContainer = styled(Container)<ContainerProps>(
   ({ theme: { elementSize, style, whiteSpace } }) => `
-  height: ${elementSize.navBarHeight};
+  height: ${elementSize.header.others.height};
   margin: ${style.alignCenter.margin};
   padding: 0 ${whiteSpace.inner} !important;
 `

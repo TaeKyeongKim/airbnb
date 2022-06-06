@@ -13,16 +13,24 @@ const PeopleCount = ({
   anchorEl,
 }: SelectItemProps): JSX.Element => {
   const { pathname } = useContext(LocationContext)!;
+  const isCurrentPageIndex = pathname === "/";
 
   const isOpen = anchorEl?.id === buttonId;
 
   return (
     <>
       <SelectItem
-        gridStyle={{
-          xs: 2,
-          pl: 2,
-        }}
+        gridStyle={
+          isCurrentPageIndex
+            ? {
+                xs: 2,
+                pl: 2,
+              }
+            : {
+                xs: 3,
+                pl: 1,
+              }
+        }
         buttonId={buttonId}
         buttonAreaLabel="숙박 인원 설정"
         title="인원"

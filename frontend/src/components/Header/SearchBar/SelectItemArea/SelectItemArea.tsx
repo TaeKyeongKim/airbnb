@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import { Grid } from "@mui/material";
 
+import { LocationContext } from "router/Contexts";
 import Link from "router/Link";
 
 import ButtonArea from "./ButtonArea/ButtonArea";
@@ -22,6 +23,9 @@ const initialPrice = {
 };
 
 const SelectItemArea = (): JSX.Element => {
+  const { pathname } = useContext(LocationContext)!;
+  const isCurrentPageIndex = pathname === "/";
+
   const [anchorEl, setAnchorEl] = useState<AnchorEl>(null);
   const [price, setPrice] = useState({
     min: initialPrice.minPrice,
@@ -59,8 +63,9 @@ const SelectItemArea = (): JSX.Element => {
         <Link to="searchResult" onClick={handleClose}>
           <ButtonArea
             icon="search"
-            isFocused={Boolean(anchorEl)}
+            isFocused={isCurrentPageIndex && Boolean(anchorEl)}
             ariaLabel="설정한 정보로 검색하기"
+            xs={12}
           />
         </Link>
       </Grid>

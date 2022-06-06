@@ -2,13 +2,15 @@ import { IconButton, IconButtonProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 const RoundButton = styled(IconButton, {
-  shouldForwardProp: (prop) => prop !== "icon" && prop !== "isFocused",
+  shouldForwardProp: (prop) =>
+    prop !== "icon" && prop !== "isFocused" && prop !== "pathname",
   name: "MyThemeComponent",
   slot: "Root",
 })<RoundButtonProps>((props) => {
   const {
     icon,
     isFocused,
+    pathname,
     theme: { palette, elementSize },
   } = props;
 
@@ -18,9 +20,15 @@ const RoundButton = styled(IconButton, {
   const bgColor = isCloseIcon ? "grey4" : "primary";
   const svgColor = isCloseIcon ? "grey1" : "white";
 
+  const smallRoundButtonSize = `
+    width: ${elementSize.smallRoundButton.width};
+    height: ${elementSize.smallRoundButton.width};
+  `;
+
   const buttonSize = `
     width: ${elementSize.searchBar[buttonKeyName].width};
     height: ${elementSize.searchBar[buttonKeyName].height};
+    ${pathname !== "/" && smallRoundButtonSize}
     `;
 
   const focusedButtonStyle = `
@@ -55,4 +63,5 @@ export default RoundButton;
 export interface RoundButtonProps extends IconButtonProps {
   icon: "close" | "search";
   isFocused?: boolean | undefined;
+  pathname?: string;
 }

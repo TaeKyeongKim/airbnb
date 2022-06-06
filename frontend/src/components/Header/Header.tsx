@@ -50,7 +50,11 @@ const ChildNodes = ({ currentPath }: { currentPath: string }) => {
       >
         <LogoArea />
         {currentPath === "/" && <GNBArea />}
-        {currentPath === "/searchResult" && <SearchBar />}
+        {currentPath === "/searchResult" && (
+          <Grid item container xs={8} justifyContent="center">
+            <SearchBar />
+          </Grid>
+        )}
         <UserMenu />
       </Grid>
       {currentPath === "/" && <SearchBar />}

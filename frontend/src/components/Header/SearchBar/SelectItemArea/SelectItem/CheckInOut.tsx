@@ -16,6 +16,7 @@ const CheckInOut = ({
   onClose,
 }: SelectItemProps): JSX.Element => {
   const { pathname } = useContext(LocationContext)!;
+  const isCurrentPageIndex = pathname === "/";
 
   const $wrap = useRef<HTMLDivElement>(null);
   const isOpen = anchorEl?.id === wrapperId;
@@ -25,8 +26,15 @@ const CheckInOut = ({
   };
 
   return (
-    <Grid item container xs={5} component="div" id={wrapperId} ref={$wrap}>
-      {(pathname === "/" && (
+    <Grid
+      item
+      container
+      xs={isCurrentPageIndex ? 5 : 3}
+      component="div"
+      id={wrapperId}
+      ref={$wrap}
+    >
+      {(isCurrentPageIndex && (
         <>
           <SelectItem
             gridStyle={{
