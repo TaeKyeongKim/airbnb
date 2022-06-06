@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { LocationContext } from "router/Contexts";
+import { SearchBarStateContext } from "contexts/contexts";
 
 import ButtonArea from "../ButtonArea/ButtonArea";
 import SelectItem, { SelectItemProps, WhiteSpace } from "./SelectItem";
@@ -12,8 +12,9 @@ const PeopleCount = ({
   onClose,
   anchorEl,
 }: SelectItemProps): JSX.Element => {
-  const { pathname } = useContext(LocationContext)!;
-  const isCurrentPageIndex = pathname === "/";
+  const { isSearchBarFullSize, setIsSearchBarFullSize } = useContext(
+    SearchBarStateContext
+  )!;
 
   const isOpen = anchorEl?.id === buttonId;
 
@@ -21,7 +22,7 @@ const PeopleCount = ({
     <>
       <SelectItem
         gridStyle={
-          isCurrentPageIndex
+          isSearchBarFullSize
             ? {
                 xs: 2,
                 pl: 2,
@@ -34,9 +35,11 @@ const PeopleCount = ({
         buttonId={buttonId}
         buttonAreaLabel="숙박 인원 설정"
         title="인원"
-        desc={isCurrentPageIndex ? "게스트 추가" : "인원 입력"}
+        desc={isSearchBarFullSize ? "게스트 추가" : "인원 입력"}
         open={isOpen}
-        handleClick={isCurrentPageIndex ? onClick : undefined}
+        handleClick={
+          isSearchBarFullSize ? onClick : () => setIsSearchBarFullSize(true)
+        }
         anchorEl={anchorEl}
         handleClose={onClose}
         createNewPopup
