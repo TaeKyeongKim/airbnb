@@ -2,6 +2,7 @@ import { Container, ContainerProps, Theme } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 import heroImage from "assets/hero-img.png";
+import theme from "styles/theme";
 
 const defaultHeaderStyle = {
   maxwidth: "1440px",
@@ -9,7 +10,7 @@ const defaultHeaderStyle = {
 
 const indexHeaderStyle = {
   ...defaultHeaderStyle,
-  height: "640px",
+  height: theme.elementSize.header.index.height,
   backgroundImage: `url(${heroImage})`,
   backgroundRepeat: "no-repeat",
   backgroundPosition: "center bottom",
@@ -18,7 +19,7 @@ const indexHeaderStyle = {
 
 const miniHeaderStyle = {
   ...defaultHeaderStyle,
-  maxHeight: "94px",
+  maxHeight: theme.elementSize.header.others.height,
   backgroundColor: ({ palette }: Theme) => palette.white.main,
 };
 

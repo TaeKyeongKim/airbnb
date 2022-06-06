@@ -1,9 +1,12 @@
 import styled from "@emotion/styled";
 
+import theme from "styles/theme";
+
 const Wrapper = styled.div`
   display: flex;
-  /* 헤더사이즈만큼 빼기 */
-  height: calc(100vh - 94px);
+  height: calc(
+    100vh - ${parseInt(theme.elementSize.header.others.height, 10)}px
+  );
 
   .map-area {
     background-color: #999;
