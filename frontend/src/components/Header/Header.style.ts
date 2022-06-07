@@ -19,8 +19,13 @@ const indexHeaderStyle = {
 
 const miniHeaderStyle = {
   ...defaultHeaderStyle,
-  maxHeight: theme.elementSize.header.others.height,
+  height: theme.elementSize.header.others.height,
   backgroundColor: ({ palette }: Theme) => palette.white.main,
+};
+
+const miniHeaderWithFullSizeSearchBar = {
+  ...miniHeaderStyle,
+  height: "190px",
 };
 
 const HeaderContainer = styled(Container)<ContainerProps>(
@@ -31,4 +36,9 @@ const HeaderContainer = styled(Container)<ContainerProps>(
 `
 );
 
-export { indexHeaderStyle, HeaderContainer, miniHeaderStyle };
+export {
+  indexHeaderStyle,
+  HeaderContainer,
+  miniHeaderStyle,
+  miniHeaderWithFullSizeSearchBar,
+};
