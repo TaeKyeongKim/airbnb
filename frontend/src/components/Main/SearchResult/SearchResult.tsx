@@ -1,5 +1,6 @@
 import Filter from "./AccomodationsList/Filter/Filter";
 import ListItemCard from "./AccomodationsList/ListItemCard/ListItemCard";
+import MapArea from "./MapArea/MapArea";
 import Wrapper from "./SearchResult.style";
 
 const SearchResult = (): JSX.Element => {
@@ -57,7 +58,7 @@ const SearchResult = (): JSX.Element => {
           ))}
         </ul>
       </div>
-      <div className="map-area" />
+      <MapArea />
     </Wrapper>
   );
 };
