@@ -3,14 +3,14 @@ import { styled } from "@mui/material/styles";
 
 const RoundButton = styled(IconButton, {
   shouldForwardProp: (prop) =>
-    prop !== "icon" && prop !== "isFocused" && prop !== "pathname",
+    prop !== "icon" && prop !== "isFocused" && prop !== "isSearchBarFullSize",
   name: "MyThemeComponent",
   slot: "Root",
 })<RoundButtonProps>((props) => {
   const {
     icon,
     isFocused,
-    pathname,
+    isSearchBarFullSize,
     theme: { palette, elementSize },
   } = props;
 
@@ -28,7 +28,7 @@ const RoundButton = styled(IconButton, {
   const buttonSize = `
     width: ${elementSize.searchBar[buttonKeyName].width};
     height: ${elementSize.searchBar[buttonKeyName].height};
-    ${pathname !== "/" && smallRoundButtonSize}
+    ${!isSearchBarFullSize && smallRoundButtonSize}
     `;
 
   const focusedButtonStyle = `
@@ -41,13 +41,12 @@ const RoundButton = styled(IconButton, {
     overflow: hidden;
     `;
 
-  const iconSize =
-    pathname === "/"
-      ? `
+  const iconSize = isSearchBarFullSize
+    ? `
   width: ${elementSize.searchBar[buttonKeyName].icon.width};
   height: ${elementSize.searchBar[buttonKeyName].icon.height};
   `
-      : `
+    : `
   
   width: ${elementSize.searchBar.icon.miniSize};
   height: ${elementSize.searchBar.icon.miniSize};`;
@@ -73,5 +72,5 @@ export default RoundButton;
 export interface RoundButtonProps extends IconButtonProps {
   icon: "close" | "search";
   isFocused?: boolean | undefined;
-  pathname?: string;
+  isSearchBarFullSize?: boolean;
 }

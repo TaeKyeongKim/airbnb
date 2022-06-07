@@ -3,7 +3,7 @@ import { useContext } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import SearchIcon from "@mui/icons-material/Search";
 
-import { LocationContext } from "router/Contexts";
+import { SearchBarStateContext } from "contexts/contexts";
 
 import { SelectItemTemplate } from "../SelectItemTemplate/SelectItemTemplate";
 import RoundButton, { RoundButtonProps } from "./ButtonArea.style";
@@ -21,7 +21,7 @@ const ButtonArea = ({
   ariaLabel,
   xs = 1,
 }: ButtonAreaProps): JSX.Element => {
-  const { pathname } = useContext(LocationContext)!;
+  const { isSearchBarFullSize } = useContext(SearchBarStateContext)!;
 
   return (
     <SelectItemTemplate
@@ -35,9 +35,9 @@ const ButtonArea = ({
       <RoundButton
         icon={icon}
         isFocused={isFocused}
-        pathname={pathname}
         onClick={onClick}
         aria-label={ariaLabel}
+        isSearchBarFullSize={isSearchBarFullSize}
       >
         {icons[icon]}
         {isFocused && "검색"}
