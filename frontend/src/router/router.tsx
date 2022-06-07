@@ -58,7 +58,7 @@ const Router = (): React.ReactElement => {
           [location.pathname, queryData]
         )}
       >
-        {pages[page]}
+        <div style={{ position: "relative" }}>{pages[page]}</div>
       </LocationContext.Provider>
     </RouterContext.Provider>
   );
