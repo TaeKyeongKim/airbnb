@@ -1,6 +1,7 @@
 import CssBaseline from "@mui/material/CssBaseline";
 import { ThemeProvider } from "@mui/material/styles";
 
+import SearchBarContext from "contexts/SearchBar";
 import Router from "router/router";
 import theme from "styles/theme";
 
@@ -9,7 +10,9 @@ const App = (): JSX.Element => {
     <div className="App">
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Router />
+        <SearchBarContext>
+          <Router />
+        </SearchBarContext>
       </ThemeProvider>
     </div>
   );

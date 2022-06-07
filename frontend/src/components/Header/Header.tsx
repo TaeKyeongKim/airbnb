@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useContext } from "react";
 
 import Box from "@mui/material/Box";
 
@@ -11,33 +11,18 @@ import {
   miniHeaderStyle,
 } from "./Header.style";
 
-const Header = () => {
-  const [isSearchBarFullSize, setIsSearchBarFullSize] = useState(true);
-
-  useEffect(() => {
-    console.log("headerUseEffect", isSearchBarFullSize);
-  }, [isSearchBarFullSize]);
-
-  // const changeIsSearchBarFullSize = () => {
-  //   setIsSearchBarFullSize((bool) => !bool);
-  // };
+const Header = (): JSX.Element => {
+  const { isSearchBarFullSize } = useContext(SearchBarStateContext)!;
 
   return (
-    <SearchBarStateContext.Provider
-      value={useMemo(
-        () => ({ isSearchBarFullSize, setIsSearchBarFullSize }),
-        [isSearchBarFullSize, setIsSearchBarFullSize]
-      )}
+    <Box
+      component="header"
+      sx={isSearchBarFullSize ? indexHeaderStyle : miniHeaderStyle}
     >
-      <Box
-        component="header"
-        sx={isSearchBarFullSize ? indexHeaderStyle : miniHeaderStyle}
-      >
-        <HeaderContainer maxWidth="xl">
-          <ChildNodes />
-        </HeaderContainer>
-      </Box>
-    </SearchBarStateContext.Provider>
+      <HeaderContainer maxWidth="xl">
+        <ChildNodes />
+      </HeaderContainer>
+    </Box>
   );
 };
 

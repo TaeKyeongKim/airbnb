@@ -6,7 +6,7 @@ import { pages } from "./pages";
 const FIRST_INDEX = 0;
 const FIRST_SLASH_COUNT = 1;
 
-const Router = ({ children }: RouterProps): React.ReactElement => {
+const Router = (): React.ReactElement => {
   const { location } = window;
   const queryData: { [key: string]: string } = useMemo(() => ({}), []);
   location.search
@@ -63,8 +63,5 @@ const Router = ({ children }: RouterProps): React.ReactElement => {
     </RouterContext.Provider>
   );
 };
-interface RouterProps {
-  children?: React.ReactNode;
-}
 
 export default Router;
