@@ -48,11 +48,6 @@ const headerMiddleItem = {
 
 const ChildNodes = () => {
   const { isSearchBarFullSize } = useContext(SearchBarStateContext)!;
-  // let middleItem = headerMiddleItem.fullSize;
-
-  useEffect(() => {
-    console.log(isSearchBarFullSize, "Effect");
-  }, [isSearchBarFullSize]);
 
   return (
     <>

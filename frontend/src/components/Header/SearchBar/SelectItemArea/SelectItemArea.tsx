@@ -42,14 +42,11 @@ const SelectItemArea = (): JSX.Element => {
   };
 
   const handleFullSizeSearchBarClick = () => {
-    console.log("클릭");
     // setAnchorNullEl();
-    // setIsSearchBarFullSize(false);
     setIsSearchBarFullSize(false);
   };
 
   const handleMiniSearchBarClick = () => {
-    console.log("릭클");
     setIsSearchBarFullSize(true);
   };
 
