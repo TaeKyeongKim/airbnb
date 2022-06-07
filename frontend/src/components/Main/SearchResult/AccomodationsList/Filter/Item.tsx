@@ -9,7 +9,6 @@ const Item = ({
   count?: number;
   queryDataList: string[][];
 }) => {
-  console.log(queryDataList);
   return (
     <Wrapper>
       <ul className="search-filter-list">

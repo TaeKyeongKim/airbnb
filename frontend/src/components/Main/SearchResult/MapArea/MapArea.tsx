@@ -14,7 +14,7 @@ const MapArea = () => {
     const mapContainer = $mapArea.current;
 
     const map = new kakao.maps.Map(mapContainer, mapOption);
-    map;
+    console.log(map);
   }, []);
 
   return <div className="map-area" ref={$mapArea} />;

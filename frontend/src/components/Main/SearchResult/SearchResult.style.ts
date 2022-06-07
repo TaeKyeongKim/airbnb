@@ -42,7 +42,7 @@ const Wrapper = styled.div`
       border-bottom: 1px solid #e0e0e0;
     }
 
-    &:not(:first-child) {
+    &:not(:first-of-type) {
       padding-top: 24px;
     }
 
