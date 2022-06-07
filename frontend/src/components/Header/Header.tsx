@@ -17,10 +17,6 @@ const Header = (): JSX.Element => {
   const { isSearchBarFullSize } = useContext(SearchBarStateContext)!;
   const { pathname } = useContext(LocationContext)!;
 
-  // const miniHeader = isSearchBarFullSize
-  //   ? miniHeaderWithFullSizeSearchBar
-  //   : miniHeaderStyle;
-
   const fullSizeHeaderStyle =
     pathname === "/" ? indexHeaderStyle : miniHeaderWithFullSizeSearchBar;
 

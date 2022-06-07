@@ -14,8 +14,9 @@ const Wrapper = styled.div`
   }
 
   .accomodations-list-area {
-    background-color: #828282;
+    /* background-color: #828282; */
     flex: 45;
+    padding: 32px 24px;
   }
 `;
 
