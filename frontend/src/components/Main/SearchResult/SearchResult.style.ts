@@ -27,11 +27,75 @@ const Wrapper = styled.div`
     }
   }
 
-  .accomodations-item {
+  .accomodations-list {
     height: calc(
       100vh - ${theme.elementSize.header.others.height} - (32 * 2) px
     );
     overflow-y: auto;
+  }
+
+  .accomodations-item {
+    padding-bottom: 24px;
+    display: flex;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    &:not(:first-child) {
+      padding-top: 24px;
+    }
+
+    .item-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      font-weight: 400;
+    }
+
+    .info-desc-wrap,
+    .info-review-total-area {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .thumbnail {
+      margin-right: 24px;
+
+      img {
+        width: 330px;
+        height: 200px;
+        border-radius: 10px;
+      }
+    }
+
+    .item:not(:last-child) {
+      margin-bottom: 8px;
+    }
+
+    .info-desc {
+      font-size: 12px;
+      color: #828282;
+    }
+
+    .info-name {
+      font-size: 14px;
+    }
+
+    .info-review-count {
+      color: #828282;
+      margin-left: 5px;
+    }
+
+    .info-price,
+    .info-price-total {
+      text-align: right;
+    }
+
+    .info-total-price {
+      color: #828282;
+      text-decoration: underline;
+    }
   }
 `;
 
