@@ -6,6 +6,7 @@ const SearchResult = (): JSX.Element => {
     <Wrapper>
       <div className="accomodations-list-area">
         <Filter />
+        <h2 className="title">지도에서 선택한 지역의 숙소</h2>
       </div>
       <div className="map-area" />
     </Wrapper>
