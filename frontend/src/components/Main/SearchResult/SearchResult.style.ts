@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   position: absolute;
   z-index: -1;
   top: ${theme.elementSize.header.others.height};
-
+  width: 100%;
   height: calc(
     100vh - ${parseInt(theme.elementSize.header.others.height, 10)}px
   );
