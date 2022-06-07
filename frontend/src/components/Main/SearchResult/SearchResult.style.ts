@@ -26,6 +26,13 @@ const Wrapper = styled.div`
       margin-bottom: 32px;
     }
   }
+
+  .accomodations-item {
+    height: calc(
+      100vh - ${theme.elementSize.header.others.height} - (32 * 2) px
+    );
+    overflow-y: auto;
+  }
 `;
 
 export default Wrapper;
