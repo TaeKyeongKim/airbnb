@@ -2,7 +2,7 @@ import React from "react";
 
 import ReactDOM from "react-dom/client";
 
-import Router from "router/router";
+// import Router from "router/router";
 
 import App from "./App";
 
@@ -11,8 +11,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    {/* <Router> */}
+    <App />
+    {/* </Router> */}
   </React.StrictMode>
 );

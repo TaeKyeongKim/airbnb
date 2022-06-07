@@ -58,13 +58,13 @@ const Router = ({ children }: RouterProps): React.ReactElement => {
           [location.pathname, queryData]
         )}
       >
-        {children}
+        {pages[page]}
       </LocationContext.Provider>
     </RouterContext.Provider>
   );
 };
 interface RouterProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export default Router;

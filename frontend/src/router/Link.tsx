@@ -22,8 +22,8 @@ const Link = ({
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
     onClick?.();
-    pushHistory({ path: href, state: params });
     setPage?.(to);
+    pushHistory({ path: href, state: params });
   };
 
   return (
