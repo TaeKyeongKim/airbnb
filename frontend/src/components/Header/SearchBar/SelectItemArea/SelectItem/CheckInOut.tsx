@@ -15,7 +15,9 @@ const CheckInOut = ({
   setAnchorEl,
   onClose,
 }: SelectItemProps): JSX.Element => {
-  const { isSearchBarFullSize } = useContext(SearchBarStateContext)!;
+  const { isSearchBarFullSize, setIsSearchBarFullSize } = useContext(
+    SearchBarStateContext
+  )!;
 
   const $wrap = useRef<HTMLDivElement>(null);
   const isOpen = anchorEl?.id === wrapperId;
@@ -74,7 +76,7 @@ const CheckInOut = ({
           open={isOpen}
           anchorEl={anchorEl}
           handleClick={() => {
-            /* setIsSearchBarFullSize(false) */
+            setIsSearchBarFullSize(true);
           }}
           createNewPopup
         >

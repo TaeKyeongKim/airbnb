@@ -29,6 +29,19 @@ const SearchBarContainer = styled(Container, {
       button {
         z-index: 1500;
       }
+
+      animation: showSearchBar 0.3s;
+
+      @keyframes showSearchBar {
+        from {
+            opacity: 0.5;
+            margin-bottom: 1rem;
+        }
+        to {
+            opacity: 1;
+            margin-top: 0;
+        }
+      }
     `;
   }
 );

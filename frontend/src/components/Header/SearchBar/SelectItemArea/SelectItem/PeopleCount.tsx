@@ -12,7 +12,9 @@ const PeopleCount = ({
   onClose,
   anchorEl,
 }: SelectItemProps): JSX.Element => {
-  const { isSearchBarFullSize } = useContext(SearchBarStateContext)!;
+  const { isSearchBarFullSize, setIsSearchBarFullSize } = useContext(
+    SearchBarStateContext
+  )!;
 
   const isOpen = anchorEl?.id === buttonId;
 
@@ -36,11 +38,11 @@ const PeopleCount = ({
         desc={isSearchBarFullSize ? "게스트 추가" : "인원 입력"}
         open={isOpen}
         handleClick={
-          // peoplecount모달도 open상태로 되면 좋음.
           isSearchBarFullSize
             ? onClick
             : () => {
-                /* setIsSearchBarFullSize(true) */
+                setIsSearchBarFullSize(true);
+                // peoplecount모달도 open상태로 되면 좋음.
               }
         }
         anchorEl={anchorEl}
