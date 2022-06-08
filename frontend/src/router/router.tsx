@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 
 import { RouterContext, LocationContext } from "./Contexts";
-import { pages } from "./pages";
+import { LinkPath, pages } from "./pages";
 
 const FIRST_INDEX = 0;
 const FIRST_SLASH_COUNT = 1;
@@ -29,8 +29,7 @@ const Router = (): React.ReactElement => {
 
   const currentPath = getCurrentPath();
 
-  // 이부분이 잘못됨, 무조건 존재하면 index로 연결
-  const [page, setPage] = useState(
+  const [page, setPage] = useState<LinkPath>(
     pages[currentPath] ? currentPath : "notFound"
   );
 
