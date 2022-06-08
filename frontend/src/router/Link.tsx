@@ -1,5 +1,7 @@
 import { useContext } from "react";
 
+import { LinkPath } from "router";
+
 import { RouterContext } from "./Contexts";
 
 const { history, location } = window;
@@ -22,7 +24,7 @@ const Link = ({
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
     onClick?.();
-    setPage?.(to);
+    setPage?.(to as LinkPath);
     pushHistory({ path: href, state: params });
   };
 

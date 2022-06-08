@@ -1,7 +1,9 @@
 import { useMemo, useState } from "react";
 
+import { LinkPath } from "router";
+
 import { RouterContext, LocationContext } from "./Contexts";
-import { LinkPath, pages } from "./pages";
+import pages from "./pages";
 
 const FIRST_INDEX = 0;
 const FIRST_SLASH_COUNT = 1;
@@ -20,21 +22,22 @@ const Router = (): React.ReactElement => {
       return { ...prev };
     }, {});
 
-  const getCurrentPath = () => {
-    return (
+  const getCurrentPath = (): LinkPath => {
+    const currentPath =
       location.pathname.slice(FIRST_SLASH_COUNT).split("/")[FIRST_INDEX] ||
-      "index"
-    );
+      "index";
+
+    return currentPath as LinkPath;
   };
 
-  const currentPath = getCurrentPath();
+  const currentPath: LinkPath = getCurrentPath();
 
   const [page, setPage] = useState<LinkPath>(
     pages[currentPath] ? currentPath : "notFound"
   );
 
   onpopstate = (/* e: PopStateEvent */) => {
-    const poppedPath = getCurrentPath();
+    const poppedPath: LinkPath = getCurrentPath();
     // TODO: e.state 이용하여 뒤로가기 시 검색결과
 
     if (!pages[poppedPath]) {
