@@ -6,11 +6,22 @@ import RouterContext /* , LocationContext */ from "./Contexts";
 import pages from "./pages";
 
 const FIRST_INDEX = 0;
-const FIRST_SLASH_COUNT = 1;
+const FIRST_CHAR_COUNT = 1;
+
+const parseQueryStringToObject = (
+  queryString: string
+): { [key: string]: string } | null => {
+  if (!queryString.length) {
+    return null;
+  }
+  return Object.fromEntries(queryString.split("&").map((s) => s.split("=")));
+};
 
 const Router = (): React.ReactElement => {
   const { location } = window;
   // const queryData: { [key: string]: string } = useMemo(() => ({}), []);
+
+  // Object.fromEntries
   // const queryData = location.search
   //   .slice(1)
   //   .split("&")
@@ -24,26 +35,29 @@ const Router = (): React.ReactElement => {
 
   const getCurrentPath = (): LinkPath => {
     const currentPath =
-      location.pathname.slice(FIRST_SLASH_COUNT).split("/")[FIRST_INDEX] ||
+      location.pathname.slice(FIRST_CHAR_COUNT).split("/")[FIRST_INDEX] ||
       "index";
 
     return currentPath as LinkPath;
   };
 
   const currentPath: LinkPath = getCurrentPath();
+  const { search: queryString } = location;
+  const queryData = parseQueryStringToObject(queryString);
+
+  // console.log(currentPath);
+  // console.log(queryString, "queryString");
 
   const [page, setPage] = useState<LinkPath>(
     pages[currentPath] ? currentPath : "notFound"
   );
 
-  onpopstate = (e: PopStateEvent) => {
+  onpopstate = (/* e: PopStateEvent */) => {
     const poppedPath: LinkPath = getCurrentPath();
-    // TODO: e.state 이용하여 뒤로가기 시 검색결과
-
-    console.log(e.state, poppedPath);
 
     if (!pages[poppedPath]) {
       setPage("notFound");
+
       return;
     }
 
@@ -52,7 +66,10 @@ const Router = (): React.ReactElement => {
 
   return (
     <RouterContext.Provider
-      value={useMemo(() => ({ page, setPage }), [page, setPage])}
+      value={useMemo(
+        () => ({ queryData, page, setPage }),
+        [queryData, page, setPage]
+      )}
     >
       {/* <LocationContext.Provider
         value={useMemo(

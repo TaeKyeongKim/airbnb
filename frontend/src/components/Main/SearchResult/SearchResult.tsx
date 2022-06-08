@@ -1,6 +1,6 @@
-// import { useContext } from "react";
+import { useContext } from "react";
 
-// import { LocationContext } from "router/Contexts";
+import RouterContext from "router/Contexts";
 
 import Filter from "./AccomodationsList/Filter/Filter";
 import ListItemCard from "./AccomodationsList/ListItemCard/ListItemCard";
@@ -9,15 +9,18 @@ import Wrapper from "./SearchResult.style";
 
 const SearchResult = (): JSX.Element => {
   // const { queryData } = useContext(LocationContext)!;
-  const { state: params } = window.history;
-  console.log("확인", Object.entries(params));
+  // const { state: params } = window.history;
+
+  const { queryData } = { ...useContext(RouterContext) };
+
+  // console.log("확인", Object.entries(params));
 
   return (
     <Wrapper>
-      {(Object.entries(params).length && (
+      {(queryData && (
         <>
           <div className="accomodations-list-area">
-            <Filter />
+            {queryData && <Filter />}
             <h2 className="title">지도에서 선택한 지역의 숙소</h2>
             <ul className="accomodations-list">
               {[

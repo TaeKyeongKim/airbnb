@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 
 import { SearchBarStateContext } from "contexts/contexts";
+import RouterContext from "router/Contexts";
 // import { LocationContext } from "router/Contexts";
 
 import {
@@ -35,8 +36,9 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
   } = props;
 
   // const { queryData } = useContext(LocationContext)!;
-  const { state: params } = window.history;
+  // const { state: params } = window.history;
 
+  const { queryData } = { ...useContext(RouterContext) };
   const { isSearchBarFullSize } = useContext(SearchBarStateContext)!;
 
   return (
@@ -54,7 +56,7 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
           <Typography sx={itemStyles.title}>{title}</Typography>
         )}
         {/* 쿼리데이터가 없는 경우 표시 */}
-        {params && !Object.entries(params).length && (
+        {queryData && (
           <Typography
             sx={isSearchBarFullSize ? itemStyles.desc : itemStyles.miniSizeDesc}
           >

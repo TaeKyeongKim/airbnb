@@ -8,6 +8,8 @@ const { history, location } = window;
 
 // TODO:state를 url에 추가하는 함수 추가하기
 const stateToUrlString = (state: { [key: string]: string }) => {
+  // [["?"], ...Object.entries(str)].map((arr) => arr.join("=")).join("&")
+
   return JSON.stringify(state)
     .replace(/["{}]/g, "")
     .split(",")
@@ -23,12 +25,7 @@ const pushHistory = ({ path, state }: PushHistoryProps): void => {
   history.pushState(state, path, url);
 };
 
-const Link = ({
-  to,
-  params = {},
-  children,
-  onClick,
-}: LinkProps): JSX.Element => {
+const Link = ({ to, params, children, onClick }: LinkProps): JSX.Element => {
   const { setPage } = useContext(RouterContext);
 
   const href = to === "index" ? `/` : `/${to}`;
