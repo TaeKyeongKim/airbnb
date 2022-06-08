@@ -67,8 +67,8 @@ const SearchResult = (): JSX.Element => {
                   airConditioner: true,
                   id: 2,
                 },
-              ].map((el) => (
-                <ListItemCard {...el} />
+              ].map(({ id, ...props }) => (
+                <ListItemCard key={id} {...props} />
               ))}
             </ul>
           </div>
