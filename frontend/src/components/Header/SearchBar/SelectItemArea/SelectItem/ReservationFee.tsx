@@ -1,7 +1,7 @@
 import { useState, useContext, useMemo } from "react";
 
 import { PriceRangeContext, SearchBarStateContext } from "contexts/contexts";
-import { LocationContext } from "router/Contexts";
+// import { LocationContext } from "router/Contexts";
 import numToWon from "utils/utils";
 
 import PriceSelectArea from "../../ModalInnerItems/ReservationFeeModal/PriceSelectArea";
@@ -30,7 +30,10 @@ const ReservationFee = ({
     state: RangeType;
     setState: React.Dispatch<React.SetStateAction<RangeType>>;
   };
-  const { queryData } = { ...useContext(LocationContext) };
+  // const { queryData } = { ...useContext(LocationContext) };
+
+  const { state: params } = window.history;
+
   const { isSearchBarFullSize, setIsSearchBarFullSize } = useContext(
     SearchBarStateContext
   )!;
@@ -40,8 +43,7 @@ const ReservationFee = ({
     max: INITIAL_PRICE_PERCENTAGE.max,
   });
 
-  const isQueryDataIncludesPriceRange =
-    queryData?.minPrice || queryData?.maxPrice;
+  const isQueryDataIncludesPriceRange = params?.minPrice || params?.maxPrice;
 
   const description =
     !isQueryDataIncludesPriceRange &&

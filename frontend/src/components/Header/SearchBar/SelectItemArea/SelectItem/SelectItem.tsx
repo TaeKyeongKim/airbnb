@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 
 import { SearchBarStateContext } from "contexts/contexts";
-import { LocationContext } from "router/Contexts";
+// import { LocationContext } from "router/Contexts";
 
 import {
   ModalTemplate,
@@ -34,7 +34,9 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
     createNewPopup,
   } = props;
 
-  const { queryData } = useContext(LocationContext)!;
+  // const { queryData } = useContext(LocationContext)!;
+  const { state: params } = window.history;
+
   const { isSearchBarFullSize } = useContext(SearchBarStateContext)!;
 
   return (
@@ -52,7 +54,7 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
           <Typography sx={itemStyles.title}>{title}</Typography>
         )}
         {/* 쿼리데이터가 없는 경우 표시 */}
-        {!Object.entries(queryData).length && (
+        {params && !Object.entries(params).length && (
           <Typography
             sx={isSearchBarFullSize ? itemStyles.desc : itemStyles.miniSizeDesc}
           >

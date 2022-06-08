@@ -13,8 +13,8 @@ const MapArea = () => {
   useEffect(() => {
     const mapContainer = $mapArea.current;
 
-    const map = new kakao.maps.Map(mapContainer, mapOption);
-    console.log(map);
+    new kakao.maps.Map(mapContainer, mapOption);
+    // console.log(map);
   }, []);
 
   return <div className="map-area" ref={$mapArea} />;

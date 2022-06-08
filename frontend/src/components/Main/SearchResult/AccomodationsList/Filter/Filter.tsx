@@ -1,6 +1,6 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 
-import { LocationContext } from "router/Contexts";
+// import { LocationContext } from "router/Contexts";
 
 import Item from "./Item";
 
@@ -46,12 +46,13 @@ const getQueryDataFilterList = (data: { [key: string]: string }) => {
 };
 
 const Filter = () => {
-  const { queryData } = useContext(LocationContext)!;
+  // const { queryData } = useContext(LocationContext)!;
+  const { state: params } = window.history;
 
   return (
     <Item
       // count={count} // api응답으로 온 데이터
-      queryDataList={getQueryDataFilterList(queryData)}
+      queryDataList={getQueryDataFilterList(params)}
     />
   );
 };

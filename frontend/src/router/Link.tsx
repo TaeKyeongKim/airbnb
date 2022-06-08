@@ -2,13 +2,25 @@ import { useContext } from "react";
 
 import { LinkPath } from "router";
 
-import { RouterContext } from "./Contexts";
+import RouterContext from "./Contexts";
 
 const { history, location } = window;
 
+// TODO:state를 url에 추가하는 함수 추가하기
+const stateToUrlString = (state: { [key: string]: string }) => {
+  return JSON.stringify(state)
+    .replace(/["{}]/g, "")
+    .split(",")
+    .reduce((prev, cur) => `${prev}${cur.split(":").join("=")}&`, "?");
+};
+
 const pushHistory = ({ path, state }: PushHistoryProps): void => {
   // history.pushState(state, title, url);
-  history.pushState(state, path, `${location.origin}${path}`);
+  const url = `${location.origin}${path}${
+    (state && stateToUrlString(state)) || ""
+  }`;
+
+  history.pushState(state, path, url);
 };
 
 const Link = ({

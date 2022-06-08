@@ -1,6 +1,6 @@
-import { useContext } from "react";
+// import { useContext } from "react";
 
-import { LocationContext } from "router/Contexts";
+// import { LocationContext } from "router/Contexts";
 
 import Filter from "./AccomodationsList/Filter/Filter";
 import ListItemCard from "./AccomodationsList/ListItemCard/ListItemCard";
@@ -8,11 +8,13 @@ import MapArea from "./MapArea/MapArea";
 import Wrapper from "./SearchResult.style";
 
 const SearchResult = (): JSX.Element => {
-  const { queryData } = useContext(LocationContext)!;
+  // const { queryData } = useContext(LocationContext)!;
+  const { state: params } = window.history;
+  console.log("확인", Object.entries(params));
 
   return (
     <Wrapper>
-      {(Object.entries(queryData).length && (
+      {(Object.entries(params).length && (
         <>
           <div className="accomodations-list-area">
             <Filter />

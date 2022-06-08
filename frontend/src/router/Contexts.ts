@@ -1,10 +1,12 @@
 import { createContext } from "react";
 
-import { LocationContextType, RouterContextType } from "router";
+import { /* LocationContextType, */ RouterContextType } from "router";
 
-export const RouterContext = createContext<RouterContextType>({
+const RouterContext = createContext<RouterContextType>({
   page: "index",
   setPage: () => {},
 });
 
-export const LocationContext = createContext<LocationContextType | null>(null);
+export default RouterContext;
+
+// export const LocationContext = createContext<LocationContextType | null>(null);
