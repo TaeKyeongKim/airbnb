@@ -9,11 +9,12 @@ const mapOption = {
 
 const MapArea = () => {
   const $mapArea = useRef<HTMLDivElement | null>(null);
+  const map = useRef(null);
 
   useEffect(() => {
     const mapContainer = $mapArea.current;
 
-    new kakao.maps.Map(mapContainer, mapOption);
+    map.current = new kakao.maps.Map(mapContainer, mapOption);
     // console.log(map);
   }, []);
 
