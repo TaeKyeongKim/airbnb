@@ -46,7 +46,8 @@ const Router = (): React.ReactElement => {
   const queryData = parseQueryStringToObject(queryString);
 
   // console.log(currentPath);
-  // console.log(queryString, "queryString");
+  console.log(queryString, "queryString");
+  console.log(queryData, "queryData");
 
   const [page, setPage] = useState<LinkPath>(
     pages[currentPath] ? currentPath : "notFound"

@@ -7,17 +7,17 @@ import RouterContext from "./Contexts";
 const { history, location } = window;
 
 // TODO:state를 url에 추가하는 함수 추가하기
-const stateToUrlString = (state: { [key: string]: string }) => {
-  return JSON.stringify(state)
+const queryDataToUrlString = (query: { [key: string]: string }) => {
+  return JSON.stringify(query)
     .replace(/["{}]/g, "")
     .split(",")
-    .reduce((prev, cur) => `${prev}${cur.split(":").join("=")}&`, "?");
+    .reduce((prev, cur) => `${prev}${cur.split(":").join("=")}&`, "");
 };
 
 const pushHistory = ({ path, state, query }: PushHistoryProps): void => {
   // history.pushState(state, title, url);
   const url = `${location.origin}${path}${
-    (query && stateToUrlString(query)) || ""
+    (query && `?${queryDataToUrlString(query)}`) || ""
   }`;
 
   history.pushState(state, path, url);
@@ -28,11 +28,14 @@ const Link = ({
   state,
   children,
   onClick,
-  query = {},
+  query,
 }: LinkProps): JSX.Element => {
   const { setPage } = useContext(RouterContext);
 
-  const href = to === "index" ? `/` : `/${to}${stateToUrlString(query)}`;
+  const href =
+    to === "index"
+      ? `/`
+      : `/${to}${(query && queryDataToUrlString(query)) || ""}`;
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
