@@ -21,7 +21,7 @@ const miniHeaderStyle = {
   ...defaultHeaderStyle,
   height: theme.elementSize.header.others.height,
   backgroundColor: ({ palette }: Theme) => palette.white.main,
-  boxShadow: `0px 4px 15px -3px rgba(0,0,0,0.1)`,
+  boxShadow: `0px 9px 15px -3px rgba(0,0,0,0.1)`,
 };
 
 const miniHeaderWithFullSizeSearchBar = {
