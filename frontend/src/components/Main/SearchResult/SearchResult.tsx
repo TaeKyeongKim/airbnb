@@ -1,5 +1,6 @@
 import { useContext } from "react";
 
+import NotFound from "components/NotFound/NotFound";
 import RouterContext from "router/Contexts";
 
 import Filter from "./AccomodationsList/Filter/Filter";
@@ -73,8 +74,7 @@ const SearchResult = (): JSX.Element => {
           </div>
           <MapArea />
         </>
-      )) ||
-        "올바른 경로로 접속되지 않았습니다."}
+      )) || <NotFound />}
     </Wrapper>
   );
 };
