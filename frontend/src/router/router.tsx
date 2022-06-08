@@ -8,16 +8,17 @@ const FIRST_SLASH_COUNT = 1;
 
 const Router = (): React.ReactElement => {
   const { location } = window;
-  const queryData: { [key: string]: string } = useMemo(() => ({}), []);
-  location.search
+  // const queryData: { [key: string]: string } = useMemo(() => ({}), []);
+  const queryData = location.search
     .slice(1)
     .split("&")
     .map((item) => item.split("="))
-    .forEach(([key, val]) => {
+    .reduce((prev, [key, val]) => {
       if (key.length) {
-        queryData[key] = val;
+        return { ...prev, [key]: val };
       }
-    });
+      return { ...prev };
+    }, {});
 
   const getCurrentPath = () => {
     return (
