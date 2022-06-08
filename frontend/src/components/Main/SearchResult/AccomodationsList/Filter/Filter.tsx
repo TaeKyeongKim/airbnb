@@ -1,6 +1,7 @@
 import { useContext } from "react";
 
 import RouterContext from "router/Contexts";
+import numToWon from "utils/utils";
 
 import Item from "./Item";
 
@@ -30,15 +31,15 @@ const getDataListFromQueryData = (data: { [key: string]: string }) => {
   }
 
   if (data.minPrice) {
-    let priceRange = `${Number(data.minPrice).toLocaleString()} ~`;
+    let priceRange = `${numToWon(Number(data.minPrice))} ~`;
     if (data.maxPrice) {
-      priceRange += ` ${Number(data.maxPrice).toLocaleString()}`;
+      priceRange += ` ${numToWon(Number(data.maxPrice))}`;
     }
     result.push(["priceRange", priceRange]);
   }
 
   if (!data.minPrice && data.maxPrice) {
-    const priceRange = `${Number(data.maxPrice).toLocaleString} 까지`;
+    const priceRange = `${numToWon(Number(data.maxPrice))} 까지`;
     result.push(["priceRange", priceRange]);
   }
 
