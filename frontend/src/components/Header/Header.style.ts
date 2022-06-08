@@ -21,6 +21,7 @@ const miniHeaderStyle = {
   ...defaultHeaderStyle,
   height: theme.elementSize.header.others.height,
   backgroundColor: ({ palette }: Theme) => palette.white.main,
+  boxShadow: `0px 4px 15px -3px rgba(0,0,0,0.1)`,
 };
 
 const miniHeaderWithFullSizeSearchBar = {
@@ -32,7 +33,7 @@ const HeaderContainer = styled(Container)<ContainerProps>(
   ({ theme: { elementSize, style, whiteSpace } }) => `
   height: ${elementSize.header.others.height};
   margin: ${style.alignCenter.margin};
-  padding: 0 ${whiteSpace.inner} !important;
+padding: 0 ${whiteSpace.inner} !important;
 `
 );
 
