@@ -43,7 +43,7 @@ const Router = (): React.ReactElement => {
 
   const currentPath: LinkPath = getCurrentPath();
   const { search: queryString } = location;
-  const queryData = parseQueryStringToObject(queryString);
+  let queryData = parseQueryStringToObject(queryString);
 
   // console.log(currentPath);
   console.log(queryString, "queryString");
@@ -55,6 +55,7 @@ const Router = (): React.ReactElement => {
 
   onpopstate = (/* e: PopStateEvent */) => {
     const poppedPath: LinkPath = getCurrentPath();
+    queryData = parseQueryStringToObject(queryString);
 
     if (!pages[poppedPath]) {
       setPage("notFound");
