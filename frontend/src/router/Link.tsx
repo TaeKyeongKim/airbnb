@@ -14,25 +14,31 @@ const stateToUrlString = (state: { [key: string]: string }) => {
     .reduce((prev, cur) => `${prev}${cur.split(":").join("=")}&`, "?");
 };
 
-const pushHistory = ({ path, state }: PushHistoryProps): void => {
+const pushHistory = ({ path, state, query }: PushHistoryProps): void => {
   // history.pushState(state, title, url);
   const url = `${location.origin}${path}${
-    (state && stateToUrlString(state)) || ""
+    (query && stateToUrlString(query)) || ""
   }`;
 
   history.pushState(state, path, url);
 };
 
-const Link = ({ to, state, children, onClick }: LinkProps): JSX.Element => {
+const Link = ({
+  to,
+  state,
+  children,
+  onClick,
+  query = {},
+}: LinkProps): JSX.Element => {
   const { setPage } = useContext(RouterContext);
 
-  const href = to === "index" ? `/` : `/${to}`;
+  const href = to === "index" ? `/` : `/${to}${stateToUrlString(query)}`;
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault();
     onClick?.();
     setPage?.(to as LinkPath);
-    pushHistory({ path: href, state });
+    pushHistory({ path: href, state, query });
   };
 
   return (
@@ -49,11 +55,13 @@ interface PushHistoryProps {
   state?: {
     [key: string]: string;
   };
+  query?: { [key: string]: string };
 }
 
 interface LinkProps {
   to: string;
   children: React.ReactNode;
   state?: { [key: string]: string };
+  query?: { [key: string]: string };
   onClick?: () => void;
 }

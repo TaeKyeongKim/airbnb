@@ -76,7 +76,7 @@ const SelectItemArea = (): JSX.Element => {
               ? handleFullSizeSearchBarClick
               : handleMiniSearchBarClick
           }
-          params={{
+          query={{
             hi: "hello",
           }}
         >
