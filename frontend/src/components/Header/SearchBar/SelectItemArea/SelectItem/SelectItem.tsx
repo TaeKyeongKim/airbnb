@@ -39,7 +39,7 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
   // const { state: params } = window.history;
 
   const { queryData } = { ...useContext(RouterContext) };
-  const { isSearchBarFullSize } = useContext(SearchBarStateContext)!;
+  const { isSearchBarFullSize } = { ...useContext(SearchBarStateContext) };
 
   return (
     <SelectItemTemplate xs={xs} pl={pl}>
@@ -56,7 +56,7 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
           <Typography sx={itemStyles.title}>{title}</Typography>
         )}
         {/* 쿼리데이터가 없는 경우 표시 */}
-        {queryData && (
+        {!queryData && (
           <Typography
             sx={isSearchBarFullSize ? itemStyles.desc : itemStyles.miniSizeDesc}
           >
