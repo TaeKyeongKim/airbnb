@@ -36,9 +36,11 @@ const Router = (): React.ReactElement => {
     pages[currentPath] ? currentPath : "notFound"
   );
 
-  onpopstate = (/* e: PopStateEvent */) => {
+  onpopstate = (e: PopStateEvent) => {
     const poppedPath: LinkPath = getCurrentPath();
     // TODO: e.state 이용하여 뒤로가기 시 검색결과
+
+    console.log(e.state, poppedPath);
 
     if (!pages[poppedPath]) {
       setPage("notFound");

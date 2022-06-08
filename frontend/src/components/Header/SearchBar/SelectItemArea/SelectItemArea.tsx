@@ -76,6 +76,9 @@ const SelectItemArea = (): JSX.Element => {
               ? handleFullSizeSearchBarClick
               : handleMiniSearchBarClick
           }
+          params={{
+            hi: "hello",
+          }}
         >
           <ButtonArea
             icon="search"
