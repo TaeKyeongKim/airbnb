@@ -42,7 +42,6 @@ const SelectItemArea = (): JSX.Element => {
   };
 
   const handleFullSizeSearchBarClick = () => {
-    // setAnchorNullEl();
     setIsSearchBarFullSize(false);
   };
 
