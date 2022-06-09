@@ -20,11 +20,12 @@ const PeopleCount = ({
 
   const isPeopleCountFiltered = !!queryData?.numAdult || !!queryData?.numChild;
 
-  const description = isPeopleCountFiltered
-    ? `게스트 ${
-        (Number(queryData.numAdult) || 0) + (Number(queryData.numChild) || 0)
-      }명`
-    : "금액 설정";
+  const description =
+    isPeopleCountFiltered && page !== "index"
+      ? `게스트 ${
+          (Number(queryData.numAdult) || 0) + (Number(queryData.numChild) || 0)
+        }명`
+      : "게스트 추가";
 
   const isOpen = anchorEl?.id === buttonId;
 
@@ -45,9 +46,7 @@ const PeopleCount = ({
         buttonId={buttonId}
         buttonAreaLabel="숙박 인원 설정"
         title="인원"
-        desc={
-          isSearchBarFullSize || page === "index" ? "게스트 추가" : description
-        }
+        desc={description}
         isDiscriptionFiltered={isPeopleCountFiltered}
         open={isOpen}
         handleClick={

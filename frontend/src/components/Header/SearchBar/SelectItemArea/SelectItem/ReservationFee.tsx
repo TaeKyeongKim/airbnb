@@ -51,11 +51,12 @@ const ReservationFee = ({
   const isDiscriptionFiltered =
     !!isQueryDataIncludesPriceRange || !!isReservationFeeFiltered;
 
-  const description = isDiscriptionFiltered
-    ? `${numToWon(Number(queryData?.minPrice) || price.min)} - ${numToWon(
-        Number(queryData?.maxPrice) || price.max
-      )}`
-    : "금액 설정";
+  const description =
+    isDiscriptionFiltered && page !== "index"
+      ? `${numToWon(Number(queryData?.minPrice) || price.min)} - ${numToWon(
+          Number(queryData?.maxPrice) || price.max
+        )}`
+      : "금액 설정";
 
   const isOpen = anchorEl?.id === buttonId;
 
