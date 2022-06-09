@@ -12,14 +12,10 @@ import SearchBar from "./SearchBar/SearchBar";
 import UserMenu from "./UserMenu/UserMenu";
 
 const LogoArea = () => {
-  const { setIsSearchBarFullSize } = useContext(SearchBarStateContext)!;
-
   return (
     <Grid container item xs={2} justifyContent="left">
       <h1 style={{ margin: "auto 0" }}>
-        <Link to="index" onClick={() => setIsSearchBarFullSize(true)}>
-          LOGO
-        </Link>
+        <Link to="index">LOGO</Link>
       </h1>
     </Grid>
   );

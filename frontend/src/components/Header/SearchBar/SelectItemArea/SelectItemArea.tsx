@@ -79,7 +79,7 @@ const SelectItemArea = (): JSX.Element => {
               : handleMiniSearchBarClick
           }
           query={{
-            hi: "hello",
+            test: "test1", // 쿼리 테스트용
           }}
         >
           <ButtonArea

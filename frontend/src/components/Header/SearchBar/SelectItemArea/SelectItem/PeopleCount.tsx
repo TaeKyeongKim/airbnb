@@ -1,6 +1,7 @@
 import { useContext } from "react";
 
 import { SearchBarStateContext } from "contexts/contexts";
+import RouterContext from "router/Contexts";
 
 import ButtonArea from "../ButtonArea/ButtonArea";
 import SelectItem, { SelectItemProps, WhiteSpace } from "./SelectItem";
@@ -15,6 +16,7 @@ const PeopleCount = ({
   const { isSearchBarFullSize, setIsSearchBarFullSize } = useContext(
     SearchBarStateContext
   )!;
+  const { page } = { ...useContext(RouterContext) };
 
   const isOpen = anchorEl?.id === buttonId;
 
@@ -22,7 +24,7 @@ const PeopleCount = ({
     <>
       <SelectItem
         gridStyle={
-          isSearchBarFullSize
+          isSearchBarFullSize || page === "index"
             ? {
                 xs: 2,
                 pl: 2,

@@ -34,7 +34,7 @@ const ReservationFee = ({
   // const { queryData } = { ...useContext(LocationContext) };
   // const { queryData } = { ...useContext(LocationContext) };
 
-  const { queryData } = { ...useContext(RouterContext) };
+  const { queryData, page } = { ...useContext(RouterContext) };
 
   // const { state: params } = window.history;
   // const { search } = window.location;
@@ -79,7 +79,7 @@ const ReservationFee = ({
     >
       <SelectItem
         gridStyle={
-          isSearchBarFullSize
+          isSearchBarFullSize || page === "index"
             ? {
                 xs: 2,
                 pl: 2,
