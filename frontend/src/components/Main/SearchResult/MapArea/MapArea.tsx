@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
@@ -15,14 +15,23 @@ const mapOption = {
 
 const MapArea = () => {
   const $mapArea = useRef<HTMLDivElement | null>(null);
-  const map = useRef(null);
+  const map = useRef<kakao.maps.Map | null>(null);
+
+  const [isMapDraggable, setIsMapDraggable] = useState(true);
+
+  const handleMapCheckboxClick = () => {
+    setIsMapDraggable(!isMapDraggable);
+  };
 
   useEffect(() => {
     const mapContainer = $mapArea.current;
 
-    // TODO: new Lint오류로 임시로 ref이용, 추후 개선
     map.current = new kakao.maps.Map(mapContainer, mapOption);
   }, []);
+
+  useEffect(() => {
+    map.current?.setDraggable(isMapDraggable);
+  }, [isMapDraggable]);
 
   return (
     <Wrapper>
@@ -30,7 +39,12 @@ const MapArea = () => {
       <div className="map-checkbox-wrap float-item">
         <FormControlLabel
           control={
-            <Checkbox defaultChecked color="grey2" aria-label="Checkbox" />
+            <Checkbox
+              defaultChecked
+              color="grey2"
+              aria-label="Checkbox"
+              onClick={handleMapCheckboxClick}
+            />
           }
           label="지도를 움직이며 검색하기"
         />
