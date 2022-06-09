@@ -81,7 +81,7 @@ const theme = createTheme({
         padding: `16px 16px 16px 40px !important`,
       },
       miniSize: {
-        width: "298px",
+        width: "450px",
         height: "48px",
         padding: "8px 8px 8px 24px !important",
       },

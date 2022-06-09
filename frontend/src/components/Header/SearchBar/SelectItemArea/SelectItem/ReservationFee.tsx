@@ -52,10 +52,13 @@ const ReservationFee = ({
 
   const description =
     isQueryDataIncludesPriceRange || isReservationFeeFiltered
-      ? `${numToWon(price.min)} - ${numToWon(price.max)}`
+      ? `${numToWon(Number(queryData?.minPrice) || price.min)} - ${numToWon(
+          Number(queryData?.maxPrice) || price.max
+        )}`
       : "금액 설정";
 
   const isOpen = anchorEl?.id === buttonId;
+
   return (
     <PriceRangeContext.Provider
       value={useMemo(
