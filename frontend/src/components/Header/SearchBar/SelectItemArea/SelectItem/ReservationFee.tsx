@@ -42,20 +42,20 @@ const ReservationFee = ({
   };
 
   const isQueryDataIncludesPriceRange =
-    queryData?.minPrice || queryData?.maxPrice || false;
+    !!queryData?.minPrice || !!queryData?.maxPrice;
 
   const isReservationFeeFiltered =
     percentage.min !== INITIAL_PRICE_PERCENTAGE.min ||
     percentage.max !== INITIAL_PRICE_PERCENTAGE.max;
 
-  // price랑.. percentage랑 어떻게 잘 버무려서 query받아온 숫자로 보여주면 될듯.. 55줄을
+  const isDiscriptionFiltered =
+    !!isQueryDataIncludesPriceRange || !!isReservationFeeFiltered;
 
-  const description =
-    isQueryDataIncludesPriceRange || isReservationFeeFiltered
-      ? `${numToWon(Number(queryData?.minPrice) || price.min)} - ${numToWon(
-          Number(queryData?.maxPrice) || price.max
-        )}`
-      : "금액 설정";
+  const description = isDiscriptionFiltered
+    ? `${numToWon(Number(queryData?.minPrice) || price.min)} - ${numToWon(
+        Number(queryData?.maxPrice) || price.max
+      )}`
+    : "금액 설정";
 
   const isOpen = anchorEl?.id === buttonId;
 
@@ -85,6 +85,7 @@ const ReservationFee = ({
               }
             : { xs: 3, pl: 1 }
         }
+        isDiscriptionFiltered={isDiscriptionFiltered}
         buttonId={buttonId}
         buttonAreaLabel="숙박요금 설정"
         title="요금"
