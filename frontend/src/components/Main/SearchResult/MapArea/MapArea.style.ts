@@ -36,6 +36,29 @@ const Wrapper = styled.div`
       height: 32px;
     }
   }
+
+  .zoom-button {
+    display: flex;
+    top: 30px;
+    right: 30px;
+    padding: 3px;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0px 15px 5px rgba(0, 0, 0, 0.1);
+
+    .MuiButtonBase-root {
+      border-radius: 0;
+    }
+
+    .MuiButtonBase-root:not(:last-child) {
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .MuiSvgIcon-root {
+      width: 24px;
+    }
+  }
 `;
 
 export default Wrapper;

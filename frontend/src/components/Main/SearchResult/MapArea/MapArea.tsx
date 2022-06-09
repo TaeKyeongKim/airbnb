@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 
-import { Checkbox, FormControlLabel } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import { Checkbox, FormControlLabel, IconButton } from "@mui/material";
 
 import Wrapper from "./MapArea.style";
 
@@ -33,7 +35,14 @@ const MapArea = () => {
           label="지도를 움직이며 검색하기"
         />
       </div>
-      <div className="zoom-button float-item">줌인줌아웃</div>
+      <div className="zoom-button float-item">
+        <IconButton aria-label="지도 확대하기" component="span">
+          <AddIcon />
+        </IconButton>
+        <IconButton aria-label="지도 축소하기" component="span">
+          <RemoveIcon />
+        </IconButton>
+      </div>
     </Wrapper>
   );
 };
