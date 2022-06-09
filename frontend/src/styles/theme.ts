@@ -360,4 +360,10 @@ declare module "@mui/material/Button" {
   }
 }
 
+declare module "@mui/material/Checkbox" {
+  interface CheckboxPropsColorOverrides {
+    grey2: true;
+  }
+}
+
 export default theme;

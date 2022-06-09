@@ -2,7 +2,7 @@ import { Container, ContainerProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 const Wrapper = styled(Container)<ContainerProps>(
-  ({ theme: { elementSize, whiteSpace } }) => `
+  ({ theme: { elementSize, whiteSpace, palette } }) => `
   display: flex;
   position: absolute;
   z-index: -1;
@@ -108,6 +108,22 @@ const Wrapper = styled(Container)<ContainerProps>(
     position: absolute;
     top: 0;
     right: 3rem;
+  }
+
+  .map-checkbox-wrap {
+    background-color: ${palette.white.main};
+    font-size: 14px;
+    padding: 10px 12px;
+    border-radius: 0.5rem;
+
+    .MuiFormControlLabel-root {
+      margin: 0;
+    }
+
+    .MuiSvgIcon-root {
+      width: 32px;
+      height: 32px;
+    }
   }
 `
 );

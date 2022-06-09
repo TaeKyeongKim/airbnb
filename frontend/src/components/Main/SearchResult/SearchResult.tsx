@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { Box } from "@mui/material";
+import { Box, Checkbox, FormControlLabel } from "@mui/material";
 
 import NotFound from "components/NotFound/NotFound";
 import RouterContext from "router/Contexts";
@@ -92,8 +92,17 @@ const SearchResult = (): JSX.Element => {
               </ul>
             </div>
             <MapArea />
-            <div className="map-check-box float-item">
-              지도를 움직이며 검색하기
+            <div className="map-checkbox-wrap float-item">
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    defaultChecked
+                    color="grey2"
+                    aria-label="Checkbox"
+                  />
+                }
+                label="지도를 움직이며 검색하기"
+              />
             </div>
             <div className="zoom-button float-item">줌인줌아웃</div>
           </>
