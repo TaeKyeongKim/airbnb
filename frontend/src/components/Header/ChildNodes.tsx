@@ -4,6 +4,7 @@ import { Grid } from "@mui/material";
 
 import { SearchBarStateContext } from "contexts/contexts";
 import MENUS from "mockData/menus";
+import RouterContext from "router/Contexts";
 import Link from "router/Link";
 
 import GNB from "./GNB/GNB";
@@ -47,7 +48,8 @@ const headerMiddleItem = {
 };
 
 const ChildNodes = () => {
-  const { isSearchBarFullSize } = useContext(SearchBarStateContext)!;
+  const { isSearchBarFullSize } = { ...useContext(SearchBarStateContext) };
+  const { page } = { ...useContext(RouterContext) };
 
   return (
     <>
@@ -58,12 +60,12 @@ const ChildNodes = () => {
         sx={{ height: ({ elementSize }) => elementSize.fullSize }}
       >
         <LogoArea />
-        {isSearchBarFullSize
+        {isSearchBarFullSize || page === "index"
           ? headerMiddleItem.fullSize
           : headerMiddleItem.miniSize}
         <UserMenu />
       </Grid>
-      {isSearchBarFullSize && <SearchBar />}
+      {(isSearchBarFullSize || page === "index") && <SearchBar />}
     </>
   );
 };

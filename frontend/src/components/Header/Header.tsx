@@ -25,7 +25,11 @@ const Header = (): JSX.Element => {
   return (
     <Box
       component="header"
-      sx={isSearchBarFullSize ? fullSizeHeaderStyle : miniHeaderStyle}
+      sx={
+        isSearchBarFullSize || page === "index"
+          ? fullSizeHeaderStyle
+          : miniHeaderStyle
+      }
     >
       <HeaderContainer maxWidth="xl">
         <ChildNodes />
