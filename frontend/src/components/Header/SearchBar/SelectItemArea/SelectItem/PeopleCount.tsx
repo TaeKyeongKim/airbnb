@@ -16,7 +16,15 @@ const PeopleCount = ({
   const { isSearchBarFullSize, setIsSearchBarFullSize } = useContext(
     SearchBarStateContext
   )!;
-  const { page } = { ...useContext(RouterContext) };
+  const { queryData, page } = { ...useContext(RouterContext) };
+
+  const isPeopleCountFiltered = !!queryData?.numAdult || !!queryData?.numChild;
+
+  const description = isPeopleCountFiltered
+    ? `게스트 ${
+        (Number(queryData.numAdult) || 0) + (Number(queryData.numChild) || 0)
+      }명`
+    : "금액 설정";
 
   const isOpen = anchorEl?.id === buttonId;
 
@@ -38,8 +46,9 @@ const PeopleCount = ({
         buttonAreaLabel="숙박 인원 설정"
         title="인원"
         desc={
-          isSearchBarFullSize || page === "index" ? "게스트 추가" : "인원 입력"
+          isSearchBarFullSize || page === "index" ? "게스트 추가" : description
         }
+        isDiscriptionFiltered={isPeopleCountFiltered}
         open={isOpen}
         handleClick={
           isSearchBarFullSize || page === "index"
