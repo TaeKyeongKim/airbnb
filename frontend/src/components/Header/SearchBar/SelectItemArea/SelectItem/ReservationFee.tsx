@@ -92,7 +92,7 @@ const ReservationFee = ({
         desc={description}
         open={isOpen}
         handleClick={
-          isSearchBarFullSize
+          isSearchBarFullSize || page === "index"
             ? onClick
             : () => {
                 setIsSearchBarFullSize(true);

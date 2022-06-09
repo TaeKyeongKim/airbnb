@@ -37,10 +37,12 @@ const PeopleCount = ({
         buttonId={buttonId}
         buttonAreaLabel="숙박 인원 설정"
         title="인원"
-        desc={isSearchBarFullSize ? "게스트 추가" : "인원 입력"}
+        desc={
+          isSearchBarFullSize || page === "index" ? "게스트 추가" : "인원 입력"
+        }
         open={isOpen}
         handleClick={
-          isSearchBarFullSize
+          isSearchBarFullSize || page === "index"
             ? onClick
             : () => {
                 setIsSearchBarFullSize(true);
