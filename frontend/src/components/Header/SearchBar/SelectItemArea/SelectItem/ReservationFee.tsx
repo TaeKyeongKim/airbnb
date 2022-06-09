@@ -2,7 +2,7 @@ import { useState, useContext, useMemo } from "react";
 
 import { PriceRangeContext, SearchBarStateContext } from "contexts/contexts";
 import RouterContext from "router/Contexts";
-import numToWon from "utils/utils";
+import { numToWon } from "utils/utils";
 
 import PriceSelectArea from "../../ModalInnerItems/ReservationFeeModal/PriceSelectArea";
 import ButtonArea from "../ButtonArea/ButtonArea";
@@ -40,15 +40,20 @@ const ReservationFee = ({
     state: RangeType;
     setState: React.Dispatch<React.SetStateAction<RangeType>>;
   };
+
   const isQueryDataIncludesPriceRange =
-    queryData?.minPrice || queryData?.maxPrice;
+    queryData?.minPrice || queryData?.maxPrice || false;
+
+  const isReservationFeeFiltered =
+    percentage.min !== INITIAL_PRICE_PERCENTAGE.min ||
+    percentage.max !== INITIAL_PRICE_PERCENTAGE.max;
+
+  // price랑.. percentage랑 어떻게 잘 버무려서 query받아온 숫자로 보여주면 될듯.. 55줄을
 
   const description =
-    !isQueryDataIncludesPriceRange &&
-    percentage.min === INITIAL_PRICE_PERCENTAGE.min &&
-    percentage.max === INITIAL_PRICE_PERCENTAGE.max
-      ? "금액 설정"
-      : `${numToWon(price.min)}~${numToWon(price.max)}`;
+    isQueryDataIncludesPriceRange || isReservationFeeFiltered
+      ? `${numToWon(price.min)} - ${numToWon(price.max)}`
+      : "금액 설정";
 
   const isOpen = anchorEl?.id === buttonId;
   return (

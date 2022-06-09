@@ -2,4 +2,13 @@ const numToWon = (num: number) => {
   return num.toLocaleString();
 };
 
-export default numToWon;
+const getEllipisisStyle = (lineNumber: number) => {
+  return {
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    "-webkitLineClamp": lineNumber.toString(),
+    width: "100%",
+  };
+};
+
+export { numToWon, getEllipisisStyle };
