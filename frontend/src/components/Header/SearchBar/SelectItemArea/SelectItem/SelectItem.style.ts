@@ -26,6 +26,7 @@ const SelectItemStyle = {
     color: ({ palette }: Theme) => palette.grey3.main,
     fontSize: ({ style }: Theme) => style.miniSearchButton.fontSize,
     fontWeight: ({ style }: Theme) => style.miniSearchButton.fontWeight,
+    whiteSpace: "pre-line",
     ...getEllipisisStyle(2),
   },
   border: {

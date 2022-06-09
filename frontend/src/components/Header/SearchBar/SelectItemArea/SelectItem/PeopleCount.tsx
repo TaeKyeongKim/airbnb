@@ -18,10 +18,11 @@ const PeopleCount = ({
   )!;
   const { queryData, page } = { ...useContext(RouterContext) };
 
-  const isPeopleCountFiltered = !!queryData?.numAdult || !!queryData?.numChild;
+  const isQueryDataIncludesPepoleCount =
+    !!queryData?.numAdult || !!queryData?.numChild;
 
   const description =
-    isPeopleCountFiltered && page !== "index"
+    isQueryDataIncludesPepoleCount && page !== "index"
       ? `게스트 ${
           (Number(queryData.numAdult) || 0) + (Number(queryData.numChild) || 0)
         }명`
@@ -47,7 +48,7 @@ const PeopleCount = ({
         buttonAreaLabel="숙박 인원 설정"
         title="인원"
         desc={description}
-        isDiscriptionFiltered={isPeopleCountFiltered}
+        isDiscriptionFiltered={isQueryDataIncludesPepoleCount}
         open={isOpen}
         handleClick={
           isSearchBarFullSize || page === "index"

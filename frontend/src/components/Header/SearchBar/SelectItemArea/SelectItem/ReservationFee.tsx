@@ -53,7 +53,7 @@ const ReservationFee = ({
 
   const description =
     isDiscriptionFiltered && page !== "index"
-      ? `${numToWon(Number(queryData?.minPrice) || price.min)} - ${numToWon(
+      ? `₩${numToWon(Number(queryData?.minPrice) || price.min)} - ₩${numToWon(
           Number(queryData?.maxPrice) || price.max
         )}`
       : "금액 설정";
