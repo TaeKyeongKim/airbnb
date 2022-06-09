@@ -1,27 +1,19 @@
 import { Container } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-import { LinkPath } from "router";
-
 const SearchBarContainer = styled(Container, {
-  shouldForwardProp: (prop) =>
-    prop !== "isSearchBarFullSize" && prop !== "currentPage",
+  shouldForwardProp: (prop) => prop !== "isSearchBarFullSize",
   name: "MyThemeComponent",
   slot: "Root",
 })<SearchBarContainerProps>(
-  ({
-    isSearchBarFullSize,
-    currentPage,
-    theme: { elementSize, palette, style },
-  }) => {
-    const containerSize =
-      isSearchBarFullSize || currentPage === "index"
-        ? `
+  ({ isSearchBarFullSize, theme: { elementSize, palette, style } }) => {
+    const containerSize = isSearchBarFullSize
+      ? `
       max-width: ${elementSize.searchBar.fullSize.maxWidth};
       height: ${elementSize.searchBar.fullSize.height};
       padding: ${elementSize.searchBar.fullSize.padding};
       `
-        : `
+      : `
         width: ${elementSize.searchBar.miniSize.width};
         height: ${elementSize.searchBar.miniSize.height};
         padding: ${elementSize.searchBar.miniSize.padding};
@@ -58,5 +50,4 @@ export default SearchBarContainer;
 
 export interface SearchBarContainerProps {
   isSearchBarFullSize?: boolean;
-  currentPage?: LinkPath;
 }

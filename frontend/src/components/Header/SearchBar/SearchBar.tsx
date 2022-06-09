@@ -19,8 +19,7 @@ const SearchBar = (): JSX.Element => {
 
   return (
     <SearchBarContainer
-      isSearchBarFullSize={isSearchBarFullSize}
-      currentPage={page}
+      isSearchBarFullSize={isSearchBarFullSize || page === "index"}
     >
       <SelectItemArea />
     </SearchBarContainer>
