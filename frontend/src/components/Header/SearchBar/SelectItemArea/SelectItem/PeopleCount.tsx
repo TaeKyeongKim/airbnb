@@ -46,7 +46,7 @@ const PeopleCount = ({
             ? onClick
             : () => {
                 setIsSearchBarFullSize(true);
-                // peoplecount모달도 open상태로 되면 좋음.
+                // NOTE: peoplecount모달도 open상태로 되면 좋음.
               }
         }
         anchorEl={anchorEl}

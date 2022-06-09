@@ -17,7 +17,7 @@ const queryDataToUrlString = (query: { [key: string]: string }) => {
 };
 
 const pushHistory = ({ path, state, query }: PushHistoryProps): void => {
-  // history.pushState(state, title, url);
+  // NOTE: history.pushState(state, title, url);
   const url = `${location.origin}${path}${
     (query && `?${queryDataToUrlString(query)}`) || ""
   }`;

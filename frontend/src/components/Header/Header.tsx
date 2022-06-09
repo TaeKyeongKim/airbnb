@@ -3,7 +3,6 @@ import { useContext } from "react";
 import Box from "@mui/material/Box";
 
 import { SearchBarStateContext } from "contexts/contexts";
-// import { LocationContext } from "router/Contexts";
 import RouterContext from "router/Contexts";
 
 import ChildNodes from "./ChildNodes";
@@ -23,7 +22,6 @@ const Header = (): JSX.Element => {
 
   const fullSizeHeaderStyle =
     page === "index" ? indexHeaderStyle : miniHeaderWithFullSizeSearchBar;
-  // pathname === "/" ? indexHeaderStyle : miniHeaderWithFullSizeSearchBar;
 
   return (
     <Box

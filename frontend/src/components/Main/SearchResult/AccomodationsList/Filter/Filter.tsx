@@ -5,8 +5,7 @@ import numToWon from "utils/utils";
 
 import Item from "./Item";
 
-// count: 0, // 숙소 개수. <-- 결과에서 가져와야함. length로?
-
+// NOTE: count: 0, // 숙소 개수. <-- 결과에서 가져와야함. length로?
 const getDataListFromQueryData = (data: { [key: string]: string }) => {
   const result = [];
   if (data.NumAdult || data.numChild) {
@@ -47,15 +46,13 @@ const getDataListFromQueryData = (data: { [key: string]: string }) => {
 };
 
 const Filter = () => {
-  // const { queryData } = useContext(LocationContext)!;
-  // const { state: params } = window.history;
 
   const { queryData } = { ...useContext(RouterContext) };
 
   return (
     queryData && (
       <Item
-        // count={count} // api응답으로 온 데이터
+        // count={count} // NOTE: api응답으로 온 데이터
         queryDataList={getDataListFromQueryData(queryData)}
       />
     )

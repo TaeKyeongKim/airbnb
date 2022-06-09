@@ -1,7 +1,6 @@
 import { useState, useContext, useMemo } from "react";
 
 import { PriceRangeContext, SearchBarStateContext } from "contexts/contexts";
-// import { LocationContext } from "router/Contexts";
 import RouterContext from "router/Contexts";
 import numToWon from "utils/utils";
 
@@ -27,18 +26,7 @@ const ReservationFee = ({
   stateData,
   initialPrice,
 }: ReservationFeeProps): JSX.Element => {
-  const { state: price, setState: setPrice } = stateData as {
-    state: RangeType;
-    setState: React.Dispatch<React.SetStateAction<RangeType>>;
-  };
-  // const { queryData } = { ...useContext(LocationContext) };
-  // const { queryData } = { ...useContext(LocationContext) };
-
   const { queryData, page } = { ...useContext(RouterContext) };
-
-  // const { state: params } = window.history;
-  // const { search } = window.location;
-
   const { isSearchBarFullSize, setIsSearchBarFullSize } = useContext(
     SearchBarStateContext
   )!;
@@ -48,9 +36,12 @@ const ReservationFee = ({
     max: INITIAL_PRICE_PERCENTAGE.max,
   });
 
+  const { state: price, setState: setPrice } = stateData as {
+    state: RangeType;
+    setState: React.Dispatch<React.SetStateAction<RangeType>>;
+  };
   const isQueryDataIncludesPriceRange =
     queryData?.minPrice || queryData?.maxPrice;
-  // const isQueryDataIncludesPriceRange = true;
 
   const description =
     !isQueryDataIncludesPriceRange &&
@@ -96,7 +87,7 @@ const ReservationFee = ({
             ? onClick
             : () => {
                 setIsSearchBarFullSize(true);
-                // reservationFee모달도 open상태로 되면 좋음.
+                // NOTE: reservationFee모달도 open상태로 되면 좋음.
               }
         }
         handleClose={onClose}

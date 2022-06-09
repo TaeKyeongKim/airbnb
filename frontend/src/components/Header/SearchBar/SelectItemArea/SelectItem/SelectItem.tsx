@@ -10,7 +10,6 @@ import {
 
 import { SearchBarStateContext } from "contexts/contexts";
 import RouterContext from "router/Contexts";
-// import { LocationContext } from "router/Contexts";
 
 import {
   ModalTemplate,
@@ -35,10 +34,6 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
     createNewPopup,
   } = props;
 
-  // const { queryData } = useContext(LocationContext)!;
-  // const { state: params } = window.history;
-
-  // const { queryData, page } = { ...useContext(RouterContext) };
   const { isSearchBarFullSize } = { ...useContext(SearchBarStateContext) };
   const { page } = { ...useContext(RouterContext) };
 
@@ -57,7 +52,6 @@ const SelectItem = ({ ...props }: SelectItemDataProps): JSX.Element => {
           <Typography sx={itemStyles.title}>{title}</Typography>
         )}
         {/* 쿼리데이터가 없는 경우 표시 */}
-
         <Typography
           sx={
             isSearchBarFullSize || page === "index"
