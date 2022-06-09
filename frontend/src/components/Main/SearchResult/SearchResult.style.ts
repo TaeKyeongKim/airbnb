@@ -2,7 +2,7 @@ import { Container, ContainerProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 const Wrapper = styled(Container)<ContainerProps>(
-  ({ theme: { elementSize, whiteSpace, palette } }) => `
+  ({ theme: { elementSize, whiteSpace } }) => `
   display: flex;
   position: absolute;
   z-index: -1;
@@ -14,12 +14,6 @@ const Wrapper = styled(Container)<ContainerProps>(
     100vh - ${parseInt(elementSize.header.others.height, 10)}px
   );
   padding:  0 ${whiteSpace.inner} !important;
-
-  .map-area {
-    background-color: #999;
-    flex: 55;
-    z-index: -1;
-  }
 
   .accomodations-list-area {
     flex: 45;
@@ -102,28 +96,6 @@ const Wrapper = styled(Container)<ContainerProps>(
       text-decoration: underline;
     }
 
-  }
-
-  .float-item {
-    position: absolute;
-    top: 0;
-    right: 3rem;
-  }
-
-  .map-checkbox-wrap {
-    background-color: ${palette.white.main};
-    font-size: 14px;
-    padding: 10px 12px;
-    border-radius: 0.5rem;
-
-    .MuiFormControlLabel-root {
-      margin: 0;
-    }
-
-    .MuiSvgIcon-root {
-      width: 32px;
-      height: 32px;
-    }
   }
 `
 );
