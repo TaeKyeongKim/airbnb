@@ -92,6 +92,10 @@ const SearchResult = (): JSX.Element => {
               </ul>
             </div>
             <MapArea />
+            <div className="map-check-box float-item">
+              지도를 움직이며 검색하기
+            </div>
+            <div className="zoom-button float-item">줌인줌아웃</div>
           </>
         )) || <NotFound />}
       </Wrapper>

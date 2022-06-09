@@ -18,6 +18,7 @@ const Wrapper = styled(Container)<ContainerProps>(
   .map-area {
     background-color: #999;
     flex: 55;
+    z-index: -1;
   }
 
   .accomodations-list-area {
@@ -100,6 +101,13 @@ const Wrapper = styled(Container)<ContainerProps>(
       color: #828282;
       text-decoration: underline;
     }
+
+  }
+
+  .float-item {
+    position: absolute;
+    top: 0;
+    right: 3rem;
   }
 `
 );
