@@ -8,9 +8,11 @@ import Wrapper from "./MapArea.style";
 
 const { kakao } = window;
 
+const INITIAL_MAP_LEVEL = 3;
+
 const mapOption = {
   center: new kakao.maps.LatLng(33.450701, 126.570667),
-  level: 3,
+  level: INITIAL_MAP_LEVEL,
 };
 
 const MapArea = () => {

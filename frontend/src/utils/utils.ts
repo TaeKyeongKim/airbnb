@@ -6,7 +6,7 @@ const getEllipisisStyle = (lineNumber: number) => {
   return {
     overflow: "hidden",
     textOverflow: "ellipsis",
-    "-webkitLineClamp": lineNumber.toString(),
+    WebkitLineClamp: lineNumber.toString(),
     width: "100%",
   };
 };

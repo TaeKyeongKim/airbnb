@@ -33,11 +33,6 @@ const getDataListFromQueryData = (data: { [key: string]: string }) => {
   }
 
   if (data.minPrice || data.maxPrice) {
-    console.log(
-      Number(data?.maxPrice),
-      data?.maxPrice,
-      numToWon(Number(data?.maxPrice))
-    );
     result.push([
       "priceRange",
       `₩${
